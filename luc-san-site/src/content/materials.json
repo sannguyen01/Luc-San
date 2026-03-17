@@ -1,0 +1,56 @@
+[
+  {
+    "id": "pearl",
+    "name": "Pearl",
+    "formation": "15–25 years of nacre deposition",
+    "epoch": "Contemporary biological process",
+    "property": "Nacre thickness: 0.4mm minimum. Luster: 7/10+ GIA scale.",
+    "temporal": "Brightens with skin contact over years. The oils from your hands feed the nacre.",
+    "image": "/images/materials/pearl.jpg"
+  },
+  {
+    "id": "jade",
+    "name": "Jade",
+    "formation": "40–60 million years of tectonic metamorphism",
+    "epoch": "Eocene to Paleocene",
+    "property": "Microcrystalline interlocking structure. Toughest natural gemstone — fracture-resistant, not brittle.",
+    "temporal": "Develops deeper translucency with handling. Centuries of touch polish what no machine can replicate.",
+    "image": "/images/materials/jade.jpg"
+  },
+  {
+    "id": "amber",
+    "name": "Amber",
+    "formation": "30–50 million years of fossilized tree resin",
+    "epoch": "Eocene",
+    "property": "Organic gemstone. Warm to touch. Each piece contains a unique record of prehistoric atmosphere.",
+    "temporal": "Darkens gradually, concentrating its color over decades. Inclusions become more visible as the matrix shifts.",
+    "image": "/images/materials/amber.jpg"
+  },
+  {
+    "id": "wood",
+    "name": "Wood",
+    "formation": "60–200 years of growth, 18–36 months of air-drying",
+    "epoch": "Contemporary growth cycles",
+    "property": "Moisture content: 8–12%. Selection ratio: 200 boards inspected per 8 selected.",
+    "temporal": "Grain deepens with light exposure. Oil finish matures over years. The wood teaches you its age.",
+    "image": "/images/materials/wood.jpg"
+  },
+  {
+    "id": "silver",
+    "name": "Silver",
+    "formation": "Refined from ore, 92.5% minimum purity",
+    "epoch": "Geological: hydrothermal vein formation over millions of years",
+    "property": "Third-party assay verified. Working methods: forging, wire weaving, patination.",
+    "temporal": "Develops patina where skin meets metal. Darkens in creases, brightens on surfaces. Your life writes itself into the silver.",
+    "image": "/images/materials/silver.jpg"
+  },
+  {
+    "id": "bronze",
+    "name": "Bronze",
+    "formation": "Copper-tin alloy, cast and forged",
+    "epoch": "The alloy that named an age of civilization",
+    "property": "Patina development tested before use. Living finish by design — no lacquer.",
+    "temporal": "Oxidizes from warm gold to deep brown over years. Each environment creates a unique surface diary.",
+    "image": "/images/materials/bronze.jpg"
+  }
+]

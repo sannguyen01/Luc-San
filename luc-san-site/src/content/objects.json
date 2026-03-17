@@ -1,0 +1,83 @@
+[
+  {
+    "id": "jade-disc-pendant",
+    "tier": "Elemental",
+    "title": "Jade Disc Pendant",
+    "materials": ["Nephrite jade", "Sterling silver"],
+    "hours": 12,
+    "copy": "Forty million years of tectonic pressure. Twelve hours of hand-carving and polishing to reveal what was already there.",
+    "image": "/images/objects/jade-disc-pendant.jpg"
+  },
+  {
+    "id": "amber-drop-earrings",
+    "tier": "Elemental",
+    "title": "Amber Drop Earrings",
+    "materials": ["Baltic amber", "14K gold"],
+    "hours": 18,
+    "copy": "Forty-four million years of fossilized resin. Eighteen hours of shaping, each cut decided by the inclusion patterns within.",
+    "image": "/images/objects/amber-drop-earrings.jpg"
+  },
+  {
+    "id": "walnut-tea-vessel",
+    "tier": "Elemental",
+    "title": "Walnut Tea Vessel",
+    "materials": ["Black walnut"],
+    "hours": 22,
+    "copy": "Air-dried twenty-four months. Turned on a lathe, then hand-sanded through twelve grits. The grain tells you where to stop.",
+    "image": "/images/objects/walnut-tea-vessel.jpg"
+  },
+  {
+    "id": "baroque-pearl-suspension-i",
+    "tier": "Composed",
+    "title": "Baroque Pearl Suspension I",
+    "materials": ["Baroque pearl", "Sterling silver"],
+    "hours": 46,
+    "copy": "Nineteen years of nacre deposition. Forty-six hours of hand setting. No adhesive. The tension holds.",
+    "image": "/images/objects/baroque-pearl-suspension-i.jpg"
+  },
+  {
+    "id": "jade-cuff-open",
+    "tier": "Composed",
+    "title": "Jade Cuff — Open Form",
+    "materials": ["Nephrite jade", "Bronze"],
+    "hours": 55,
+    "copy": "Two materials separated by geological epochs, joined through fifty-five hours of carving and forging. The bronze will darken. The jade will brighten.",
+    "image": "/images/objects/jade-cuff-open.jpg"
+  },
+  {
+    "id": "pearl-constellation-collar",
+    "tier": "Composed",
+    "title": "Pearl Constellation Collar",
+    "materials": ["Freshwater pearls", "Sterling silver", "Silk cord"],
+    "hours": 58,
+    "copy": "Thirty-one pearls, each selected for its specific asymmetry. Fifty-eight hours of wire work. No two will ever hang identically.",
+    "image": "/images/objects/pearl-constellation-collar.jpg"
+  },
+  {
+    "id": "ceremonial-tea-table",
+    "tier": "Complex",
+    "title": "Ceremonial Tea Table",
+    "materials": ["White oak", "Bronze joinery"],
+    "hours": 140,
+    "copy": "Thirty-six months of air-drying. One hundred forty hours of joinery at half-degree tolerance. The table will outlast the century.",
+    "image": "/images/objects/ceremonial-tea-table.jpg"
+  },
+  {
+    "id": "amber-light-sculpture",
+    "tier": "Complex",
+    "title": "Amber Light Sculpture",
+    "materials": ["Baltic amber", "Brass", "Walnut base"],
+    "hours": 160,
+    "copy": "Twelve amber pieces, each forty million years old. One hundred sixty hours to find how they wanted to be arranged. Light passes through geological time.",
+    "image": "/images/objects/amber-light-sculpture.jpg"
+  },
+  {
+    "id": "commissioned-meditation-bench",
+    "tier": "Commissioned",
+    "title": "Meditation Bench — Commissioned",
+    "materials": ["Client-selected wood species", "Bronze", "Optional jade inlay"],
+    "hours": 280,
+    "copy": "Begins with a conversation about how you sit. Two hundred eighty hours of making, shaped by your body and your silence.",
+    "image": "/images/objects/commissioned-meditation-bench.jpg"
+  }
+]
