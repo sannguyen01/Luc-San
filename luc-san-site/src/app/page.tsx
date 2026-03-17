@@ -85,6 +85,28 @@ export default function HomePage() {
         </RevealSection>
       </NarrowSection>
 
+      {/* Dark geological band — scroll crossfade moment */}
+      <RevealSection>
+      <section
+        className="dark-band reveal"
+        style={{ padding: "var(--space-1600) var(--space-800)" }}
+      >
+        <div className="max-w-xl mx-auto text-center">
+          <p
+            className="font-serif text-3xl md:text-4xl font-light leading-relaxed mb-6"
+            style={{ color: "var(--text-inverse)" }}
+          >
+            Geological time.<br />Human hands.
+          </p>
+          <p className="text-sm leading-relaxed" style={{ color: "rgba(245,242,236,0.5)" }}>
+            Every material here required more time to form than any civilization
+            has existed. We add hours, not epochs — but we count them with the
+            same seriousness.
+          </p>
+        </div>
+      </section>
+      </RevealSection>
+
       <SectionDivider />
 
       {/* Subtle Pathways — minimal inline links */}

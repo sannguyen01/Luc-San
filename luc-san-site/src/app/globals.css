@@ -316,6 +316,46 @@ a:hover {
   animation: fade-up var(--duration-reveal) var(--ease-out) forwards;
 }
 
+/* ─── Object tile hover overlays ─── */
+
+/* Reveal gradient overlay on hover */
+.group:hover .tile-overlay {
+  opacity: 1 !important;
+}
+
+/* Fade tier label out as overlay comes in */
+.group:hover .tile-label {
+  opacity: 0;
+}
+
+/* ─── Dark geological band ─── */
+
+.dark-band {
+  background-color: var(--bg-dark);
+  color: var(--text-inverse);
+}
+
+.dark-band .text-muted {
+  color: rgba(245, 242, 236, 0.55);
+}
+
+.dark-band .text-accent {
+  color: var(--accent-clay);
+}
+
+/* Material card — hover reveals temporal caption */
+.material-card:hover .material-temporal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.material-temporal {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--duration-base) var(--ease-out),
+              transform var(--duration-base) var(--ease-out);
+}
+
 /* ─── Reduced motion ─── */
 
 @media (prefers-reduced-motion: reduce) {
