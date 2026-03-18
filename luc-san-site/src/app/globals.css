@@ -341,6 +341,16 @@ a:hover {
   opacity: 0;
 }
 
+/* Touch devices — overlay always visible (no hover available) */
+@media (hover: none) {
+  .tile-overlay {
+    opacity: 1 !important;
+  }
+  .tile-label {
+    opacity: 0;
+  }
+}
+
 /* ─── Dark geological band ─── */
 
 .dark-band {

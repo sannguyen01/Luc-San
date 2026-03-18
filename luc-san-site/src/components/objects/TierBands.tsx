@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { LucSanObject } from "@/types";
 
 const tierOrder = ["Elemental", "Composed", "Complex", "Commissioned"] as const;
@@ -57,9 +58,10 @@ export function TierBands({ objects }: { objects: LucSanObject[] }) {
               {tierObjects.map((obj, objIndex) => {
                 const isFeatured = objIndex === 0;
                 return (
-                <article
+                <Link
                   key={obj.id}
-                  className={`reveal group cursor-pointer ${isFeatured ? "col-span-2" : ""}`}
+                  href={`/objects/${obj.id}`}
+                  className={`reveal group block ${isFeatured ? "col-span-2" : ""}`}
                 >
                   {/* Image — featured: landscape 3:2 | standard: portrait 2:3 */}
                   <div
@@ -111,7 +113,7 @@ export function TierBands({ objects }: { objects: LucSanObject[] }) {
                   <p className="text-body text-xs leading-relaxed" style={{ fontSize: "13px" }}>
                     {obj.copy}
                   </p>
-                </article>
+                </Link>
               );
               })}
             </div>
