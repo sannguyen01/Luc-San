@@ -179,6 +179,18 @@ a:hover {
   color: var(--text-primary);
 }
 
+/* Back navigation — subtle left arrow */
+.link-back::before {
+  content: "←";
+  margin-right: 0.5em;
+  transition: transform var(--duration-base) var(--ease-out);
+  display: inline-block;
+}
+
+.link-back:hover::before {
+  transform: translateX(-4px);
+}
+
 /* Nav links — Loewe-style underline expand */
 .link-nav {
   position: relative;
