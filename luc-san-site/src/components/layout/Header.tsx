@@ -32,19 +32,19 @@ export function Header() {
       style={{ transitionDuration: "var(--duration-base)", transitionTimingFunction: "var(--ease-out)" }}
     >
       <nav
-        className="flex items-center justify-between px-6 md:px-10 lg:px-16"
+        className="flex items-center justify-between px-6 md:px-10 lg:px-16 relative"
         style={{ height: "72px" }}
       >
-        {/* Wordmark */}
+        {/* Mobile: Wordmark left */}
         <Link
           href="/"
-          className="font-serif text-[1.05rem] tracking-[0.2em] uppercase text-foreground"
-          style={{ letterSpacing: "0.2em" }}
+          className="md:hidden font-serif text-[1.05rem] uppercase text-foreground"
+          style={{ letterSpacing: "0.25em" }}
         >
           Lục San
         </Link>
 
-        {/* Desktop nav — Loewe-style underline-expand */}
+        {/* Desktop: Left nav group — Objects · Materials · Spaces */}
         <ul className="hidden md:flex items-center gap-8 lg:gap-10">
           {navigation.map((item) => {
             const isActive = pathname === item.href;
@@ -65,7 +65,16 @@ export function Header() {
           })}
         </ul>
 
-        {/* Desktop contact — separated */}
+        {/* Desktop: Wordmark — absolute center anchor */}
+        <Link
+          href="/"
+          className="hidden md:block absolute left-1/2 -translate-x-1/2 font-serif text-[1.05rem] uppercase text-foreground"
+          style={{ letterSpacing: "0.25em" }}
+        >
+          Lục San
+        </Link>
+
+        {/* Desktop: Right — Contact */}
         <div className="hidden md:flex items-center">
           <Link
             href="/contact"
@@ -77,11 +86,10 @@ export function Header() {
           </Link>
         </div>
 
-        {/* Mobile: toggle */}
+        {/* Mobile: Hamburger toggle — inline display omitted so md:hidden works */}
         <button
-          className="md:hidden text-meta cursor-pointer"
-          style={{ color: "var(--text-secondary)", minWidth: "44px", minHeight: "44px",
-            display: "flex", alignItems: "center", justifyContent: "flex-end" }}
+          className="md:hidden flex items-center justify-end text-meta cursor-pointer"
+          style={{ color: "var(--text-secondary)", minWidth: "44px", minHeight: "44px" }}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}

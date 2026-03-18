@@ -1,37 +1,80 @@
 export function HomeHero() {
   return (
-    <section className="relative h-screen w-full overflow-hidden bg-[var(--bg-cream)]">
-      {/* Background image placeholder — replace with <Image> once assets exist */}
+    <section className="relative h-screen w-full overflow-hidden">
+
+      {/* ── Luminous ground — pearl-glow core emanating from within ── */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 z-[0]"
         style={{
-          background: `linear-gradient(
-            165deg,
-            #EDE9E0 0%,
-            #E0D8CC 40%,
-            #D4C9B8 100%
-          )`,
+          background: `
+            radial-gradient(ellipse 55% 65% at 50% 38%, rgba(255, 253, 247, 0.96) 0%, rgba(255, 249, 238, 0.45) 48%, transparent 72%),
+            radial-gradient(ellipse 28% 32% at 60% 30%, rgba(255, 255, 252, 0.60) 0%, transparent 58%),
+            linear-gradient(165deg, #EDE9E0 0%, #E0D8CC 40%, #C9BBA8 100%)
+          `,
         }}
       />
 
-      {/* 90/10 composition: object-area right, text bottom-left (Toteme editorial) */}
-      <div className="absolute inset-0 flex flex-col justify-end pb-[10vh]">
-        <div className="px-6 md:px-10 lg:px-16 max-w-7xl mx-auto w-full">
-          {/* Manifesto line — single, italic, large */}
-          <p
-            className="text-manifesto animate-fade-up"
-            style={{ animationDelay: "200ms", animationFillMode: "both" }}
-          >
-            Geological patience<br />made tangible.
-          </p>
+      {/* ── Corner vignette — draws the eye inward toward the luminous center ── */}
+      <div
+        className="absolute inset-0 pointer-events-none z-[5]"
+        style={{
+          background: "radial-gradient(ellipse 110% 110% at 50% 50%, transparent 42%, rgba(17,17,17,0.22) 100%)",
+        }}
+      />
 
-          {/* Subtle meta line below — fades in after */}
+      {/* ── Veil — starts opaque, lifts to reveal the scene ── */}
+      <div
+        className="absolute inset-0 pointer-events-none z-[10]"
+        style={{
+          backgroundColor: "var(--bg-dark)",
+          animation: "veil-lift 2.6s cubic-bezier(0.00, 0.00, 0.58, 1.00) forwards",
+        }}
+      />
+
+      {/* ── Cinematic letterbox — top bar ── */}
+      <div
+        className="absolute top-0 left-0 right-0 pointer-events-none z-[20]"
+        style={{ height: "clamp(28px, 4vh, 44px)", backgroundColor: "var(--bg-dark)" }}
+      />
+
+      {/* ── Cinematic letterbox — bottom bar ── */}
+      <div
+        className="absolute bottom-0 left-0 right-0 pointer-events-none z-[20]"
+        style={{ height: "clamp(28px, 4vh, 44px)", backgroundColor: "var(--bg-dark)" }}
+      />
+
+      {/* ── Manifesto text — bottom-left, above letterbox ── */}
+      <div className="absolute inset-0 z-[30] flex flex-col justify-end" style={{ paddingBottom: "clamp(56px, 10vh, 96px)" }}>
+        <div className="px-6 md:px-10 lg:px-16 max-w-7xl mx-auto w-full">
+
+          {/* Each line rises from an overflow-hidden clip (luxury editorial pattern) */}
+          <div className="overflow-hidden mb-1">
+            <p
+              className="text-manifesto"
+              style={{
+                animation: "text-rise 1.4s cubic-bezier(0.00, 0.00, 0.30, 1.00) 2.0s both",
+              }}
+            >
+              Geological patience
+            </p>
+          </div>
+          <div className="overflow-hidden">
+            <p
+              className="text-manifesto"
+              style={{
+                animation: "text-rise 1.4s cubic-bezier(0.00, 0.00, 0.30, 1.00) 2.35s both",
+              }}
+            >
+              made tangible.
+            </p>
+          </div>
+
+          {/* Material taxonomy — fades in last */}
           <p
-            className="text-meta mt-6 animate-fade-up"
+            className="text-meta mt-6"
             style={{
-              animationDelay: "600ms",
-              animationFillMode: "both",
               color: "var(--text-secondary)",
+              animation: "fade-up 0.9s var(--ease-out) 3.1s both",
             }}
           >
             Pearl · Jade · Amber · Wood
@@ -39,12 +82,18 @@ export function HomeHero() {
         </div>
       </div>
 
-      {/* Scroll indicator — minimal vertical line */}
+      {/* ── Scroll indicator — cleared above bottom letterbox ── */}
       <div
-        className="absolute bottom-8 right-8 md:right-16 flex flex-col items-center gap-2 animate-fade-up"
-        style={{ animationDelay: "1000ms", animationFillMode: "both" }}
+        className="absolute right-8 md:right-16 z-[30] flex flex-col items-center gap-2"
+        style={{
+          bottom: "clamp(48px, 8vh, 80px)",
+          animation: "fade-up 0.9s var(--ease-out) 3.6s both",
+        }}
       >
-        <span className="text-meta" style={{ color: "var(--text-tertiary)", writingMode: "vertical-rl" }}>
+        <span
+          className="text-meta"
+          style={{ color: "var(--text-tertiary)", writingMode: "vertical-rl" }}
+        >
           Scroll
         </span>
         <div

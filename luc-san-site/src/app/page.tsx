@@ -12,21 +12,21 @@ const pathways = [
     description:
       "Temporal companions shaped by geological gesture and finished by touch intelligence.",
     href: "/objects",
-    linkText: "See the objects",
+    linkText: "The objects",
   },
   {
     title: "Materials",
     description:
       "Biographies older than civilization. Pearl, jade, amber, wood — each carrying its formation narrative.",
     href: "/materials",
-    linkText: "Read the materials",
+    linkText: "The materials",
   },
   {
     title: "Spaces",
     description:
       "Where materials can be handled and understood. Encounters move at the pace of the substances themselves.",
     href: "/spaces",
-    linkText: "Enter the space",
+    linkText: "The space",
   },
 ];
 
@@ -36,12 +36,20 @@ export default function HomePage() {
       {/* Hero — full-bleed cinematic */}
       <HomeHero />
 
-      {/* Three Columns — Objects · Materials · Spaces */}
+      {/* Three Columns — Objects · Materials · Spaces (editorial portals) */}
       <ContentSection>
         <RevealSection stagger>
           <Grid cols={3} gap="lg">
-            {pathways.map((pathway) => (
+            {pathways.map((pathway, i) => (
               <div key={pathway.title} className="reveal">
+                {/* Editorial image portal — skeleton until real asset added */}
+                <div
+                  className="img-skeleton w-full mb-6"
+                  style={{ aspectRatio: "3/4" }}
+                />
+                <p className="text-meta mb-3" style={{ color: "var(--text-tertiary)" }}>
+                  0{i + 1}
+                </p>
                 <h2 className="font-serif text-2xl font-light mb-4">
                   {pathway.title}
                 </h2>
@@ -114,13 +122,13 @@ export default function HomePage() {
         <RevealSection>
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 py-8 reveal">
             <Link href="/objects" className="link-pathway">
-              See the objects
+              The objects
             </Link>
             <Link href="/materials" className="link-pathway">
-              Read the materials
+              The materials
             </Link>
             <Link href="/spaces" className="link-pathway">
-              Enter the space
+              The space
             </Link>
           </div>
         </RevealSection>

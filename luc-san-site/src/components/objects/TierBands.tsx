@@ -52,14 +52,19 @@ export function TierBands({ objects }: { objects: LucSanObject[] }) {
               </p>
             </div>
 
-            {/* Object grid — 2:3 portrait tiles */}
+            {/* Object grid — featured first (2-col, landscape), rest portrait 2:3 */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 reveal-stagger">
-              {tierObjects.map((obj) => (
-                <article key={obj.id} className="reveal group cursor-pointer">
-                  {/* Image — 2:3 portrait (Loewe ratio) */}
+              {tierObjects.map((obj, objIndex) => {
+                const isFeatured = objIndex === 0;
+                return (
+                <article
+                  key={obj.id}
+                  className={`reveal group cursor-pointer ${isFeatured ? "col-span-2" : ""}`}
+                >
+                  {/* Image — featured: landscape 3:2 | standard: portrait 2:3 */}
                   <div
                     className="relative overflow-hidden img-skeleton mb-4"
-                    style={{ aspectRatio: "2/3" }}
+                    style={{ aspectRatio: isFeatured ? "3/2" : "2/3" }}
                   >
                     {/* Hover overlay — formation + hours (info-first interaction) */}
                     <div
@@ -89,13 +94,15 @@ export function TierBands({ objects }: { objects: LucSanObject[] }) {
                       }}
                     >
                       <span className="text-meta" style={{ color: "var(--text-tertiary)" }}>
-                        {obj.tier}
+                        {isFeatured ? "Featured" : obj.tier}
                       </span>
                     </div>
                   </div>
 
-                  {/* Info */}
-                  <h4 className="font-serif text-lg font-light leading-tight mb-1">
+                  {/* Info — featured title slightly larger */}
+                  <h4
+                    className={`font-serif font-light leading-tight mb-1 ${isFeatured ? "text-xl" : "text-lg"}`}
+                  >
                     {obj.title}
                   </h4>
                   <p className="text-meta mb-2" style={{ color: "var(--text-tertiary)" }}>
@@ -105,7 +112,8 @@ export function TierBands({ objects }: { objects: LucSanObject[] }) {
                     {obj.copy}
                   </p>
                 </article>
-              ))}
+              );
+              })}
             </div>
           </div>
         );
