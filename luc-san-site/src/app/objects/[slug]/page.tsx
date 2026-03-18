@@ -45,18 +45,23 @@ export default async function ObjectDetailPage({
 
   return (
     <PageContainer>
-      {/* Breadcrumb */}
-      <div className="mb-16">
+      {/* Content wrapper — mirrors ContentSection padding */}
+      <div
+        className="px-6 md:px-10 lg:px-16 max-w-7xl mx-auto"
+        style={{ paddingTop: "var(--space-800)", paddingBottom: "var(--space-1600)" }}
+      >
+      {/* Breadcrumb — 44px min-height for touch targets */}
+      <div className="flex items-center mb-12" style={{ minHeight: "44px" }}>
         <Link
           href="/objects"
           className="text-meta"
-          style={{ color: "var(--text-tertiary)", letterSpacing: "0.18em" }}
+          style={{ color: "var(--text-tertiary)", letterSpacing: "0.18em", padding: "8px 0" }}
         >
           ← Objects
         </Link>
       </div>
 
-      {/* Main grid: image 3fr | details 2fr */}
+      {/* Main grid: image 3fr | details 2fr — stacks on mobile */}
       <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-12 md:gap-20 items-start mb-24">
         {/* Image — portrait 2:3 */}
         <div
@@ -177,6 +182,7 @@ export default async function ObjectDetailPage({
           </div>
         </div>
       )}
+      </div>{/* end content wrapper */}
     </PageContainer>
   );
 }

@@ -379,6 +379,25 @@ a:hover {
               transform var(--duration-base) var(--ease-out);
 }
 
+/* ─── iOS Safari: prevent auto-zoom on form field focus ─── */
+/* iOS zooms in on inputs < 16px — override to exact 16px on mobile only */
+@media screen and (max-width: 767px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* ─── Touch target safety ─── */
+/* Minimum 44×44px tap area on interactive elements */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+}
+
 /* ─── Reduced motion ─── */
 
 @media (prefers-reduced-motion: reduce) {

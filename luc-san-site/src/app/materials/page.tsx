@@ -5,7 +5,8 @@ import { MaterialStorySlice } from "@/components/materials/MaterialStorySlice";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { RevealSection } from "@/components/ui/RevealSection";
 import materialsData from "@/content/materials.json";
-import type { Material } from "@/types";
+import objectsData from "@/content/objects.json";
+import type { Material, LucSanObject } from "@/types";
 
 export const metadata: Metadata = {
   title: "Materials & Time",
@@ -14,6 +15,26 @@ export const metadata: Metadata = {
 };
 
 const materials = materialsData as Material[];
+const objects = objectsData as LucSanObject[];
+
+/** Keywords per material id — objects.materials are common names, not ids */
+const materialKeywords: Record<string, string[]> = {
+  pearl:  ["pearl", "pearls"],
+  jade:   ["jade"],
+  amber:  ["amber"],
+  wood:   ["walnut", "oak", "wood"],
+  silver: ["silver"],
+  bronze: ["bronze"],
+};
+
+function getRelatedObjects(material: Material): LucSanObject[] {
+  const keywords = materialKeywords[material.id] ?? [material.name.toLowerCase()];
+  return objects.filter((obj) =>
+    obj.materials.some((m) =>
+      keywords.some((kw) => m.toLowerCase().includes(kw))
+    )
+  );
+}
 
 const processStages = [
   {
@@ -56,7 +77,12 @@ export default function MaterialsPage() {
       <ContentSection>
         <RevealSection>
           {materials.map((material, index) => (
-            <MaterialStorySlice key={material.id} material={material} index={index} />
+            <MaterialStorySlice
+            key={material.id}
+            material={material}
+            index={index}
+            relatedObjects={getRelatedObjects(material)}
+          />
           ))}
         </RevealSection>
       </ContentSection>

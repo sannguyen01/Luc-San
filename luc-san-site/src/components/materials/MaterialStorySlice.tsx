@@ -1,11 +1,13 @@
-import type { Material } from "@/types";
+import Link from "next/link";
+import type { Material, LucSanObject } from "@/types";
 
 interface MaterialStorySliceProps {
   material: Material;
   index: number;
+  relatedObjects?: LucSanObject[];
 }
 
-export function MaterialStorySlice({ material, index }: MaterialStorySliceProps) {
+export function MaterialStorySlice({ material, index, relatedObjects = [] }: MaterialStorySliceProps) {
   const isReversed = index % 2 === 1;
 
   return (
@@ -48,6 +50,28 @@ export function MaterialStorySlice({ material, index }: MaterialStorySliceProps)
           <p className="text-muted text-sm leading-relaxed italic">
             {material.temporal}
           </p>
+
+          {/* Cross-link: objects using this material */}
+          {relatedObjects.length > 0 && (
+            <div className="mt-8" style={{ borderTop: "1px solid var(--border-subtle)", paddingTop: "var(--space-400)" }}>
+              <p className="text-meta mb-3" style={{ color: "var(--text-tertiary)" }}>
+                Objects using this material
+              </p>
+              <ul className="space-y-2">
+                {relatedObjects.map((obj) => (
+                  <li key={obj.id}>
+                    <Link
+                      href={`/objects/${obj.id}`}
+                      className="link-pathway text-xs"
+                      style={{ textTransform: "none", letterSpacing: "0.04em", fontSize: "12px" }}
+                    >
+                      {obj.title} — {obj.hours} hrs
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </div>
     </article>
