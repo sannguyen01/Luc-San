@@ -1,415 +1,452 @@
 @import "tailwindcss";
 
-/* ─── Lục San Design Tokens ─── */
-/* Spacing: 8px-base scale (Loewe pattern) */
-/* Typography: Cormorant Garamond (display) + Montserrat (body) */
-/* Palette: warm earth, 90/10 negative space */
+/* ─── Lục San Design Tokens ──────────────────────────────────────────────────
+   Palette doctrine: The interface has no color. The materials have all the color.
+   Every tone is what light does in the absence of pigment — calcium, platinum,
+   graphite, void. Materials (pearl, jade, amber, silver) are the only chromatic
+   events on any page. The site recedes; the objects speak.
+
+   Spacing  : 8px-base scale (Loewe pattern)
+   Typography: Cormorant Garamond (display) + Montserrat (body)
+   Palette  : quasi-monochromatic — warm white → platinum → void black
+   Motion   : geological pacing — objects settle, they do not perform
+   ─────────────────────────────────────────────────────────────────────────── */
 
 :root {
-  /* ── Spacing Scale (8px base) ── */
-  --space-50: 4px;
-  --space-100: 8px;
-  --space-200: 16px;
-  --space-300: 24px;
-  --space-400: 32px;
-  --space-500: 40px;
-  --space-600: 48px;
-  --space-800: 64px;
+
+  /* ── Spacing Scale (8px base) ─────────────────────────────────────────── */
+  --space-50:   4px;
+  --space-100:  8px;
+  --space-200:  16px;
+  --space-300:  24px;
+  --space-400:  32px;
+  --space-500:  40px;
+  --space-600:  48px;
+  --space-800:  64px;
   --space-1000: 80px;
   --space-1200: 96px;
   --space-1600: 128px;
   --space-2000: 160px;
 
-  /* ── Palette ── */
-  --bg-warm: #F5F2EC;
-  --bg-cream: #F0ECE3;
-  --bg-card: #EAE6DD;
-  --bg-dark: #111111;
-  --bg-dark-alt: #1A1A1A;
+  /* ── Core Palette — 10-tone quasi-monochromatic scale ────────────────────
+     Each tone named for what it describes in the material world, not its
+     functional role. The narrative is embedded in the token itself.
+     ──────────────────────────────────────────────────────────────────────── */
 
-  --text-primary: #111111;
-  --text-inverse: #F5F2EC;
-  --text-secondary: rgba(17, 17, 17, 0.58);
-  --text-tertiary: rgba(17, 17, 17, 0.38);
+  /* Light register — the surface world */
+  --ls-void-white:     #F7F5F1; /* Calcite morning light. Pearl held to sky.      */
+  --ls-nacre:          #EDE9E2; /* Pearl body before iridescence. Cards rest here. */
+  --ls-nacre-glow:     #E8E4DC; /* Pearl luminescence. Selection, active states.   */
+  --ls-ash-drift:      #D5D0C8; /* Platinum cooled by shadow. Skeleton loaders.    */
+  --ls-platinum-flash: #D8D5D0; /* Signature transition — Patina Clock only.       */
+  --ls-shadow-silver:  #C2BFBA; /* Borders on dark surfaces. Silver after years.   */
 
-  --accent-earth: #8C7A6B;
-  --accent-hover: #6B5D50;
-  --accent-warm: #A69279;
-  --accent-clay: #C4AD8F;
+  /* Mid register — where silence lives */
+  --ls-slate-haze:     #A8A49E; /* Jade dust in workshop air. Secondary text.      */
+  --ls-graphite-skin:  #6B6762; /* Patinated bronze, first winter. Accent/tertiary.*/
 
-  --border-subtle: rgba(17, 17, 17, 0.08);
-  --border-medium: rgba(17, 17, 17, 0.15);
-  --border-strong: rgba(17, 17, 17, 0.25);
+  /* Dark register — geological origin */
+  --ls-ink-deep:       #2C2926; /* Warm darkness inside a closed oyster.           */
+  --ls-void-black:     #1A1714; /* Seafloor at 60m. Where pearls begin.            */
 
-  /* ── Active palette ── */
+  /* ── Semantic aliases ────────────────────────────────────────────────────
+     Component files reference these. Palette can shift seasons by updating
+     only the tokens above — zero component changes required.
+     ──────────────────────────────────────────────────────────────────────── */
+
+  --bg-warm:     var(--ls-void-white);
+  --bg-cream:    var(--ls-nacre);
+  --bg-card:     var(--ls-ash-drift);
+  --bg-dark:     var(--ls-void-black);
+  --bg-dark-alt: var(--ls-ink-deep);
+
+  --text-primary:   var(--ls-void-black);
+  --text-inverse:   var(--ls-void-white);
+  --text-secondary: var(--ls-graphite-skin); /* solid hex — no alpha drift */
+  --text-tertiary:  var(--ls-slate-haze);    /* solid hex — no alpha drift */
+
+  --accent-earth:  var(--ls-graphite-skin); /* terracotta retired → warm graphite */
+  --accent-hover:  var(--ls-ink-deep);      /* hover deepens → geological void    */
+  --accent-warm:   var(--ls-ash-drift);     /* sandy beige retired → platinum     */
+  --accent-clay:   var(--ls-nacre-glow);    /* clay retired → nacre luminescence  */
+
+  --border-subtle: rgba(26, 23, 20, 0.07);  /* warm-base alpha */
+  --border-medium: rgba(26, 23, 20, 0.13);
+  --border-strong: rgba(26, 23, 20, 0.22);
+
   --background: var(--bg-warm);
   --foreground: var(--text-primary);
 
-  /* ── Motion tokens (Loewe-inspired cubic-bezier) ── */
-  --ease-out: cubic-bezier(0.00, 0.00, 0.58, 1.00);
-  --ease-in: cubic-bezier(0.42, 0.00, 1.00, 1.00);
-  --ease-spring: cubic-bezier(0.00, 0.00, 0.30, 1.00);
-  --duration-fast: 200ms;
-  --duration-base: 350ms;
-  --duration-slow: 600ms;
+  /* ── Motion tokens — geological pacing (unchanged — already correct) ──── */
+  --ease-out:      cubic-bezier(0.00, 0.00, 0.58, 1.00);
+  --ease-in:       cubic-bezier(0.42, 0.00, 1.00, 1.00);
+  --ease-spring:   cubic-bezier(0.00, 0.00, 0.30, 1.00);
+  --ease-material: cubic-bezier(0.22, 1.00, 0.36, 1.00); /* Patina Clock */
+
+  --duration-fast:   200ms;
+  --duration-base:   350ms;
+  --duration-slow:   600ms;
   --duration-reveal: 900ms;
+  --duration-settle: 1200ms; /* Patina Clock + Sanctum Gate only */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-secondary: var(--text-secondary);
-  --color-tertiary: var(--text-tertiary);
-  --color-accent: var(--accent-earth);
-  --color-accent-hover: var(--accent-hover);
-  --color-border: var(--border-subtle);
+  --color-background:    var(--background);
+  --color-foreground:    var(--foreground);
+  --color-secondary:     var(--text-secondary);
+  --color-tertiary:      var(--text-tertiary);
+  --color-accent:        var(--accent-earth);
+  --color-accent-hover:  var(--accent-hover);
+  --color-border:        var(--border-subtle);
   --color-border-medium: var(--border-medium);
-  --color-card: var(--bg-card);
+  --color-card:          var(--bg-card);
+
+  /* Narrative tokens exposed to Tailwind utilities */
+  --color-void-white:     var(--ls-void-white);
+  --color-nacre:          var(--ls-nacre);
+  --color-nacre-glow:     var(--ls-nacre-glow);
+  --color-ash-drift:      var(--ls-ash-drift);
+  --color-platinum-flash: var(--ls-platinum-flash);
+  --color-shadow-silver:  var(--ls-shadow-silver);
+  --color-slate-haze:     var(--ls-slate-haze);
+  --color-graphite-skin:  var(--ls-graphite-skin);
+  --color-ink-deep:       var(--ls-ink-deep);
+  --color-void-black:     var(--ls-void-black);
 
   --font-serif: "Cormorant Garamond", "Georgia", serif;
-  --font-sans: "Montserrat", "Helvetica Neue", sans-serif;
+  --font-sans:  "Montserrat", "Helvetica Neue", sans-serif;
 }
 
-/* ─── Base ─── */
 
-html {
-  scroll-behavior: smooth;
-}
+/* BASE ────────────────────────────────────────────────────────────────────── */
+
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background:  var(--background);
+  color:       var(--foreground);
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size:   14px;
   line-height: 1.75;
   letter-spacing: 0.01em;
   font-weight: 300;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing:  antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
+  overflow-x:  hidden;
 }
 
-/* ─── Typography ─── */
+
+/* TYPOGRAPHY ─────────────────────────────────────────────────────────────── */
 
 h1, h2, h3, h4 {
-  font-family: var(--font-serif);
-  font-weight: 300;
+  font-family:    var(--font-serif);
+  font-weight:    300;
   letter-spacing: 0.04em;
-  line-height: 1.15;
-  color: var(--text-primary);
+  line-height:    1.15;
+  color:          var(--text-primary);
 }
 
-h1 { font-size: clamp(2.8rem, 6vw, 5.5rem); }
+h1 { font-size: clamp(2.8rem, 6vw,   5.5rem); }
 h2 { font-size: clamp(1.8rem, 3.5vw, 3.2rem); }
-h3 { font-size: clamp(1.3rem, 2.5vw, 2rem); }
+h3 { font-size: clamp(1.3rem, 2.5vw, 2rem);   }
 h4 { font-size: clamp(1.05rem, 1.8vw, 1.35rem); }
 
-/* Manifesto-scale — single philosophical lines */
 .text-manifesto {
-  font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 5vw, 4.5rem);
-  font-weight: 300;
-  font-style: italic;
-  line-height: 1.2;
+  font-family:    var(--font-serif);
+  font-size:      clamp(2.2rem, 5vw, 4.5rem);
+  font-weight:    300;
+  font-style:     italic;
+  line-height:    1.2;
   letter-spacing: 0.04em;
 }
 
-/* Meta text — uppercase tracking */
 .text-meta {
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
-  font-weight: 400;
+  font-family:    var(--font-sans);
+  font-size:      0.7rem;
+  font-weight:    400;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--text-secondary);
+  color:          var(--text-tertiary);
 }
 
-/* Body text — refined */
 .text-body {
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size:   14px;
   font-weight: 300;
   line-height: 1.85;
-  color: var(--text-secondary);
+  color:       var(--text-secondary);
 }
 
-/* ─── Links — animated underline-grow (Loewe pattern) ─── */
+.text-accent {
+  color:      var(--ls-graphite-skin);
+  font-style: italic;
+}
+
+
+/* LINKS ──────────────────────────────────────────────────────────────────── */
 
 a {
-  color: var(--text-primary);
+  color:           var(--text-primary);
   text-decoration: none;
-  transition: color var(--duration-base) var(--ease-out);
+  transition:      color var(--duration-base) var(--ease-out);
 }
 
-a:hover {
-  color: var(--accent-hover);
-}
+a:hover { color: var(--ls-ink-deep); }
 
-/* Pathway links — underline grows from left on hover */
 .link-pathway {
-  font-family: var(--font-sans);
-  font-size: 0.7rem;
-  font-weight: 400;
+  font-family:    var(--font-sans);
+  font-size:      0.7rem;
+  font-weight:    400;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--text-primary);
-  position: relative;
-  display: inline-block;
+  color:          var(--text-primary);
+  position:       relative;
+  display:        inline-block;
   padding-bottom: 4px;
 }
 
 .link-pathway::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: var(--text-primary);
-  transform: scaleX(0);
+  content:          "";
+  position:         absolute;
+  bottom:           0; left: 0;
+  width:            100%; height: 1px;
+  background:       var(--ls-graphite-skin);
+  transform:        scaleX(0);
   transform-origin: left;
-  transition: transform var(--duration-slow) var(--ease-spring);
+  transition:       transform var(--duration-slow) var(--ease-spring);
 }
 
-.link-pathway:hover::after {
-  transform: scaleX(1);
-}
+.link-pathway:hover::after { transform: scaleX(1); }
+.link-pathway:hover        { color: var(--text-primary); }
 
-.link-pathway:hover {
-  color: var(--text-primary);
-}
-
-/* Nav links — Loewe-style underline expand */
 .link-nav {
   position: relative;
-  display: inline-block;
+  display:  inline-block;
   padding-bottom: 2px;
 }
 
 .link-nav::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 1px;
-  background: var(--text-primary);
+  content:    "";
+  position:   absolute;
+  bottom:     0; left: 50%;
+  width:      0; height: 1px;
+  background: var(--ls-graphite-skin);
   transition: width var(--duration-base) var(--ease-spring),
-              left var(--duration-base) var(--ease-spring);
+              left  var(--duration-base) var(--ease-spring);
 }
 
 .link-nav:hover::after,
-.link-nav[data-active="true"]::after {
-  width: 100%;
-  left: 0;
-}
+.link-nav[data-active="true"]::after { width: 100%; left: 0; }
 
-/* ─── Section Spacing ─── */
 
-.section-spacer {
-  padding-top: var(--space-1000);
-  padding-bottom: var(--space-1000);
-}
+/* LAYOUT UTILITIES ───────────────────────────────────────────────────────── */
 
-.section-spacer-lg {
-  padding-top: var(--space-1600);
-  padding-bottom: var(--space-1600);
-}
-
-/* ─── Prose — narrow measure ─── */
+.section-spacer    { padding: var(--space-1000) 0; }
+.section-spacer-lg { padding: var(--space-1600) 0; }
 
 .prose-narrow {
-  max-width: 36rem;
-  margin-left: auto;
+  max-width:    36rem;
+  margin-left:  auto;
   margin-right: auto;
 }
-
-.prose-narrow p {
-  margin-bottom: 1.6em;
-}
-
-/* ─── Divider ─── */
+.prose-narrow p { margin-bottom: 1.6em; }
 
 .divider {
-  width: 2.5rem;
-  height: 1px;
-  background: var(--border-medium);
-  margin: var(--space-800) auto;
+  width:      2.5rem; height: 1px;
+  background: var(--ls-shadow-silver);
+  margin:     var(--space-800) auto;
 }
 
-/* ─── Selection ─── */
+
+/* SELECTION & SCROLLBAR ──────────────────────────────────────────────────── */
 
 ::selection {
-  background: var(--accent-clay);
-  color: var(--text-primary);
+  background: var(--ls-nacre-glow);
+  color:      var(--ls-void-black);
 }
 
-/* ─── Scrollbar — invisible on content, thin on overflow ─── */
+::-webkit-scrollbar       { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--ls-shadow-silver); border-radius: 2px; }
 
-::-webkit-scrollbar {
-  width: 3px;
-}
 
-::-webkit-scrollbar-track {
-  background: transparent;
-}
+/* IMAGE TREATMENTS ───────────────────────────────────────────────────────── */
 
-::-webkit-scrollbar-thumb {
-  background: var(--border-medium);
-  border-radius: 2px;
-}
+.img-full-bleed { width: 100%; height: 100%; object-fit: cover; }
 
-/* ─── Image treatments ─── */
-
-.img-full-bleed {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Skeleton loader — Loewe-style gradient sweep */
+/* Skeleton — ash-drift ↔ nacre-glow: platinum forming, not beige loading */
 .img-skeleton {
   background: linear-gradient(
     90deg,
-    var(--bg-card) 0%,
-    var(--bg-cream) 50%,
-    var(--bg-card) 100%
+    var(--ls-ash-drift)  0%,
+    var(--ls-nacre-glow) 50%,
+    var(--ls-ash-drift)  100%
   );
   background-size: 200% 100%;
   animation: skeleton-sweep 2.1s ease-in-out infinite;
 }
 
 @keyframes skeleton-sweep {
-  0% { background-position: 200% 0; }
+  0%   { background-position:  200% 0; }
   100% { background-position: -200% 0; }
 }
 
-/* ─── Scroll-triggered reveals ─── */
+
+/* SCROLL-TRIGGERED REVEALS ───────────────────────────────────────────────── */
 
 .reveal {
-  opacity: 0;
+  opacity:   0;
   transform: translateY(20px);
-  transition: opacity var(--duration-reveal) var(--ease-out),
+  transition: opacity   var(--duration-reveal) var(--ease-out),
               transform var(--duration-reveal) var(--ease-out);
 }
 
-.reveal.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
+.reveal.revealed { opacity: 1; transform: translateY(0); }
 
-/* Staggered children */
-.reveal-stagger > .reveal:nth-child(1) { transition-delay: 0ms; }
+.reveal-stagger > .reveal:nth-child(1) { transition-delay: 0ms;   }
 .reveal-stagger > .reveal:nth-child(2) { transition-delay: 120ms; }
 .reveal-stagger > .reveal:nth-child(3) { transition-delay: 240ms; }
 .reveal-stagger > .reveal:nth-child(4) { transition-delay: 360ms; }
 .reveal-stagger > .reveal:nth-child(5) { transition-delay: 480ms; }
 .reveal-stagger > .reveal:nth-child(6) { transition-delay: 600ms; }
 
-/* Fade-in from below — page load */
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(0);    }
 }
 
 .animate-fade-up {
   animation: fade-up var(--duration-reveal) var(--ease-out) forwards;
 }
 
-/* Hero slow reveal — dark veil lifts to expose the scene */
 @keyframes veil-lift {
   0%   { opacity: 0.92; }
-  100% { opacity: 0; }
+  100% { opacity: 0;    }
 }
 
-/* Text rise — clip-mask per line (luxury editorial pattern) */
-/* Wrap each line in overflow-hidden, apply this to the inner element */
 @keyframes text-rise {
   from { transform: translateY(108%); }
-  to   { transform: translateY(0); }
+  to   { transform: translateY(0);    }
 }
 
-/* ─── Object tile hover overlays ─── */
-
-/* Reveal gradient overlay on hover */
-.group:hover .tile-overlay {
-  opacity: 1 !important;
+/* Platinum flash — Patina Clock cross-dissolve. Used ONLY on product page. */
+@keyframes platinum-flash {
+  0%   { opacity: 0;    background-color: var(--ls-platinum-flash); }
+  40%  { opacity: 0.85; }
+  100% { opacity: 0;    }
 }
 
-/* Fade tier label out as overlay comes in */
-.group:hover .tile-label {
-  opacity: 0;
+.patina-transition {
+  animation: platinum-flash var(--duration-settle) var(--ease-material) forwards;
 }
 
-/* Touch devices — overlay always visible (no hover available) */
+
+/* OBJECT TILE HOVER OVERLAYS ─────────────────────────────────────────────── */
+
+.group:hover .tile-overlay { opacity: 1 !important; }
+.group:hover .tile-label   { opacity: 0; }
+
 @media (hover: none) {
-  .tile-overlay {
-    opacity: 1 !important;
-  }
-  .tile-label {
-    opacity: 0;
-  }
+  .tile-overlay { opacity: 1 !important; }
+  .tile-label   { opacity: 0; }
 }
 
-/* ─── Dark geological band ─── */
+
+/* DARK GEOLOGICAL BAND ───────────────────────────────────────────────────────
+   Not a contrast device. A descent into material origin.
+   Void Black is warm geological dark — not #111 screen black.
+   ─────────────────────────────────────────────────────────────────────────── */
 
 .dark-band {
-  background-color: var(--bg-dark);
-  color: var(--text-inverse);
+  background-color: var(--ls-void-black);
+  color:            var(--ls-void-white);
 }
 
-.dark-band .text-muted {
-  color: rgba(245, 242, 236, 0.55);
-}
+.dark-band .text-muted    { color: var(--ls-slate-haze); }
+.dark-band .text-accent   { color: var(--ls-ash-drift);  }
+.dark-band .text-manifesto { color: var(--ls-nacre-glow); }
 
-.dark-band .text-accent {
-  color: var(--accent-clay);
-}
 
-/* Material card — hover reveals temporal caption */
-.material-card:hover .material-temporal {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* MATERIAL CARDS ─────────────────────────────────────────────────────────── */
+
+.material-card:hover .material-temporal { opacity: 1; transform: translateY(0); }
 
 .material-temporal {
-  opacity: 0;
+  opacity:   0;
   transform: translateY(8px);
-  transition: opacity var(--duration-base) var(--ease-out),
+  transition: opacity   var(--duration-base) var(--ease-out),
               transform var(--duration-base) var(--ease-out);
 }
 
-/* ─── iOS Safari: prevent auto-zoom on form field focus ─── */
-/* iOS zooms in on inputs < 16px — override to exact 16px on mobile only */
+
+/* SANCTUM — DARK INVERSION CONTEXT ──────────────────────────────────────────
+   The only page where the palette inverts. Inversion signals a different
+   register — like walking from daylight into a candlelit room.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.sanctum-context {
+  background: var(--ls-void-black);
+  color:      var(--ls-void-white);
+}
+
+.sanctum-context h1,
+.sanctum-context h2,
+.sanctum-context h3 { color: var(--ls-void-white); }
+
+.sanctum-context .text-meta  { color: var(--ls-slate-haze); }
+.sanctum-context .text-body  { color: var(--ls-ash-drift);  }
+
+.sanctum-context .link-pathway::after,
+.sanctum-context .link-nav::after    { background: var(--ls-ash-drift); }
+
+.sanctum-context a:hover { color: var(--ls-nacre-glow); }
+
+@keyframes sanctum-crystallize {
+  0%   { filter: brightness(0) blur(12px); opacity: 0;   }
+  60%  { filter: brightness(0.6) blur(4px); opacity: 0.7; }
+  100% { filter: brightness(1) blur(0px);  opacity: 1;   }
+}
+
+.sanctum-crystallize {
+  animation: sanctum-crystallize var(--duration-settle) var(--ease-material) forwards;
+}
+
+
+/* FORM ELEMENTS ──────────────────────────────────────────────────────────── */
+
+input, select, textarea {
+  background:   transparent;
+  border:       1px solid var(--border-medium);
+  color:        var(--text-primary);
+  transition:   border-color var(--duration-fast) var(--ease-out);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline:      none;
+  border-color: var(--ls-graphite-skin);
+}
+
+/* Prevent iOS Safari auto-zoom on form field focus */
 @media screen and (max-width: 767px) {
-  input,
-  select,
-  textarea {
-    font-size: 16px;
-  }
+  input, select, textarea { font-size: 16px; }
 }
 
-/* ─── Touch target safety ─── */
-/* Minimum 44×44px tap area on interactive elements */
-.touch-target {
-  min-height: 44px;
-  min-width: 44px;
-  display: flex;
-  align-items: center;
-}
 
-/* ─── Reduced motion ─── */
+/* TOUCH & ACCESSIBILITY ──────────────────────────────────────────────────── */
+
+.touch-target { min-height: 44px; min-width: 44px; display: flex; align-items: center; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    animation-duration:        0.01ms !important;
+    animation-iteration-count: 1      !important;
+    transition-duration:       0.01ms !important;
   }
-
-  html { scroll-behavior: auto; }
+  html    { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; }
 }
 
-/* ─── Responsive breakpoints ─── */
-/* Mobile: < 768px | Tablet: 768-1023 | Desktop: 1024+ | Wide: 1440+ */
+
+/* RESPONSIVE BREAKPOINTS
+   Mobile: < 768px | Tablet: 768–1023 | Desktop: 1024+ | Wide: 1440+
+   ─────────────────────────────────────────────────────────────────────────── */
