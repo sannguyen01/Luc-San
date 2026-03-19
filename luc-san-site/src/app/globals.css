@@ -414,22 +414,26 @@ a:hover { color: var(--ls-ink-deep); }
 
 
 /* FORM ELEMENTS ──────────────────────────────────────────────────────────── */
+/* Wrapped in @layer base so Tailwind @layer utilities (border-b, focus:border-*)
+   can correctly override these element-level defaults.                        */
 
-input, select, textarea {
-  background:   transparent;
-  border:       1px solid var(--border-medium);
-  color:        var(--text-primary);
-  transition:   border-color var(--duration-fast) var(--ease-out);
-}
+@layer base {
+  input, select, textarea {
+    background:   transparent;
+    border:       1px solid var(--border-medium);
+    color:        var(--text-primary);
+    transition:   border-color var(--duration-fast) var(--ease-out);
+  }
 
-input:focus, select:focus, textarea:focus {
-  outline:      none;
-  border-color: var(--ls-graphite-skin);
-}
+  input:focus, select:focus, textarea:focus {
+    outline:      none;
+    border-color: var(--ls-graphite-skin);
+  }
 
-/* Prevent iOS Safari auto-zoom on form field focus */
-@media screen and (max-width: 767px) {
-  input, select, textarea { font-size: 16px; }
+  /* Prevent iOS Safari auto-zoom on form field focus */
+  @media screen and (max-width: 767px) {
+    input, select, textarea { font-size: 16px; }
+  }
 }
 
 
