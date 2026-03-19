@@ -100,6 +100,7 @@
   --color-border:        var(--border-subtle);
   --color-border-medium: var(--border-medium);
   --color-card:          var(--bg-card);
+  --color-muted:         var(--text-secondary); /* enables text-muted / text-muted/40 utilities */
 
   /* Narrative tokens exposed to Tailwind utilities */
   --color-void-white:     var(--ls-void-white);
