@@ -4,3 +4,11 @@ out/
 .env*.local
 *.log
 .DS_Store
+
+# Root-level scaffold files (project lives in luc-san-site/)
+/package.json
+/package-lock.json
+/postcss.config.mjs
+/tsconfig.json
+/public/
+/src/
