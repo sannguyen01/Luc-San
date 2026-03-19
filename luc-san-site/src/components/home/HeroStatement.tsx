@@ -14,7 +14,7 @@ export function HeroStatement() {
           <h1
             className="font-serif"
             style={{
-              fontSize:      "clamp(3.5rem, 7vw, 8rem)",
+              fontSize:      "clamp(2.4rem, 5vw, 5.5rem)",
               fontWeight:    300,
               lineHeight:    1.0,
               letterSpacing: "0.02em",

@@ -15,7 +15,8 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-12">
           <Link
             href="/"
-            className="font-serif text-base tracking-[0.2em] uppercase text-foreground"
+            className="font-serif uppercase text-foreground"
+            style={{ fontSize: "1.2rem", letterSpacing: "0.2em" }}
           >
             Lục San
           </Link>

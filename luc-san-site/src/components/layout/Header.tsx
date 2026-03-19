@@ -101,7 +101,7 @@ export function Header() {
             onClick={() => setOpen(false)}
             className="absolute left-1/2 -translate-x-1/2 font-serif uppercase z-[70]"
             style={{
-              fontSize:      "1.05rem",
+              fontSize:      "1.2rem",
               letterSpacing: "0.25em",
               color:          open ? "var(--ls-void-white)" : "var(--text-primary)",
               transition:     "color 350ms cubic-bezier(0,0,0.58,1)",

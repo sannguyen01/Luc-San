@@ -147,19 +147,19 @@ h1, h2, h3, h4 {
   color:          var(--text-primary);
 }
 
-/* Dior-weight editorial scale — text as primary visual event */
-h1 { font-size: clamp(3.5rem, 9vw,   10rem); }
-h2 { font-size: clamp(2.2rem, 5vw,   6rem);  }
-h3 { font-size: clamp(1.4rem, 2.8vw, 2.4rem);}
-h4 { font-size: clamp(1.05rem, 1.8vw, 1.4rem);}
+/* Editorial scale — restrained, architectural */
+h1 { font-size: clamp(1.8rem, 2.8vw, 3rem);   }
+h2 { font-size: clamp(1.4rem, 2vw,   2.2rem);  }
+h3 { font-size: clamp(1.1rem, 1.5vw, 1.5rem);  }
+h4 { font-size: clamp(0.95rem, 1.2vw, 1.1rem); }
 
-/* Manifesto scale — expands to fill the visual field */
+/* Manifesto scale — below-hero statement block only */
 .text-manifesto {
   font-family:    var(--font-serif);
-  font-size:      clamp(3rem, 8vw, 9rem);
+  font-size:      clamp(2.2rem, 5vw, 5.5rem);
   font-weight:    300;
   font-style:     italic;
-  line-height:    1.05;
+  line-height:    1.08;
   letter-spacing: 0.02em;
 }
 

@@ -24,7 +24,7 @@ export function ContactForm() {
   }
 
   return (
-    <form action={action} className="max-w-md mx-auto space-y-8">
+    <form action={action} className="space-y-8" style={{ maxWidth: "480px" }}>
       {/* Name */}
       <div>
         <label htmlFor="name" className="text-meta block mb-2">

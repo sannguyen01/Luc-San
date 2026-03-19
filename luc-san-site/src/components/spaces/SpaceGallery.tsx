@@ -36,11 +36,11 @@ export function SpaceGallery() {
             key={encounter.title}
             className="border-t border-[var(--border-subtle)] py-10 md:py-14 reveal"
           >
-            <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-4 md:gap-16">
-              <h3 className="font-serif text-xl md:text-2xl font-light">
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-4 md:gap-16 items-start">
+              <h3 className="font-serif font-light">
                 {encounter.title}
               </h3>
-              <p className="text-muted text-sm leading-relaxed max-w-lg">
+              <p className="text-body max-w-lg" style={{ color: "var(--text-secondary)" }}>
                 {encounter.description}
               </p>
             </div>

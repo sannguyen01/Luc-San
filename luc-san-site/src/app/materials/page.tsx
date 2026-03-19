@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { PageContainer, ContentSection, NarrowSection } from "@/components/layout/Layout";
-import { TextBlock } from "@/components/ui/TextBlock";
+import { PageContainer, ContentSection, PageHero } from "@/components/layout/Layout";
 import { MaterialStorySlice } from "@/components/materials/MaterialStorySlice";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { RevealSection } from "@/components/ui/RevealSection";
@@ -17,7 +16,6 @@ export const metadata: Metadata = {
 const materials = materialsData as Material[];
 const objects = objectsData as LucSanObject[];
 
-/** Keywords per material id — objects.materials are common names, not ids */
 const materialKeywords: Record<string, string[]> = {
   pearl:  ["pearl", "pearls"],
   jade:   ["jade"],
@@ -57,32 +55,28 @@ const processStages = [
 export default function MaterialsPage() {
   return (
     <PageContainer>
-      {/* Intro */}
-      <NarrowSection>
-        <TextBlock align="center" narrow>
-          <h1 className="font-serif text-4xl md:text-5xl font-light mb-8">
-            Materials & Time
-          </h1>
-          <p className="text-muted text-sm leading-relaxed">
-            Lục San is material infrastructure, not a label.
-            Every substance we work with passed through a formation
-            no human hand could replicate — tectonic pressure,
-            biological patience, atmospheric fossilization,
-            decades of cellular growth.
-          </p>
-        </TextBlock>
-      </NarrowSection>
+      <PageHero label="Lục San — Materials">
+        <h1 className="font-serif font-light mb-5" style={{ maxWidth: "28rem" }}>
+          Materials & Time
+        </h1>
+        <p className="text-body" style={{ maxWidth: "36rem", color: "var(--text-secondary)" }}>
+          Lục San is material infrastructure, not a label.
+          Every substance we work with passed through a formation
+          no human hand could replicate — tectonic pressure,
+          biological patience, atmospheric fossilization,
+          decades of cellular growth.
+        </p>
+      </PageHero>
 
-      {/* Material cards — each slice has .reveal on its article */}
       <ContentSection>
         <RevealSection>
           {materials.map((material, index) => (
             <MaterialStorySlice
-            key={material.id}
-            material={material}
-            index={index}
-            relatedObjects={getRelatedObjects(material)}
-          />
+              key={material.id}
+              material={material}
+              index={index}
+              relatedObjects={getRelatedObjects(material)}
+            />
           ))}
         </RevealSection>
       </ContentSection>
@@ -92,24 +86,25 @@ export default function MaterialsPage() {
       {/* Process triptych */}
       <ContentSection>
         <RevealSection>
-          <TextBlock align="center" narrow className="mb-12 reveal">
-            <h2 className="font-serif text-3xl font-light">
+          <div className="mb-12 reveal">
+            <p className="text-label mb-4" style={{ color: "var(--text-tertiary)" }}>
+              Method
+            </p>
+            <h2 className="font-serif font-light" style={{ maxWidth: "24rem" }}>
               Three Stages
             </h2>
-          </TextBlock>
+          </div>
         </RevealSection>
 
         <RevealSection stagger>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
             {processStages.map((stage, i) => (
-              <div key={stage.title} className="text-center reveal">
-                <span className="text-meta block mb-3">
+              <div key={stage.title} className="reveal">
+                <span className="text-meta block mb-4" style={{ color: "var(--text-tertiary)" }}>
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="font-serif text-xl font-light mb-4">
-                  {stage.title}
-                </h3>
-                <p className="text-muted text-sm leading-relaxed">
+                <h3 className="font-serif font-light mb-4">{stage.title}</h3>
+                <p className="text-body" style={{ color: "var(--text-secondary)" }}>
                   {stage.description}
                 </p>
               </div>

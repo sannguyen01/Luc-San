@@ -43,7 +43,7 @@ export function TierBands({ objects }: { objects: LucSanObject[] }) {
                 <p className="text-meta mb-2" style={{ color: "var(--text-tertiary)" }}>
                   0{tierIndex + 1}
                 </p>
-                <h3 className="font-serif text-2xl font-light">{tier}</h3>
+                <h3 className="font-serif font-light">{tier}</h3>
                 <p className="text-meta mt-1" style={{ color: "var(--text-secondary)" }}>
                   {meta.hours}
                 </p>
@@ -102,9 +102,7 @@ export function TierBands({ objects }: { objects: LucSanObject[] }) {
                   </div>
 
                   {/* Info — featured title slightly larger */}
-                  <h4
-                    className={`font-serif font-light leading-tight mb-1 ${isFeatured ? "text-xl" : "text-lg"}`}
-                  >
+                  <h4 className="font-serif font-light leading-tight mb-1">
                     {obj.title}
                   </h4>
                   <p className="text-meta mb-2" style={{ color: "var(--text-tertiary)" }}>

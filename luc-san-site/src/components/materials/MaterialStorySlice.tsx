@@ -26,7 +26,7 @@ export function MaterialStorySlice({ material, index, relatedObjects = [] }: Mat
 
         {/* Content */}
         <div className="flex flex-col justify-center">
-          <h3 className="font-serif text-2xl md:text-3xl font-light mb-6">
+          <h3 className="font-serif font-light mb-6">
             {material.name}
           </h3>
 
