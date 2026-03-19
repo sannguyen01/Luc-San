@@ -3,7 +3,6 @@ import Link from "next/link";
 import { PageContainer, ContentSection, PageHero } from "@/components/layout/Layout";
 import { DarkBand } from "@/components/layout/DarkBand";
 import { SpaceGallery } from "@/components/spaces/SpaceGallery";
-import { SectionDivider } from "@/components/ui/SectionDivider";
 import { RevealSection } from "@/components/ui/RevealSection";
 
 export const metadata: Metadata = {
@@ -54,24 +53,7 @@ export default function SpacesPage() {
               Encounters here move at the pace of the materials themselves —
               unhurried, attentive, designed to reveal rather than persuade.
             </p>
-            <Link
-              href="/contact"
-              className="text-label"
-              style={{
-                color:         "var(--ls-ash-drift)",
-                borderBottom:  "1px solid var(--ls-graphite-skin)",
-                paddingBottom: "4px",
-                transition:    "color var(--duration-base) var(--ease-out), border-color var(--duration-base) var(--ease-out)",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.color = "var(--ls-void-white)";
-                (e.currentTarget as HTMLElement).style.borderColor = "var(--ls-ash-drift)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.color = "var(--ls-ash-drift)";
-                (e.currentTarget as HTMLElement).style.borderColor = "var(--ls-graphite-skin)";
-              }}
-            >
+            <Link href="/contact" className="link-pathway">
               Request an encounter
             </Link>
           </div>

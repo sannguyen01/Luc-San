@@ -422,6 +422,11 @@ a:hover { color: var(--ls-ink-deep); }
 .dark-band .text-accent   { color: var(--ls-ash-drift);  }
 .dark-band .text-manifesto { color: var(--ls-nacre-glow); }
 
+.dark-band .link-pathway              { color: var(--ls-ash-drift); }
+.dark-band .link-pathway::after       { background: var(--ls-graphite-skin); }
+.dark-band .link-pathway:hover        { color: var(--ls-void-white); }
+.dark-band .link-pathway:hover::after { background: var(--ls-ash-drift); }
+
 
 /* MATERIAL CARDS ─────────────────────────────────────────────────────────── */
 
