@@ -56,9 +56,7 @@ export default function MaterialsPage() {
   return (
     <PageContainer>
       <PageHero label="Lục San — Materials">
-        <h1 className="font-serif font-light mb-5" style={{ maxWidth: "28rem" }}>
-          Materials & Time
-        </h1>
+        <h1 className="page-title mb-5">Materials & Time</h1>
         <p className="text-body" style={{ maxWidth: "36rem", color: "var(--text-secondary)" }}>
           Lục San is material infrastructure, not a label.
           Every substance we work with passed through a formation

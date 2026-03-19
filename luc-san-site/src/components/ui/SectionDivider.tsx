@@ -1,3 +1,12 @@
 export function SectionDivider() {
-  return <div className="divider" />;
+  return (
+    <div
+      style={{
+        width:      "2.5rem",
+        height:     "1px",
+        background: "var(--ls-shadow-silver)",
+        margin:     "0 auto",
+      }}
+    />
+  );
 }

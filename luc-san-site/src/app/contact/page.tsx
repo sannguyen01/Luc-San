@@ -12,9 +12,7 @@ export default function ContactPage() {
   return (
     <PageContainer>
       <PageHero label="Lục San — Contact">
-        <h1 className="font-serif font-light mb-5" style={{ maxWidth: "28rem" }}>
-          Contact
-        </h1>
+        <h1 className="page-title mb-5">Contact</h1>
         <p className="text-body" style={{ maxWidth: "36rem", color: "var(--text-secondary)" }}>
           Conversations here develop slowly,
           the way good materials reveal themselves —

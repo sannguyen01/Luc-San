@@ -5,6 +5,9 @@ import { submitContactForm, type ContactFormState } from "@/app/actions";
 
 const inquiryTypes = ["Objects", "Materials", "Spaces", "Wholesale"] as const;
 
+const FIELD_CLASS =
+  "w-full border-b border-[var(--border-subtle)] bg-transparent py-3 text-sm text-foreground outline-none focus:border-[var(--ls-graphite-skin)] transition-colors disabled:opacity-40";
+
 const initialState: ContactFormState = { status: "idle" };
 
 export function ContactForm() {
@@ -12,11 +15,11 @@ export function ContactForm() {
 
   if (state.status === "success") {
     return (
-      <div className="text-center py-12">
-        <p className="font-serif text-xl font-light mb-4">
+      <div style={{ paddingTop: "var(--space-800)", paddingBottom: "var(--space-800)" }}>
+        <p className="font-serif font-light mb-3" style={{ fontSize: "clamp(1.1rem, 1.5vw, 1.4rem)" }}>
           Received.
         </p>
-        <p className="text-muted text-sm">
+        <p className="text-body" style={{ color: "var(--text-secondary)" }}>
           We will respond at a pace that respects your inquiry.
         </p>
       </div>
@@ -27,7 +30,7 @@ export function ContactForm() {
     <form action={action} className="space-y-8" style={{ maxWidth: "480px" }}>
       {/* Name */}
       <div>
-        <label htmlFor="name" className="text-meta block mb-2">
+        <label htmlFor="name" className="text-label block mb-3" style={{ color: "var(--text-tertiary)" }}>
           Name
         </label>
         <input
@@ -36,13 +39,13 @@ export function ContactForm() {
           type="text"
           required
           disabled={isPending}
-          className="w-full border-b border-[var(--border-subtle)] bg-transparent py-2 text-sm text-foreground outline-none focus:border-[var(--accent-earth)] transition-colors disabled:opacity-50"
+          className={FIELD_CLASS}
         />
       </div>
 
       {/* Email */}
       <div>
-        <label htmlFor="email" className="text-meta block mb-2">
+        <label htmlFor="email" className="text-label block mb-3" style={{ color: "var(--text-tertiary)" }}>
           Email
         </label>
         <input
@@ -51,20 +54,20 @@ export function ContactForm() {
           type="email"
           required
           disabled={isPending}
-          className="w-full border-b border-[var(--border-subtle)] bg-transparent py-2 text-sm text-foreground outline-none focus:border-[var(--accent-earth)] transition-colors disabled:opacity-50"
+          className={FIELD_CLASS}
         />
       </div>
 
       {/* Inquiry type */}
       <div>
-        <label htmlFor="inquiry" className="text-meta block mb-2">
+        <label htmlFor="inquiry" className="text-label block mb-3" style={{ color: "var(--text-tertiary)" }}>
           Regarding
         </label>
         <select
           id="inquiry"
           name="inquiry"
           disabled={isPending}
-          className="w-full border-b border-[var(--border-subtle)] bg-transparent py-2 text-sm text-foreground outline-none focus:border-[var(--accent-earth)] transition-colors appearance-none cursor-pointer disabled:opacity-50"
+          className={`${FIELD_CLASS} appearance-none cursor-pointer`}
         >
           {inquiryTypes.map((type) => (
             <option key={type} value={type.toLowerCase()}>
@@ -76,31 +79,31 @@ export function ContactForm() {
 
       {/* Message */}
       <div>
-        <label htmlFor="message" className="text-meta block mb-2">
+        <label htmlFor="message" className="text-label block mb-3" style={{ color: "var(--text-tertiary)" }}>
           Message
         </label>
         <textarea
           id="message"
           name="message"
-          rows={4}
+          rows={5}
           disabled={isPending}
-          className="w-full border-b border-[var(--border-subtle)] bg-transparent py-2 text-sm text-foreground outline-none focus:border-[var(--accent-earth)] transition-colors resize-none disabled:opacity-50"
+          className={`${FIELD_CLASS} resize-none`}
         />
       </div>
 
-      {/* Error message */}
+      {/* Error */}
       {state.status === "error" && (
-        <p className="text-sm" style={{ color: "var(--accent-earth)" }}>
+        <p className="text-body" style={{ color: "var(--ls-graphite-skin)" }}>
           {state.message}
         </p>
       )}
 
-      {/* Submit — minimal, text-like */}
-      <div className="pt-4">
+      {/* Submit */}
+      <div style={{ paddingTop: "var(--space-200)" }}>
         <button
           type="submit"
           disabled={isPending}
-          className="link-pathway cursor-pointer bg-transparent border-none p-0 disabled:opacity-50"
+          className="link-pathway cursor-pointer bg-transparent border-none p-0 disabled:opacity-40"
         >
           {isPending ? "Sending…" : "Send inquiry"}
         </button>

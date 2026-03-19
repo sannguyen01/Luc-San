@@ -193,6 +193,28 @@ h4 { font-size: clamp(0.95rem, 1.2vw, 1.1rem); }
   color:          var(--text-secondary);
 }
 
+/* Inner page title — quiet, architectural, not editorial billboard */
+.page-title {
+  font-family:    var(--font-serif);
+  font-size:      clamp(1.6rem, 2.5vw, 2.4rem);
+  font-weight:    300;
+  letter-spacing: 0.04em;
+  line-height:    1.15;
+  color:          var(--text-primary);
+}
+
+/* Footer nav link — server-safe hover via CSS */
+.footer-nav-link {
+  font-family:    var(--font-sans);
+  font-size:      0.65rem;
+  font-weight:    400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color:          var(--text-secondary);
+  transition:     color var(--duration-base) var(--ease-out);
+}
+.footer-nav-link:hover { color: var(--text-primary); }
+
 .text-meta {
   font-family:    var(--font-sans);
   font-size:      0.7rem;
@@ -287,7 +309,6 @@ a:hover { color: var(--ls-ink-deep); }
 .divider {
   width:      2.5rem; height: 1px;
   background: var(--ls-shadow-silver);
-  margin:     var(--space-800) auto;
 }
 
 
@@ -397,7 +418,7 @@ a:hover { color: var(--ls-ink-deep); }
   color:            var(--ls-void-white);
 }
 
-.dark-band .text-muted    { color: var(--ls-slate-haze); }
+.dark-band .band-muted    { color: var(--ls-slate-haze); }
 .dark-band .text-accent   { color: var(--ls-ash-drift);  }
 .dark-band .text-manifesto { color: var(--ls-nacre-glow); }
 

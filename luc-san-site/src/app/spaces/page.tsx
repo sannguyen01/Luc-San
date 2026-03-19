@@ -15,9 +15,7 @@ export default function SpacesPage() {
   return (
     <PageContainer>
       <PageHero label="Lục San — Spaces">
-        <h1 className="font-serif font-light mb-5" style={{ maxWidth: "28rem" }}>
-          Spaces & Encounters
-        </h1>
+        <h1 className="page-title mb-5">Spaces & Encounters</h1>
         <p className="text-body" style={{ maxWidth: "36rem", color: "var(--text-secondary)" }}>
           A space of 60–100 square meters. Quiet. Ordered.
           Materials on surfaces, light from above. This is not a showroom —

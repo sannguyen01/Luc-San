@@ -17,9 +17,7 @@ export default function ObjectsPage() {
   return (
     <PageContainer>
       <PageHero label="Lục San — Objects">
-        <h1 className="font-serif font-light mb-5" style={{ maxWidth: "28rem" }}>
-          Objects
-        </h1>
+        <h1 className="page-title mb-5">Objects</h1>
         <p className="text-body" style={{ maxWidth: "36rem", color: "var(--text-secondary)" }}>
           Every object here began as a material with its own biography —
           pearl deposited over decades, jade compressed over epochs,

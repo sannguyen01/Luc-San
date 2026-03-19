@@ -1,38 +1,42 @@
 import Link from "next/link";
 import { navigation } from "@/config/navigation";
 
+const MARGIN = "clamp(24px, 4vw, 64px)";
+const MAX_W  = "1440px";
+
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
     <footer
-      className="border-t border-[var(--border-subtle)]"
-      style={{ paddingTop: "var(--space-1000)", paddingBottom: "var(--space-800)" }}
+      style={{
+        borderTop:     "1px solid var(--border-subtle)",
+        paddingTop:    "var(--space-1000)",
+        paddingBottom: "var(--space-800)",
+        paddingLeft:   MARGIN,
+        paddingRight:  MARGIN,
+      }}
     >
-      <div className="px-6 md:px-10 lg:px-16 max-w-7xl mx-auto">
+      <div style={{ maxWidth: MAX_W, marginLeft: "auto", marginRight: "auto" }}>
 
         {/* Top row — wordmark + nav */}
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-12">
+        <div
+          className="flex flex-col md:flex-row md:items-center md:justify-between"
+          style={{ gap: "var(--space-600)", marginBottom: "var(--space-800)" }}
+        >
           <Link
             href="/"
-            className="font-serif uppercase text-foreground"
-            style={{ fontSize: "1.2rem", letterSpacing: "0.2em" }}
+            className="font-serif uppercase"
+            style={{ fontSize: "1.2rem", letterSpacing: "0.22em", color: "var(--text-primary)" }}
           >
             Lục San
           </Link>
 
           <nav>
-            <ul className="flex flex-wrap gap-x-8 gap-y-3">
+            <ul className="flex flex-wrap" style={{ gap: "clamp(20px, 3vw, 40px)" }}>
               {[...navigation, { label: "Contact", href: "/contact" }].map((item) => (
                 <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-meta hover:text-foreground transition-colors cursor-pointer"
-                    style={{
-                      color: "var(--text-secondary)",
-                      transitionDuration: "var(--duration-base)",
-                    }}
-                  >
+                  <Link href={item.href} className="footer-nav-link">
                     {item.label}
                   </Link>
                 </li>
@@ -41,15 +45,28 @@ export function Footer() {
           </nav>
         </div>
 
-        {/* Divider */}
-        <div className="w-full h-px bg-[var(--border-subtle)] mb-8" />
+        {/* Rule */}
+        <div
+          style={{
+            width:        "100%",
+            height:       "1px",
+            background:   "var(--border-subtle)",
+            marginBottom: "var(--space-500)",
+          }}
+        />
 
         {/* Bottom row */}
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <p className="text-meta" style={{ color: "var(--text-tertiary)" }}>
+        <div
+          className="flex flex-col md:flex-row md:items-center md:justify-between"
+          style={{ gap: "var(--space-200)" }}
+        >
+          <p className="text-label" style={{ color: "var(--text-tertiary)" }}>
             © {year} Lục San. Objects formed from geological time.
           </p>
-          <p className="text-meta" style={{ color: "var(--text-tertiary)", fontStyle: "italic" }}>
+          <p
+            className="text-label"
+            style={{ color: "var(--text-tertiary)", fontStyle: "italic", textTransform: "none", letterSpacing: "0.04em" }}
+          >
             Hà Nội, Việt Nam
           </p>
         </div>
