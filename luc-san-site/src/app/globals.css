@@ -295,14 +295,16 @@ a:hover { color: var(--ls-ink-deep); }
 
 /* SCROLL-TRIGGERED REVEALS ───────────────────────────────────────────────── */
 
+/* .reveal starts visible (SSG-safe). js-reveal-active is added synchronously
+   via useLayoutEffect before first paint — so elements hide before browser
+   paints, then animate in as they enter the viewport. No JS = always visible. */
 .reveal {
-  opacity:   0;
-  transform: translateY(20px);
   transition: opacity   var(--duration-reveal) var(--ease-out),
               transform var(--duration-reveal) var(--ease-out);
 }
 
-.reveal.revealed { opacity: 1; transform: translateY(0); }
+.js-reveal-active .reveal         { opacity: 0; transform: translateY(20px); }
+.js-reveal-active .reveal.revealed { opacity: 1; transform: translateY(0);   }
 
 .reveal-stagger > .reveal:nth-child(1) { transition-delay: 0ms;   }
 .reveal-stagger > .reveal:nth-child(2) { transition-delay: 120ms; }
@@ -448,7 +450,7 @@ a:hover { color: var(--ls-ink-deep); }
     transition-duration:       0.01ms !important;
   }
   html    { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; }
+  .reveal, .js-reveal-active .reveal { opacity: 1 !important; transform: none !important; }
 }
 
 

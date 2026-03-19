@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, RefObject } from "react";
+import { useEffect, useLayoutEffect, useRef, RefObject } from "react";
 
 interface UseScrollRevealOptions {
   threshold?: number;
@@ -15,6 +15,16 @@ export function useScrollReveal(
   options: UseScrollRevealOptions = {}
 ) {
   const { threshold = 0.15, rootMargin = "0px 0px -60px 0px", once = true } = options;
+
+  // Add activation class synchronously before first paint (useLayoutEffect).
+  // This hides .reveal elements during hydration so they animate in correctly.
+  // Without this, SSG ships visible content that flashes hidden then reveals.
+  useLayoutEffect(() => {
+    const container = ref.current;
+    if (!container) return;
+    container.classList.add("js-reveal-active");
+    return () => container.classList.remove("js-reveal-active");
+  }, [ref]);
 
   useEffect(() => {
     const container = ref.current;
