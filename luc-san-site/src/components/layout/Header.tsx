@@ -2,129 +2,204 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { navigation } from "@/config/navigation";
+
+/* ── Dior-pattern: overlay descends via clipPath ── */
+const OVERLAY_VARIANTS = {
+  hidden: {
+    clipPath: "inset(0 0 100% 0)",
+    opacity: 0,
+    transition: {
+      clipPath: { duration: 0.72, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
+      opacity:  { duration: 0.2 },
+    },
+  },
+  visible: {
+    clipPath: "inset(0 0 0% 0)",
+    opacity: 1,
+    transition: {
+      clipPath: { duration: 0.72, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
+      opacity:  { duration: 0.01 },
+    },
+  },
+};
+
+/* Staggered nav items rise from overflow-hidden clips */
+const ITEM_VARIANTS = {
+  hidden: { y: "108%", opacity: 0 },
+  visible: (i: number) => ({
+    y: "0%",
+    opacity: 1,
+    transition: {
+      y:       { duration: 0.7, ease: [0.00, 0.00, 0.30, 1.00] as [number, number, number, number], delay: 0.18 + i * 0.07 },
+      opacity: { duration: 0.01, delay: 0.18 + i * 0.07 },
+    },
+  }),
+  exit: {
+    y: "-108%",
+    opacity: 0,
+    transition: { duration: 0.3, ease: [0.42, 0, 1, 1] as [number, number, number, number] },
+  },
+};
+
+const navItems = [...navigation, { label: "Contact", href: "/contact" }];
 
 export function Header() {
   const pathname = usePathname();
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  // Elevate header on scroll (subtle bg solidification)
+  /* Close on route change */
+  useEffect(() => { setOpen(false); }, [pathname]);
+
+  /* Lock body scroll while open */
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
+  /* ESC key closes */
+  const onKey = useCallback((e: KeyboardEvent) => {
+    if (e.key === "Escape") setOpen(false);
   }, []);
-
-  // Close mobile menu on route change
   useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onKey]);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all
-        ${scrolled
-          ? "bg-[var(--bg-warm)] border-b border-[var(--border-subtle)]"
-          : "bg-[var(--bg-warm)]/90 backdrop-blur-sm"
-        }`}
-      style={{ transitionDuration: "var(--duration-base)", transitionTimingFunction: "var(--ease-out)" }}
-    >
-      <nav
-        className="flex items-center justify-between px-6 md:px-10 lg:px-16 relative"
+    <>
+      {/* ── Persistent chrome strip — wordmark + Menu trigger only ── */}
+      <header
+        className="fixed top-0 left-0 right-0 z-[60]"
         style={{ height: "72px" }}
       >
-        {/* Mobile: Wordmark left */}
-        <Link
-          href="/"
-          className="md:hidden font-serif text-[1.05rem] uppercase text-foreground"
-          style={{ letterSpacing: "0.25em" }}
+        <div
+          className="relative flex items-center justify-between h-full"
+          style={{ padding: "0 clamp(24px, 4vw, 64px)" }}
         >
-          Lục San
-        </Link>
-
-        {/* Desktop: Left nav group — Objects · Materials · Spaces */}
-        <ul className="hidden md:flex items-center gap-8 lg:gap-10">
-          {navigation.map((item) => {
-            const isActive = pathname === item.href;
-            return (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="link-nav text-meta"
-                  data-active={isActive ? "true" : "false"}
-                  style={{
-                    color: isActive ? "var(--text-primary)" : "var(--text-secondary)",
-                  }}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-
-        {/* Desktop: Wordmark — absolute center anchor */}
-        <Link
-          href="/"
-          className="hidden md:block absolute left-1/2 -translate-x-1/2 font-serif text-[1.05rem] uppercase text-foreground"
-          style={{ letterSpacing: "0.25em" }}
-        >
-          Lục San
-        </Link>
-
-        {/* Desktop: Right — Contact */}
-        <div className="hidden md:flex items-center">
-          <Link
-            href="/contact"
-            className="link-nav text-meta"
-            data-active={pathname === "/contact" ? "true" : "false"}
-            style={{ color: "var(--text-secondary)" }}
+          {/* Menu / Close — left */}
+          <button
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? "Close navigation" : "Open navigation"}
+            aria-expanded={open}
+            aria-controls="nav-overlay"
+            className="touch-target text-meta cursor-pointer relative z-[70]"
+            style={{
+              color:         open ? "var(--ls-void-white)" : "var(--text-primary)",
+              letterSpacing: "0.18em",
+              transition:    "color 350ms cubic-bezier(0,0,0.58,1)",
+            }}
           >
-            Contact
+            {open ? "Close" : "Menu"}
+          </button>
+
+          {/* Wordmark — absolute center, always above overlay */}
+          <Link
+            href="/"
+            onClick={() => setOpen(false)}
+            className="absolute left-1/2 -translate-x-1/2 font-serif uppercase z-[70]"
+            style={{
+              fontSize:      "1.05rem",
+              letterSpacing: "0.25em",
+              color:          open ? "var(--ls-void-white)" : "var(--text-primary)",
+              transition:     "color 350ms cubic-bezier(0,0,0.58,1)",
+            }}
+          >
+            Lục San
           </Link>
+
+          {/* Right utility slot — reserved */}
+          <div aria-hidden="true" style={{ minWidth: "44px" }} />
         </div>
+      </header>
 
-        {/* Mobile: Hamburger toggle — inline display omitted so md:hidden works */}
-        <button
-          className="md:hidden flex items-center justify-end text-meta cursor-pointer"
-          style={{ color: "var(--text-secondary)", minWidth: "44px", minHeight: "44px" }}
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={menuOpen}
-        >
-          {menuOpen ? "Close" : "Menu"}
-        </button>
-      </nav>
+      {/* ── Full-viewport overlay — Dior descent technique ── */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            id="nav-overlay"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Site navigation"
+            key="nav-overlay"
+            variants={OVERLAY_VARIANTS}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            className="fixed inset-0 z-[55] flex flex-col"
+            style={{ backgroundColor: "var(--ls-void-black)" }}
+          >
+            {/* Inner layout — vertically centered editorial column */}
+            <div
+              className="flex flex-col justify-center h-full"
+              style={{ padding: "96px clamp(24px, 4vw, 64px) 64px" }}
+            >
+              {/* Primary nav — large serif, staggered rise */}
+              <nav aria-label="Primary navigation">
+                <ul className="flex flex-col" style={{ gap: "clamp(16px, 3vh, 28px)" }}>
+                  {navItems.map((item, i) => {
+                    const isActive = pathname === item.href;
+                    return (
+                      <li key={item.href} className="overflow-hidden">
+                        <motion.div
+                          custom={i}
+                          variants={ITEM_VARIANTS}
+                          initial="hidden"
+                          animate="visible"
+                          exit="exit"
+                        >
+                          <Link
+                            href={item.href}
+                            className="font-serif block"
+                            style={{
+                              fontSize:      "clamp(2.6rem, 7vw, 6rem)",
+                              fontWeight:    300,
+                              letterSpacing: "0.03em",
+                              lineHeight:    1.1,
+                              color: isActive
+                                ? "var(--ls-nacre-glow)"
+                                : "var(--ls-void-white)",
+                              transition: "color 250ms ease",
+                            }}
+                            onMouseEnter={(e) =>
+                              (e.currentTarget.style.color = "var(--ls-ash-drift)")
+                            }
+                            onMouseLeave={(e) =>
+                              (e.currentTarget.style.color = isActive
+                                ? "var(--ls-nacre-glow)"
+                                : "var(--ls-void-white)")
+                            }
+                          >
+                            {item.label}
+                          </Link>
+                        </motion.div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </nav>
 
-      {/* Mobile menu — Khaite-style fade-down */}
-      <div
-        className={`md:hidden overflow-hidden transition-all`}
-        style={{
-          maxHeight: menuOpen ? "320px" : "0px",
-          opacity: menuOpen ? 1 : 0,
-          transitionDuration: "var(--duration-slow)",
-          transitionTimingFunction: "var(--ease-out)",
-        }}
-      >
-        <ul className="flex flex-col px-6 pb-8 gap-1 border-b border-[var(--border-subtle)]">
-          {[...navigation, { label: "Contact", href: "/contact" }].map((item) => {
-            const isActive = pathname === item.href;
-            return (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="block py-3 text-meta cursor-pointer"
-                  style={{ color: isActive ? "var(--text-primary)" : "var(--text-secondary)" }}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
-    </header>
+              {/* Footer strip — material taxonomy + city */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { delay: 0.75, duration: 0.6 } }}
+                exit={{ opacity: 0 }}
+                className="absolute bottom-0 left-0 right-0 flex items-center justify-between"
+                style={{ padding: "0 clamp(24px, 4vw, 64px) 40px" }}
+              >
+                <p className="text-meta" style={{ color: "var(--ls-graphite-skin)" }}>
+                  Pearl · Jade · Amber · Wood
+                </p>
+                <p className="text-meta" style={{ color: "var(--ls-graphite-skin)" }}>
+                  Hà Nội
+                </p>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

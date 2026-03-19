@@ -147,18 +147,50 @@ h1, h2, h3, h4 {
   color:          var(--text-primary);
 }
 
-h1 { font-size: clamp(2.8rem, 6vw,   5.5rem); }
-h2 { font-size: clamp(1.8rem, 3.5vw, 3.2rem); }
-h3 { font-size: clamp(1.3rem, 2.5vw, 2rem);   }
-h4 { font-size: clamp(1.05rem, 1.8vw, 1.35rem); }
+/* Dior-weight editorial scale — text as primary visual event */
+h1 { font-size: clamp(3.5rem, 9vw,   10rem); }
+h2 { font-size: clamp(2.2rem, 5vw,   6rem);  }
+h3 { font-size: clamp(1.4rem, 2.8vw, 2.4rem);}
+h4 { font-size: clamp(1.05rem, 1.8vw, 1.4rem);}
 
+/* Manifesto scale — expands to fill the visual field */
 .text-manifesto {
   font-family:    var(--font-serif);
-  font-size:      clamp(2.2rem, 5vw, 4.5rem);
+  font-size:      clamp(3rem, 8vw, 9rem);
   font-weight:    300;
   font-style:     italic;
-  line-height:    1.2;
-  letter-spacing: 0.04em;
+  line-height:    1.05;
+  letter-spacing: 0.02em;
+}
+
+/* YSL-influence: section label — all caps, maximum tracking */
+.text-label {
+  font-family:    var(--font-sans);
+  font-size:      0.65rem;
+  font-weight:    400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color:          var(--text-tertiary);
+}
+
+/* Khaite-influence: intimate editorial body — serif italic at reading distance */
+.text-editorial {
+  font-family: var(--font-serif);
+  font-size:   clamp(1rem, 1.4vw, 1.2rem);
+  font-weight: 300;
+  line-height: 1.9;
+  font-style:  italic;
+  color:       var(--text-secondary);
+}
+
+/* Toteme-influence: product caption — precise, cold, factual */
+.text-caption {
+  font-family:    var(--font-sans);
+  font-size:      0.72rem;
+  font-weight:    300;
+  letter-spacing: 0.08em;
+  line-height:    1.6;
+  color:          var(--text-secondary);
 }
 
 .text-meta {
@@ -451,6 +483,54 @@ a:hover { color: var(--ls-ink-deep); }
   }
   html    { scroll-behavior: auto; }
   .reveal, .js-reveal-active .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+
+/* TOTEME LAYOUT SYSTEM ────────────────────────────────────────────────────── */
+
+:root {
+  --layout-margin: clamp(24px, 4vw, 64px);   /* Page edge breathing room     */
+  --layout-gutter: clamp(16px, 2vw, 32px);   /* Column gutter                */
+  --layout-max:    1440px;                    /* Max content width            */
+  --layout-narrow: 640px;                     /* Prose / narrow column        */
+  --layout-mid:    960px;                     /* Mid content width            */
+}
+
+/* Full-bleed with internal max-width container */
+.layout-contained {
+  width:         100%;
+  max-width:     var(--layout-max);
+  margin-left:   auto;
+  margin-right:  auto;
+  padding-left:  var(--layout-margin);
+  padding-right: var(--layout-margin);
+}
+
+/* YSL-pattern: asymmetric editorial grid (60/40 split) */
+.layout-editorial {
+  display:               grid;
+  grid-template-columns: 3fr 2fr;
+  gap:                   var(--layout-gutter);
+  align-items:           end;
+}
+
+@media (max-width: 768px) {
+  .layout-editorial { grid-template-columns: 1fr; }
+}
+
+/* Toteme-pattern: strict 4-column product grid */
+.layout-grid-4 {
+  display:               grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap:                   var(--layout-gutter);
+}
+
+@media (max-width: 1024px) {
+  .layout-grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .layout-grid-4 { grid-template-columns: 1fr; }
 }
 
 

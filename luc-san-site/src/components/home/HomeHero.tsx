@@ -14,79 +14,52 @@ export function HomeHero() {
         }}
       />
 
-      {/* ── Corner vignette — draws the eye inward toward the luminous center ── */}
+      {/* ── Corner vignette — draws the eye inward ── */}
       <div
         className="absolute inset-0 pointer-events-none z-[5]"
         style={{
-          background: "radial-gradient(ellipse 110% 110% at 50% 50%, transparent 42%, rgba(17,17,17,0.22) 100%)",
+          background: "radial-gradient(ellipse 110% 110% at 50% 50%, transparent 42%, rgba(26,23,20,0.28) 100%)",
         }}
       />
 
-      {/* ── Veil — starts opaque, lifts to reveal the scene ── */}
+      {/* ── Veil — lifts to reveal the scene ── */}
       <div
         className="absolute inset-0 pointer-events-none z-[10]"
         style={{
-          backgroundColor: "var(--bg-dark)",
+          backgroundColor: "var(--ls-void-black)",
           animation: "veil-lift 2.6s cubic-bezier(0.00, 0.00, 0.58, 1.00) forwards",
         }}
       />
 
-      {/* ── Cinematic letterbox — top bar ── */}
+      {/* ── Letterbox — top ── */}
       <div
         className="absolute top-0 left-0 right-0 pointer-events-none z-[20]"
-        style={{ height: "clamp(28px, 4vh, 44px)", backgroundColor: "var(--bg-dark)" }}
+        style={{ height: "clamp(28px, 4vh, 44px)", backgroundColor: "var(--ls-void-black)" }}
       />
 
-      {/* ── Cinematic letterbox — bottom bar ── */}
+      {/* ── Letterbox — bottom + 1px platinum rule at inner top edge ── */}
       <div
         className="absolute bottom-0 left-0 right-0 pointer-events-none z-[20]"
-        style={{ height: "clamp(28px, 4vh, 44px)", backgroundColor: "var(--bg-dark)" }}
-      />
-
-      {/* ── Manifesto text — bottom-left, above letterbox ── */}
-      <div className="absolute inset-0 z-[30] flex flex-col justify-end" style={{ paddingBottom: "clamp(56px, 10vh, 96px)" }}>
-        <div className="px-6 md:px-10 lg:px-16 max-w-7xl mx-auto w-full">
-
-          {/* Each line rises from an overflow-hidden clip (luxury editorial pattern) */}
-          <div className="overflow-hidden mb-1">
-            <p
-              className="text-manifesto"
-              style={{
-                animation: "text-rise 1.4s cubic-bezier(0.00, 0.00, 0.30, 1.00) 2.0s both",
-              }}
-            >
-              Geological patience
-            </p>
-          </div>
-          <div className="overflow-hidden">
-            <p
-              className="text-manifesto"
-              style={{
-                animation: "text-rise 1.4s cubic-bezier(0.00, 0.00, 0.30, 1.00) 2.35s both",
-              }}
-            >
-              made tangible.
-            </p>
-          </div>
-
-          {/* Material taxonomy — fades in last */}
-          <p
-            className="text-meta mt-6"
-            style={{
-              color: "var(--text-secondary)",
-              animation: "fade-up 0.9s var(--ease-out) 3.1s both",
-            }}
-          >
-            Pearl · Jade · Amber · Wood
-          </p>
-        </div>
+        style={{ height: "clamp(28px, 4vh, 44px)", backgroundColor: "var(--ls-void-black)" }}
+      >
+        <div
+          style={{
+            position:        "absolute",
+            top:             0,
+            left:            "clamp(24px, 4vw, 64px)",
+            right:           "clamp(24px, 4vw, 64px)",
+            height:          "1px",
+            backgroundColor: "var(--ls-shadow-silver)",
+            opacity:         0.4,
+          }}
+        />
       </div>
 
-      {/* ── Scroll indicator — cleared above bottom letterbox ── */}
+      {/* ── Scroll indicator — vertical right, Toteme-style ── */}
       <div
-        className="absolute right-8 md:right-16 z-[30] flex flex-col items-center gap-2"
+        className="absolute right-[clamp(24px,4vw,64px)] z-[30] flex flex-col items-center gap-3"
         style={{
-          bottom: "clamp(48px, 8vh, 80px)",
+          bottom:    "clamp(48px, 8vh, 80px)",
           animation: "fade-up 0.9s var(--ease-out) 3.6s both",
         }}
       >
@@ -96,10 +69,7 @@ export function HomeHero() {
         >
           Scroll
         </span>
-        <div
-          className="w-px bg-[var(--border-medium)]"
-          style={{ height: "40px" }}
-        />
+        <div className="w-px" style={{ height: "40px", backgroundColor: "var(--ls-shadow-silver)" }} />
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { HomeHero } from "@/components/home/HomeHero";
+import { HeroStatement } from "@/components/home/HeroStatement";
 import { ContentSection, NarrowSection } from "@/components/layout/Layout";
 import { Grid } from "@/components/ui/Grid";
 import { TextBlock } from "@/components/ui/TextBlock";
@@ -33,8 +34,13 @@ const pathways = [
 export default function HomePage() {
   return (
     <>
-      {/* Hero — full-bleed cinematic */}
+      {/* Hero — full-bleed cinematic, purely visual */}
       <HomeHero />
+
+      {/* Below-hero editorial statement — Dior pattern: text beneath the visual */}
+      <RevealSection>
+        <HeroStatement />
+      </RevealSection>
 
       {/* Three Columns — Objects · Materials · Spaces (editorial portals) */}
       <ContentSection>
