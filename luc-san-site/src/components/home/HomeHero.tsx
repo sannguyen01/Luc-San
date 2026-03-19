@@ -31,10 +31,10 @@ export function HomeHero() {
         }}
       />
 
-      {/* ── Letterbox — top ── */}
+      {/* ── Letterbox — top: fixed 72px = exact header height ── */}
       <div
         className="absolute top-0 left-0 right-0 pointer-events-none z-[20]"
-        style={{ height: "clamp(28px, 4vh, 44px)", backgroundColor: "var(--ls-void-black)" }}
+        style={{ height: "72px", backgroundColor: "var(--ls-void-black)" }}
       />
 
       {/* ── Letterbox — bottom + 1px platinum rule at inner top edge ── */}

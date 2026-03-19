@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageContainer, ContentSection, PageHero } from "@/components/layout/Layout";
+import { DarkBand } from "@/components/layout/DarkBand";
 import { TierBands } from "@/components/objects/TierBands";
 import { RevealSection } from "@/components/ui/RevealSection";
 import objectsData from "@/content/objects.json";
@@ -32,6 +33,33 @@ export default function ObjectsPage() {
           <TierBands objects={objects} />
         </RevealSection>
       </ContentSection>
+
+      <DarkBand size="md">
+        <RevealSection>
+          <div className="reveal" style={{ maxWidth: "32rem" }}>
+            <p className="text-label mb-6" style={{ color: "var(--ls-slate-haze)" }}>
+              On handwork
+            </p>
+            <p
+              className="font-serif font-light"
+              style={{
+                fontSize:      "clamp(1.5rem, 2.5vw, 2.2rem)",
+                lineHeight:    1.25,
+                letterSpacing: "0.02em",
+                color:         "var(--ls-void-white)",
+                marginBottom:  "var(--space-400)",
+              }}
+            >
+              Each hour counted.<br />Each method named.
+            </p>
+            <p className="text-body" style={{ color: "var(--ls-slate-haze)" }}>
+              The hours listed with every object are not a measure of price.
+              They are a biography of attention — the precise count of human
+              time placed in service of geological time.
+            </p>
+          </div>
+        </RevealSection>
+      </DarkBand>
     </PageContainer>
   );
 }

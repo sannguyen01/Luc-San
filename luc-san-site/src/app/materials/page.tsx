@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PageContainer, ContentSection, PageHero } from "@/components/layout/Layout";
+import { DarkBand } from "@/components/layout/DarkBand";
 import { MaterialStorySlice } from "@/components/materials/MaterialStorySlice";
 import { SectionDivider } from "@/components/ui/SectionDivider";
 import { RevealSection } from "@/components/ui/RevealSection";
@@ -110,6 +111,34 @@ export default function MaterialsPage() {
           </div>
         </RevealSection>
       </ContentSection>
+
+      <DarkBand size="md">
+        <RevealSection>
+          <div className="reveal text-center" style={{ maxWidth: "36rem", margin: "0 auto" }}>
+            <p className="text-label mb-8" style={{ color: "var(--ls-slate-haze)" }}>
+              Formation doctrine
+            </p>
+            <p
+              className="font-serif font-light"
+              style={{
+                fontSize:      "clamp(1.8rem, 3.5vw, 3rem)",
+                lineHeight:    1.15,
+                letterSpacing: "0.02em",
+                color:         "var(--ls-void-white)",
+                marginBottom:  "var(--space-500)",
+              }}
+            >
+              No laboratory can replicate<br />
+              seventeen years of darkness.
+            </p>
+            <p className="text-body" style={{ color: "var(--ls-slate-haze)" }}>
+              We did not choose these materials for beauty alone.
+              We chose them because their formation process is a narrative
+              that cannot be shortened, faked, or industrialized.
+            </p>
+          </div>
+        </RevealSection>
+      </DarkBand>
     </PageContainer>
   );
 }

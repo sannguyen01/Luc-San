@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageContainer } from "@/components/layout/Layout";
+import { DarkBand } from "@/components/layout/DarkBand";
 import objectsData from "@/content/objects.json";
 import type { LucSanObject } from "@/types";
 
@@ -158,31 +159,38 @@ export default async function ObjectDetailPage({
         </div>
       </div>
 
-      {/* Related objects — same tier */}
+      </div>{/* end content wrapper */}
+
+      {/* Related objects — dark descent */}
       {tierObjects.length > 0 && (
-        <div style={{ borderTop: "1px solid var(--border-subtle)", paddingTop: "var(--space-800)" }}>
-          <p className="text-meta mb-8" style={{ color: "var(--text-tertiary)" }}>
+        <DarkBand size="md">
+          <p className="text-label mb-10" style={{ color: "var(--ls-slate-haze)" }}>
             More from {obj.tier}
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3" style={{ gap: "var(--space-400)" }}>
             {tierObjects.slice(0, 3).map((related) => (
               <Link key={related.id} href={`/objects/${related.id}`} className="group block">
-                <div
-                  className="img-skeleton mb-4 overflow-hidden"
-                  style={{ aspectRatio: "2/3" }}
-                />
-                <h4 className="font-serif font-light text-base leading-tight mb-1">
+                <div className="img-skeleton mb-5 overflow-hidden" style={{ aspectRatio: "2/3" }} />
+                <h4
+                  className="font-serif font-light"
+                  style={{
+                    fontSize:      "clamp(0.95rem, 1.4vw, 1.15rem)",
+                    lineHeight:    1.25,
+                    color:         "var(--ls-void-white)",
+                    marginBottom:  "var(--space-100)",
+                    letterSpacing: "0.02em",
+                  }}
+                >
                   {related.title}
                 </h4>
-                <p className="text-meta" style={{ color: "var(--text-tertiary)", textTransform: "none" }}>
+                <p className="text-label" style={{ color: "var(--ls-graphite-skin)", textTransform: "none", letterSpacing: "0.04em" }}>
                   {related.hours} hours
                 </p>
               </Link>
             ))}
           </div>
-        </div>
+        </DarkBand>
       )}
-      </div>{/* end content wrapper */}
     </PageContainer>
   );
 }

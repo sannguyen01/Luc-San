@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { PageContainer, ContentSection, PageHero } from "@/components/layout/Layout";
+import { DarkBand } from "@/components/layout/DarkBand";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { RevealSection } from "@/components/ui/RevealSection";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -24,6 +26,31 @@ export default function ContactPage() {
       <ContentSection>
         <ContactForm />
       </ContentSection>
+
+      <DarkBand size="sm">
+        <RevealSection>
+          <div
+            className="reveal flex flex-col md:flex-row md:items-end md:justify-between"
+            style={{ gap: "var(--space-600)" }}
+          >
+            <p
+              className="font-serif font-light"
+              style={{
+                fontSize:      "clamp(1.3rem, 2vw, 1.8rem)",
+                lineHeight:    1.3,
+                letterSpacing: "0.02em",
+                color:         "var(--ls-void-white)",
+              }}
+            >
+              Conversations develop at<br />
+              the pace of good materials.
+            </p>
+            <p className="text-label" style={{ color: "var(--ls-graphite-skin)" }}>
+              Response within 4 hours
+            </p>
+          </div>
+        </RevealSection>
+      </DarkBand>
     </PageContainer>
   );
 }

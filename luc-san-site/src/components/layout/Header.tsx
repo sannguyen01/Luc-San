@@ -49,6 +49,7 @@ const navItems = [...navigation, { label: "Contact", href: "/contact" }];
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const isHome = pathname === "/";
 
   /* Close on route change */
   useEffect(() => { setOpen(false); }, [pathname]);
@@ -68,12 +69,33 @@ export function Header() {
     return () => window.removeEventListener("keydown", onKey);
   }, [onKey]);
 
+  /*
+    Color: overlay open OR homepage → void-white (dark surface beneath)
+           inner page closed         → void-black (light background)
+  */
+  const chromeColor = (open || isHome)
+    ? "var(--ls-void-white)"
+    : "var(--ls-void-black)";
+
+  /*
+    Background: overlay open → transparent (overlay at z-[55] shows through)
+                homepage     → transparent (hero letterbox at z-[20] shows through)
+                inner page   → solid void-white + border
+  */
+  const headerBg     = (open || isHome) ? "transparent" : "var(--ls-void-white)";
+  const headerBorder = (!open && !isHome) ? "1px solid var(--border-subtle)" : "1px solid transparent";
+
   return (
     <>
       {/* ── Persistent chrome strip — wordmark + Menu trigger only ── */}
       <header
         className="fixed top-0 left-0 right-0 z-[60]"
-        style={{ height: "72px" }}
+        style={{
+          height:       "72px",
+          background:   headerBg,
+          borderBottom: headerBorder,
+          transition:   "background 350ms cubic-bezier(0,0,0.58,1), border-color 350ms cubic-bezier(0,0,0.58,1)",
+        }}
       >
         <div
           className="relative flex items-center justify-between h-full"
@@ -87,7 +109,7 @@ export function Header() {
             aria-controls="nav-overlay"
             className="touch-target text-meta cursor-pointer relative z-[70]"
             style={{
-              color:         open ? "var(--ls-void-white)" : "var(--text-primary)",
+              color:         chromeColor,
               letterSpacing: "0.18em",
               transition:    "color 350ms cubic-bezier(0,0,0.58,1)",
             }}
@@ -103,7 +125,7 @@ export function Header() {
             style={{
               fontSize:      "1.2rem",
               letterSpacing: "0.25em",
-              color:          open ? "var(--ls-void-white)" : "var(--text-primary)",
+              color:          chromeColor,
               transition:     "color 350ms cubic-bezier(0,0,0.58,1)",
             }}
           >
