@@ -93,12 +93,12 @@ export default async function ObjectDetailPage({
             style={{ width: "2rem", height: "1px", background: "var(--border-medium)" }}
           />
 
-          {/* Copy — brand declarative voice */}
+          {/* Copy — extended material biography */}
           <p
             className="text-body leading-relaxed mb-10"
             style={{ fontSize: "15px", color: "var(--text-secondary)" }}
           >
-            {obj.copy}
+            {obj.longCopy ?? obj.copy}
           </p>
 
           {/* Metadata table */}

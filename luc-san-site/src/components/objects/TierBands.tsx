@@ -68,23 +68,23 @@ export function TierBands({ objects }: { objects: LucSanObject[] }) {
                     className="relative overflow-hidden img-skeleton mb-4"
                     style={{ aspectRatio: isFeatured ? "3/2" : "2/3" }}
                   >
-                    {/* Hover overlay — formation + hours (info-first interaction) */}
+                    {/* Hover overlay — geological first sentence + hours (info-first interaction) */}
                     <div
                       className="tile-overlay absolute inset-0 flex flex-col justify-end p-4"
                       style={{
-                        background: "linear-gradient(to top, rgba(17,17,17,0.88) 0%, rgba(17,17,17,0.0) 60%)",
+                        background: "linear-gradient(to top, var(--ls-void-black, #111111) 0%, transparent 65%)",
                         opacity: 0,
                         transition: "opacity var(--duration-base) var(--ease-out)",
                       }}
                     >
                       <p
-                        className="text-meta mb-1 uppercase tracking-wider"
-                        style={{ color: "var(--accent-clay)", fontSize: "10px" }}
+                        className="text-meta mb-1 leading-snug"
+                        style={{ color: "var(--ls-void-white)", fontSize: "11px", maxWidth: "90%" }}
                       >
-                        {obj.materials.join(" · ")}
+                        {obj.copy.split(".")[0]}.
                       </p>
-                      <p className="text-meta" style={{ color: "var(--text-inverse)", fontSize: "11px" }}>
-                        {obj.hours} hours of handwork
+                      <p className="text-meta" style={{ color: "var(--ls-slate-haze)", fontSize: "10px" }}>
+                        {obj.hours} hrs handwork
                       </p>
                     </div>
 

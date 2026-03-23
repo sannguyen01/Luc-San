@@ -45,11 +45,19 @@ export function MaterialStorySlice({ material, index, relatedObjects = [] }: Mat
             </div>
           </dl>
 
-          <div className="divider !mx-0 !my-6" />
-
-          <p className="text-muted text-sm leading-relaxed italic">
-            {material.temporal}
-          </p>
+          <div className="mt-8">
+            <p className="text-meta mb-2" style={{ color: "var(--text-tertiary)" }}>Over time</p>
+            <p
+              className="font-serif font-light leading-snug"
+              style={{
+                fontSize: "clamp(1.1rem, 1.5vw, 1.35rem)",
+                color: "var(--text-primary)",
+                letterSpacing: "0.01em",
+              }}
+            >
+              {material.temporal}
+            </p>
+          </div>
 
           {/* Cross-link: objects using this material */}
           {relatedObjects.length > 0 && (

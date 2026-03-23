@@ -27,7 +27,31 @@ export function ContactForm() {
   }
 
   return (
-    <form action={action} className="space-y-8" style={{ maxWidth: "480px" }}>
+    <>
+      {/* Editorial intro — sets the register before the form begins */}
+      <div className="mb-12" style={{ maxWidth: "480px" }}>
+        <p
+          className="font-serif font-light mb-4 leading-snug"
+          style={{
+            fontSize: "clamp(1.1rem, 1.5vw, 1.35rem)",
+            color: "var(--text-primary)",
+            letterSpacing: "0.01em",
+          }}
+        >
+          Every piece begins with a conversation.
+        </p>
+        <p className="text-body mb-3" style={{ color: "var(--text-secondary)" }}>
+          Whether you are enquiring about an existing object, a material, or something
+          that does not yet exist — write plainly about what you need and why.
+          We read every message before we reply.
+        </p>
+        <p className="text-body" style={{ color: "var(--text-tertiary)" }}>
+          We respond within five working days. Commissioned work requires
+          a longer conversation before any timeline is discussed.
+        </p>
+      </div>
+
+      <form action={action} className="space-y-8" style={{ maxWidth: "480px" }}>
       {/* Name */}
       <div>
         <label htmlFor="name" className="text-label block mb-3" style={{ color: "var(--text-tertiary)" }}>
@@ -109,5 +133,6 @@ export function ContactForm() {
         </button>
       </div>
     </form>
+    </>
   );
 }

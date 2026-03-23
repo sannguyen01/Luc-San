@@ -6,6 +6,7 @@
     "materials": ["Nephrite jade", "Sterling silver"],
     "hours": 12,
     "copy": "Forty million years of tectonic pressure. Twelve hours of hand-carving and polishing to reveal what was already there.",
+    "longCopy": "Forty million years of tectonic pressure, deep beneath what is now British Columbia, produced this nephrite. The stone arrived already complete — the carver's task was simply to locate the disc that had always existed inside it. Twelve hours of hand-carving with diamond tools, followed by four stages of polishing, each grit finer than the last. The sterling silver mount was forged — not cast — to a gauge that moves fractionally with the stone. They will age together.",
     "image": "/images/objects/jade-disc-pendant.jpg"
   },
   {
@@ -15,6 +16,7 @@
     "materials": ["Baltic amber", "14K gold"],
     "hours": 18,
     "copy": "Forty-four million years of fossilized resin. Eighteen hours of shaping, each cut decided by the inclusion patterns within.",
+    "longCopy": "Forty-four million years ago, a Baltic pine released a resin that would harden into these two pieces. Each contains inclusions — air bubbles, pollen, insect fragments — that make them geologically legible. The carver read these inclusions before making a single cut, allowing the internal structure to determine the external form. Eighteen hours of shaping on a flex shaft, then polishing by hand with leather and tin oxide. The 14K gold findings were fabricated to complement, not compete: thin, matte-finished, deliberately low.",
     "image": "/images/objects/amber-drop-earrings.jpg"
   },
   {
@@ -24,6 +26,7 @@
     "materials": ["Black walnut"],
     "hours": 22,
     "copy": "Air-dried twenty-four months. Turned on a lathe, then hand-sanded through twelve grits. The grain tells you where to stop.",
+    "longCopy": "Black walnut from a single Appalachian tree, air-dried for twenty-four months in a controlled environment no faster than nature intended. The blank was roughed on the lathe, then rested for a further six weeks as it found its final moisture equilibrium. Returned to the lathe for finishing, then sanded by hand through twelve grit stages — 80 to 2000 — each stage completed concentric to the grain, not against it. The vessel holds approximately 220ml. It is finished with three coats of food-safe tung oil, cut slightly with citrus solvent. No stain. No dye. What you see is the tree.",
     "image": "/images/objects/walnut-tea-vessel.jpg"
   },
   {
@@ -33,6 +36,7 @@
     "materials": ["Baroque pearl", "Sterling silver"],
     "hours": 46,
     "copy": "Nineteen years of nacre deposition. Forty-six hours of hand setting. No adhesive. The tension holds.",
+    "longCopy": "This baroque pearl took nineteen years to form in a freshwater mussel off the Guangdong coast. Its asymmetry is not a defect — it is a record of every fluctuation the mussel experienced across nearly two decades. Forty-six hours of work went into the sterling silver suspension: fabricating the cradle, texturing the wire, calibrating the tension that holds the pearl without compression. There is no adhesive involved anywhere in this piece. The pearl sits in tension, as it does in nature inside the shell. The silver will patinate toward grey over years of wear. The pearl will not.",
     "image": "/images/objects/baroque-pearl-suspension-i.jpg"
   },
   {
@@ -42,6 +46,7 @@
     "materials": ["Nephrite jade", "Bronze"],
     "hours": 55,
     "copy": "Two materials separated by geological epochs, joined through fifty-five hours of carving and forging. The bronze will darken. The jade will brighten.",
+    "longCopy": "The nephrite in this cuff formed approximately forty million years ago. The bronze was cast from a mold made this decade. Between them: about forty million years of geologic separation, brought into contact through fifty-five hours of carving, forging, and fitting. The jade band was carved and drilled to tolerance — any tighter and thermal expansion would crack it in winter. The bronze elements were forged, not cast: hammer-worked to match the jade's specific resistance. The bronze will develop a patina over years of skin contact. The jade, by contrast, will brighten — lanolin from the wrist slowly enriches its translucency. In twenty years, they will have aged in opposite directions.",
     "image": "/images/objects/jade-cuff-open.jpg"
   },
   {
@@ -51,6 +56,7 @@
     "materials": ["Freshwater pearls", "Sterling silver", "Silk cord"],
     "hours": 58,
     "copy": "Thirty-one pearls, each selected for its specific asymmetry. Fifty-eight hours of wire work. No two will ever hang identically.",
+    "longCopy": "Thirty-one freshwater pearls, selected over three months from a single harvest lot. The criterion was not roundness — it was idiosyncrasy. Each pearl was chosen for a specific asymmetry that would affect how it catches light at a particular angle of the collar. Fifty-eight hours of sterling silver wire work: each pearl individually wrapped, each loop work-hardened to prevent loosening. The silk cord is hand-dyed and hand-knotted — the knots between each station serve both as spacers and as the piece's internal rhythm. Because the pearls are asymmetric, no two arrangements of the collar will ever produce the same silhouette. The piece changes each time it is worn.",
     "image": "/images/objects/pearl-constellation-collar.jpg"
   },
   {
@@ -60,6 +66,7 @@
     "materials": ["White oak", "Bronze joinery"],
     "hours": 140,
     "copy": "Thirty-six months of air-drying. One hundred forty hours of joinery at half-degree tolerance. The table will outlast the century.",
+    "longCopy": "White oak from a Pennsylvania woodland, felled in February — when the sap is lowest and internal stress is minimal — then air-dried for thirty-six months at a rate no faster than one percent moisture loss per month. One hundred forty hours of joinery followed: mortise-and-tenon throughout, each joint cut to half-degree tolerance so the table may be disassembled and reassembled without glue. The bronze hardware was sand-cast, hand-filed, and fitted; it will develop a deep patina within three years of use. The surface was finished with three applications of raw linseed oil, each allowed to cure fully before the next. No lacquer. No polyurethane. The table is expected to outlast the century — it has been designed to be repairable by any competent furniture maker, without reference to its original builder.",
     "image": "/images/objects/ceremonial-tea-table.jpg"
   },
   {
@@ -69,6 +76,7 @@
     "materials": ["Baltic amber", "Brass", "Walnut base"],
     "hours": 160,
     "copy": "Twelve amber pieces, each forty million years old. One hundred sixty hours to find how they wanted to be arranged. Light passes through geological time.",
+    "longCopy": "Twelve pieces of Baltic amber, each forty to forty-four million years old. They were acquired from a single collector's estate and are geologically related — same seam, same approximate epoch, different inclusions. One hundred sixty hours went into this sculpture: sixty hours of study and arrangement prototyping before a single element was fixed, then one hundred hours of fabrication. The brass armature was arc-welded, ground back, and patinated with liver of sulfur to a colour that reads warm against the amber. The walnut base was chosen from the same thinking as the tea vessel — no stain, no dye, the wood as it is. When lit from below, light passes through forty million years of material time before reaching the eye. The electrical components are replaceable. The amber is not.",
     "image": "/images/objects/amber-light-sculpture.jpg"
   },
   {
@@ -78,6 +86,7 @@
     "materials": ["Client-selected wood species", "Bronze", "Optional jade inlay"],
     "hours": 280,
     "copy": "Begins with a conversation about how you sit. Two hundred eighty hours of making, shaped by your body and your silence.",
+    "longCopy": "Every commissioned bench begins not with materials but with a conversation — usually two or three, over several weeks — about how you actually sit. The angle of seiza, the curvature of the lower spine under stillness, the specific weight of the body after forty minutes. These particulars determine the geometry: the seat height within a range of millimetres, the forward angle calibrated to your femur length, the edge profile shaped to prevent nerve compression during long sits. The wood species is selected together. Bronze hardware is standard; jade inlay is available. Two hundred eighty hours represents the minimum for a standard bench — complex inlay or unusual wood increases this. Lead time is six to nine months from confirmed conversation. The bench is accompanied by a hand-written document describing every decision made during its making, and why.",
     "image": "/images/objects/commissioned-meditation-bench.jpg"
   }
 ]

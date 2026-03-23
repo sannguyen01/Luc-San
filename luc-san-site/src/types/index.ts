@@ -5,6 +5,7 @@ export interface LucSanObject {
   materials: string[];
   hours: number;
   copy: string;
+  longCopy?: string;
   image: string;
 }
 
