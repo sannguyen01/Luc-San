@@ -31,11 +31,12 @@ export function HomeHero() {
         }}
       />
 
-      {/* ── Letterbox — top: fixed 72px = exact header height ── */}
-      <div
-        className="absolute top-0 left-0 right-0 pointer-events-none z-[20]"
-        style={{ height: "72px", backgroundColor: "var(--ls-void-black)" }}
-      />
+      {/*
+        Top letterbox REMOVED.
+        The void-white header forms the top frame universally.
+        Darkness lives in DarkBand content sections, not on the persistent chrome.
+      */}
+
 
       {/* ── Letterbox — bottom + 1px platinum rule at inner top edge ── */}
       <div

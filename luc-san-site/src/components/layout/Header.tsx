@@ -49,8 +49,6 @@ const navItems = [...navigation, { label: "Contact", href: "/contact" }];
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const isHome = pathname === "/";
-
   /* Close on route change */
   useEffect(() => { setOpen(false); }, [pathname]);
 
@@ -70,38 +68,32 @@ export function Header() {
   }, [onKey]);
 
   /*
-    Color: overlay open OR homepage → void-white (dark surface beneath)
-           inner page closed         → void-black (light background)
+    Header: always void-white background, always void-black chrome text.
+    Uniform across homepage and all inner pages — a constant architectural threshold.
+    Darkness belongs inside DarkBand content sections, not on the persistent frame.
   */
-  const chromeColor = (open || isHome)
-    ? "var(--ls-void-white)"
-    : "var(--ls-void-black)";
-
-  /*
-    Background: overlay open → transparent (overlay at z-[55] shows through)
-                homepage     → transparent (hero letterbox at z-[20] shows through)
-                inner page   → solid void-white + border
-  */
-  const headerBg     = (open || isHome) ? "transparent" : "var(--ls-void-white)";
-  const headerBorder = (!open && !isHome) ? "1px solid var(--border-subtle)" : "1px solid transparent";
 
   return (
     <>
-      {/* ── Persistent chrome strip — wordmark + Menu trigger only ── */}
+      {/*
+        ── Persistent chrome strip ──────────────────────────────────────────
+        Always void-white background, always void-black text.
+        Uniform across homepage and all inner pages.
+        ─────────────────────────────────────────────────────────────────────
+      */}
       <header
         className="fixed top-0 left-0 right-0 z-[60]"
         style={{
           height:       "72px",
-          background:   headerBg,
-          borderBottom: headerBorder,
-          transition:   "background 350ms cubic-bezier(0,0,0.58,1), border-color 350ms cubic-bezier(0,0,0.58,1)",
+          background:   "var(--ls-void-white)",
+          borderBottom: "1px solid var(--border-subtle)",
         }}
       >
         <div
           className="relative flex items-center justify-between h-full"
           style={{ padding: "0 clamp(24px, 4vw, 64px)" }}
         >
-          {/* Menu / Close — left */}
+          {/* Menu / Close — left, always void-black */}
           <button
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Close navigation" : "Open navigation"}
@@ -109,15 +101,14 @@ export function Header() {
             aria-controls="nav-overlay"
             className="touch-target text-meta cursor-pointer relative z-[70]"
             style={{
-              color:         chromeColor,
+              color:         "var(--ls-void-black)",
               letterSpacing: "0.18em",
-              transition:    "color 350ms cubic-bezier(0,0,0.58,1)",
             }}
           >
             {open ? "Close" : "Menu"}
           </button>
 
-          {/* Wordmark — absolute center, always above overlay */}
+          {/* Wordmark — absolute center, always void-black */}
           <Link
             href="/"
             onClick={() => setOpen(false)}
@@ -125,14 +116,12 @@ export function Header() {
             style={{
               fontSize:      "1.2rem",
               letterSpacing: "0.25em",
-              color:          chromeColor,
-              transition:     "color 350ms cubic-bezier(0,0,0.58,1)",
+              color:         "var(--ls-void-black)",
             }}
           >
             Lục San
           </Link>
 
-          {/* Right utility slot — reserved */}
           <div aria-hidden="true" style={{ minWidth: "44px" }} />
         </div>
       </header>
@@ -160,7 +149,7 @@ export function Header() {
             >
               {/* Primary nav — large serif, staggered rise */}
               <nav aria-label="Primary navigation">
-                <ul className="flex flex-col" style={{ gap: "clamp(16px, 3vh, 28px)" }}>
+                <ul className="flex flex-col" style={{ gap: "clamp(8px, 2vh, 18px)" }}>
                   {navItems.map((item, i) => {
                     const isActive = pathname === item.href;
                     return (
@@ -176,10 +165,18 @@ export function Header() {
                             href={item.href}
                             className="font-serif block"
                             style={{
-                              fontSize:      "clamp(2.6rem, 7vw, 6rem)",
+                              /*
+                                Desktop nav size — the critical fix.
+                                clamp(1.8rem, 3.5vw, 3.2rem):
+                                  mobile 390px   → 1.8rem = ~29px  ✓ clear
+                                  tablet 768px   → 2.7rem = ~43px  ✓ editorial
+                                  desktop 1280px → 3.2rem = ~51px  ✓ architectural
+                                Previous: clamp(2.6rem, 7vw, 6rem) → 96px on desktop ✗
+                              */
+                              fontSize:      "clamp(1.8rem, 3.5vw, 3.2rem)",
                               fontWeight:    300,
-                              letterSpacing: "0.03em",
-                              lineHeight:    1.1,
+                              letterSpacing: "0.04em",
+                              lineHeight:    1.15,
                               color: isActive
                                 ? "var(--ls-nacre-glow)"
                                 : "var(--ls-void-white)",
