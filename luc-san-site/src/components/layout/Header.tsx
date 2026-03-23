@@ -68,10 +68,14 @@ export function Header() {
   }, [onKey]);
 
   /*
-    Header: always void-white background, always void-black chrome text.
-    Uniform across homepage and all inner pages — a constant architectural threshold.
-    Darkness belongs inside DarkBand content sections, not on the persistent frame.
+    Base: void-white background, void-black chrome — constant, architectural.
+    Open: background shifts to void-black, chrome to void-white —
+          the header merges seamlessly with the descending overlay.
+    350ms ease matches the overlay clip-path duration for one unified motion.
   */
+  const chromeColor = open ? "var(--ls-void-white)" : "var(--ls-void-black)";
+  const headerBg    = open ? "var(--ls-void-black)" : "var(--ls-void-white)";
+  const headerBorder = open ? "1px solid transparent" : "1px solid var(--border-subtle)";
 
   return (
     <>
@@ -85,8 +89,9 @@ export function Header() {
         className="fixed top-0 left-0 right-0 z-[60]"
         style={{
           height:       "72px",
-          background:   "var(--ls-void-white)",
-          borderBottom: "1px solid var(--border-subtle)",
+          background:   headerBg,
+          borderBottom: headerBorder,
+          transition:   "background 350ms cubic-bezier(0,0,0.58,1), border-color 350ms cubic-bezier(0,0,0.58,1)",
         }}
       >
         <div
@@ -101,8 +106,9 @@ export function Header() {
             aria-controls="nav-overlay"
             className="touch-target text-meta cursor-pointer relative z-[70]"
             style={{
-              color:         "var(--ls-void-black)",
+              color:         chromeColor,
               letterSpacing: "0.18em",
+              transition:    "color 350ms cubic-bezier(0,0,0.58,1)",
             }}
           >
             {open ? "Close" : "Menu"}
@@ -116,7 +122,8 @@ export function Header() {
             style={{
               fontSize:      "1.2rem",
               letterSpacing: "0.25em",
-              color:         "var(--ls-void-black)",
+              color:         chromeColor,
+              transition:    "color 350ms cubic-bezier(0,0,0.58,1)",
             }}
           >
             Lục San
