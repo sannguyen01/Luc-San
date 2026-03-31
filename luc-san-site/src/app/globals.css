@@ -38,6 +38,7 @@
   --ls-nacre:          #EDE9E2; /* Pearl body before iridescence. Cards rest here. */
   --ls-nacre-glow:     #E8E4DC; /* Pearl luminescence. Selection, active states.   */
   --ls-ash-drift:      #D5D0C8; /* Platinum cooled by shadow. Skeleton loaders.    */
+  --ls-pale-linen:     #E2DED7; /* Warm section alternation. Three-tone rhythm.    */
   --ls-platinum-flash: #D8D5D0; /* Signature transition — Patina Clock only.       */
   --ls-shadow-silver:  #C2BFBA; /* Borders on dark surfaces. Silver after years.   */
 
@@ -78,10 +79,11 @@
   --foreground: var(--text-primary);
 
   /* ── Motion tokens — geological pacing (unchanged — already correct) ──── */
-  --ease-out:      cubic-bezier(0.00, 0.00, 0.58, 1.00);
-  --ease-in:       cubic-bezier(0.42, 0.00, 1.00, 1.00);
-  --ease-spring:   cubic-bezier(0.00, 0.00, 0.30, 1.00);
-  --ease-material: cubic-bezier(0.22, 1.00, 0.36, 1.00); /* Patina Clock */
+  --ease-out:        cubic-bezier(0.00, 0.00, 0.58, 1.00);
+  --ease-in:         cubic-bezier(0.42, 0.00, 1.00, 1.00);
+  --ease-spring:     cubic-bezier(0.00, 0.00, 0.30, 1.00);
+  --ease-geological: cubic-bezier(0.00, 0.00, 0.30, 1.00); /* Objects settle; they do not perform */
+  --ease-material:   cubic-bezier(0.22, 1.00, 0.36, 1.00); /* Patina Clock */
 
   --duration-fast:   200ms;
   --duration-base:   350ms;
@@ -104,6 +106,7 @@
 
   /* Narrative tokens exposed to Tailwind utilities */
   --color-void-white:     var(--ls-void-white);
+  --color-pale-linen:     var(--ls-pale-linen);
   --color-nacre:          var(--ls-nacre);
   --color-nacre-glow:     var(--ls-nacre-glow);
   --color-ash-drift:      var(--ls-ash-drift);
@@ -494,6 +497,48 @@ a:hover { color: var(--ls-ink-deep); }
   @media screen and (max-width: 767px) {
     input, select, textarea { font-size: 16px; }
   }
+}
+
+
+/* CUSTOM CURSOR ──────────────────────────────────────────────────────────────
+   24px disc in --ls-platinum-ring. Expands to 48px ring on image hover.
+   Disabled on touch devices and prefers-reduced-motion.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+@media (hover: hover) and (pointer: fine) {
+  body { cursor: none; }
+  a, button, [role="button"] { cursor: none; }
+}
+
+.cursor-dot {
+  position:       fixed;
+  top:            0; left: 0;
+  width:          24px; height: 24px;
+  border-radius:  50%;
+  background:     var(--ls-platinum-flash);
+  pointer-events: none;
+  z-index:        9999;
+  transform:      translate(-50%, -50%);
+  transition:     width 0.4s cubic-bezier(0,0,0.30,1),
+                  height 0.4s cubic-bezier(0,0,0.30,1),
+                  background 0.4s cubic-bezier(0,0,0.30,1),
+                  border 0.4s cubic-bezier(0,0,0.30,1);
+  will-change:    transform;
+}
+
+.cursor-dot.is-image {
+  width:      48px; height: 48px;
+  background: transparent;
+  border:     1px solid var(--ls-platinum-flash);
+}
+
+.cursor-dot.is-link {
+  width:      16px; height: 16px;
+  background: var(--ls-graphite-skin);
+}
+
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot { display: none; }
 }
 
 

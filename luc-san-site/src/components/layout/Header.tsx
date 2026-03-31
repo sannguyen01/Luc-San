@@ -6,7 +6,7 @@ import { useState, useEffect, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { navigation } from "@/config/navigation";
 
-/* ── Dior-pattern: overlay descends via clipPath ── */
+/* ── Overlay descends via clipPath — Dior technique ── */
 const OVERLAY_VARIANTS = {
   hidden: {
     clipPath: "inset(0 0 100% 0)",
@@ -26,7 +26,6 @@ const OVERLAY_VARIANTS = {
   },
 };
 
-/* Staggered nav items rise from overflow-hidden clips */
 const ITEM_VARIANTS = {
   hidden: { y: "108%", opacity: 0 },
   visible: (i: number) => ({
@@ -44,21 +43,28 @@ const ITEM_VARIANTS = {
   },
 };
 
-const navItems = [...navigation, { label: "Contact", href: "/contact" }];
-
 export function Header() {
-  const pathname = usePathname();
-  const [open, setOpen] = useState(false);
-  /* Close on route change */
+  const pathname  = usePathname();
+  const [open,    setOpen]    = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  /* Close overlay on route change */
   useEffect(() => { setOpen(false); }, [pathname]);
 
-  /* Lock body scroll while open */
+  /* Scroll awareness — blur backdrop after 60px */
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  /* Lock body scroll while overlay open */
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
-  /* ESC key closes */
+  /* ESC closes */
   const onKey = useCallback((e: KeyboardEvent) => {
     if (e.key === "Escape") setOpen(false);
   }, []);
@@ -67,73 +73,96 @@ export function Header() {
     return () => window.removeEventListener("keydown", onKey);
   }, [onKey]);
 
-  /*
-    Base: void-white background, void-black chrome — constant, architectural.
-    Open: background shifts to void-black, chrome to void-white —
-          the header merges seamlessly with the descending overlay.
-    350ms ease matches the overlay clip-path duration for one unified motion.
-  */
-  const chromeColor = open ? "var(--ls-void-white)" : "var(--ls-void-black)";
-  const headerBg    = open ? "var(--ls-void-black)" : "var(--ls-void-white)";
-  const headerBorder = open ? "1px solid transparent" : "1px solid var(--border-subtle)";
+  const chromeColor   = open ? "var(--ls-void-white)" : "var(--ls-void-black)";
+  const headerBg      = open
+    ? "var(--ls-void-black)"
+    : scrolled
+      ? "rgba(247,245,241,0.85)"
+      : "transparent";
+  const headerBlur    = !open && scrolled ? "blur(12px)" : "none";
+  const headerBorder  = open
+    ? "1px solid transparent"
+    : scrolled
+      ? "1px solid var(--border-subtle)"
+      : "1px solid transparent";
 
   return (
     <>
-      {/*
-        ── Persistent chrome strip ──────────────────────────────────────────
-        Always void-white background, always void-black text.
-        Uniform across homepage and all inner pages.
-        ─────────────────────────────────────────────────────────────────────
-      */}
       <header
         className="fixed top-0 left-0 right-0 z-[60]"
         style={{
           height:       "72px",
           background:   headerBg,
+          backdropFilter: headerBlur,
+          WebkitBackdropFilter: headerBlur,
           borderBottom: headerBorder,
-          transition:   "background 350ms cubic-bezier(0,0,0.58,1), border-color 350ms cubic-bezier(0,0,0.58,1)",
+          transition:   "background 400ms cubic-bezier(0,0,0.30,1), border-color 400ms cubic-bezier(0,0,0.30,1)",
         }}
       >
         <div
           className="relative flex items-center justify-between h-full"
           style={{ padding: "0 clamp(24px, 4vw, 64px)" }}
         >
-          {/* Menu / Close — left, always void-black */}
-          <button
-            onClick={() => setOpen((v) => !v)}
-            aria-label={open ? "Close navigation" : "Open navigation"}
-            aria-expanded={open}
-            aria-controls="nav-overlay"
-            className="touch-target text-meta cursor-pointer relative z-[70]"
-            style={{
-              color:         chromeColor,
-              letterSpacing: "0.18em",
-              transition:    "color 350ms cubic-bezier(0,0,0.58,1)",
-            }}
-          >
-            {open ? "Close" : "Menu"}
-          </button>
-
-          {/* Wordmark — absolute center, always void-black */}
+          {/* ── Wordmark — left, always ── */}
           <Link
             href="/"
             onClick={() => setOpen(false)}
-            className="absolute left-1/2 -translate-x-1/2 font-serif uppercase z-[70]"
+            className="font-serif uppercase z-[70]"
             style={{
-              fontSize:      "1.2rem",
+              fontSize:      "1.1rem",
               letterSpacing: "0.25em",
+              fontWeight:    300,
               color:         chromeColor,
-              transition:    "color 350ms cubic-bezier(0,0,0.58,1)",
+              transition:    "color 400ms cubic-bezier(0,0,0.30,1)",
             }}
           >
             Lục San
           </Link>
 
-          <div aria-hidden="true" style={{ minWidth: "44px" }} />
+          {/* ── Desktop nav — three text links, right ── */}
+          <nav
+            className="hidden md:flex items-center z-[70]"
+            aria-label="Primary navigation"
+            style={{ gap: "clamp(24px, 3vw, 48px)" }}
+          >
+            {navigation.map((item) => {
+              const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="link-nav text-meta"
+                  data-active={isActive ? "true" : undefined}
+                  style={{
+                    color:         isActive ? "var(--ls-void-black)" : chromeColor,
+                    transition:    "color 400ms cubic-bezier(0,0,0.30,1)",
+                  }}
+                >
+                  {item.label.toUpperCase()}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* ── Mobile menu toggle — right, md:hidden ── */}
+          <button
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? "Close navigation" : "Open navigation"}
+            aria-expanded={open}
+            aria-controls="nav-overlay"
+            className="md:hidden touch-target text-meta cursor-pointer z-[70]"
+            style={{
+              color:         chromeColor,
+              letterSpacing: "0.18em",
+              transition:    "color 400ms cubic-bezier(0,0,0.30,1)",
+            }}
+          >
+            {open ? "Close" : "Menu"}
+          </button>
         </div>
       </header>
 
-      {/* ── Full-viewport overlay — Dior descent technique ── */}
+      {/* ── Mobile full-viewport overlay ── */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -146,19 +175,17 @@ export function Header() {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="fixed inset-0 z-[55] flex flex-col"
+            className="fixed inset-0 z-[55] flex flex-col md:hidden"
             style={{ backgroundColor: "var(--ls-void-black)" }}
           >
-            {/* Inner layout — vertically centered editorial column */}
             <div
               className="flex flex-col justify-center h-full"
               style={{ padding: "96px clamp(24px, 4vw, 64px) 64px" }}
             >
-              {/* Primary nav — large serif, staggered rise */}
-              <nav aria-label="Primary navigation">
+              <nav aria-label="Mobile navigation">
                 <ul className="flex flex-col" style={{ gap: "clamp(8px, 2vh, 18px)" }}>
-                  {navItems.map((item, i) => {
-                    const isActive = pathname === item.href;
+                  {navigation.map((item, i) => {
+                    const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
                     return (
                       <li key={item.href} className="overflow-hidden">
                         <motion.div
@@ -172,31 +199,15 @@ export function Header() {
                             href={item.href}
                             className="font-serif block"
                             style={{
-                              /*
-                                Desktop nav size — the critical fix.
-                                clamp(1.8rem, 3.5vw, 3.2rem):
-                                  mobile 390px   → 1.8rem = ~29px  ✓ clear
-                                  tablet 768px   → 2.7rem = ~43px  ✓ editorial
-                                  desktop 1280px → 3.2rem = ~51px  ✓ architectural
-                                Previous: clamp(2.6rem, 7vw, 6rem) → 96px on desktop ✗
-                              */
                               fontSize:      "clamp(1.8rem, 3.5vw, 3.2rem)",
                               fontWeight:    300,
                               letterSpacing: "0.04em",
                               lineHeight:    1.15,
-                              color: isActive
-                                ? "var(--ls-nacre-glow)"
-                                : "var(--ls-void-white)",
-                              transition: "color 250ms ease",
+                              color: isActive ? "var(--ls-nacre-glow)" : "var(--ls-void-white)",
+                              transition:    "color 250ms ease",
                             }}
-                            onMouseEnter={(e) =>
-                              (e.currentTarget.style.color = "var(--ls-ash-drift)")
-                            }
-                            onMouseLeave={(e) =>
-                              (e.currentTarget.style.color = isActive
-                                ? "var(--ls-nacre-glow)"
-                                : "var(--ls-void-white)")
-                            }
+                            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--ls-ash-drift)")}
+                            onMouseLeave={(e) => (e.currentTarget.style.color = isActive ? "var(--ls-nacre-glow)" : "var(--ls-void-white)")}
                           >
                             {item.label}
                           </Link>
@@ -207,7 +218,6 @@ export function Header() {
                 </ul>
               </nav>
 
-              {/* Footer strip — material taxonomy + city */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1, transition: { delay: 0.75, duration: 0.6 } }}

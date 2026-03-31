@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Montserrat } from "next/font/google";
+import { Cormorant_Garamond, Jost } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -12,9 +13,9 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
 });
 
-const montserrat = Montserrat({
+const jost = Jost({
   variable: "--font-sans",
-  subsets: ["latin", "vietnamese"],
+  subsets: ["latin"],
   weight: ["300", "400", "500"],
   display: "swap",
 });
@@ -38,8 +39,9 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${montserrat.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${jost.variable}`}>
       <body className="antialiased">
+        <CustomCursor />
         <Header />
         <main>{children}</main>
         <Footer />

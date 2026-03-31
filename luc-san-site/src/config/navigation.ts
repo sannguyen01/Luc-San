@@ -1,8 +1,7 @@
 export const navigation = [
-  { label: "World", href: "/" },
-  { label: "Objects", href: "/objects" },
-  { label: "Materials", href: "/materials" },
-  { label: "Spaces", href: "/spaces" },
+  { label: "Talismans", href: "/talismans" },
+  { label: "Atelier",   href: "/atelier"   },
+  { label: "Commission", href: "/commission" },
 ] as const;
 
 export type NavItem = (typeof navigation)[number];
