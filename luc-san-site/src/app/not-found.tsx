@@ -21,8 +21,8 @@ export default function NotFound() {
           Like geological formations, some things cannot be found on demand.
           Return to what is here.
         </p>
-        <Link href="/objects" className="link-pathway">
-          View all objects
+        <Link href="/talismans" className="link-pathway">
+          View the collection
         </Link>
       </div>
     </PageContainer>

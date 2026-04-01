@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Jost } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { PageTransition } from "@/components/ui/PageTransition";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -43,7 +44,9 @@ export default function RootLayout({
       <body className="antialiased">
         <CustomCursor />
         <Header />
-        <main>{children}</main>
+        <main>
+          <PageTransition>{children}</PageTransition>
+        </main>
         <Footer />
       </body>
     </html>

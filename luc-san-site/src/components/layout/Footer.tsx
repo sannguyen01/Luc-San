@@ -34,7 +34,7 @@ export function Footer() {
 
           <nav>
             <ul className="flex flex-wrap" style={{ gap: "clamp(20px, 3vw, 40px)" }}>
-              {[...navigation, { label: "Contact", href: "/contact" }].map((item) => (
+              {[...navigation, { label: "Biography", href: "/biography/luc-san" }].map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="footer-nav-link">
                     {item.label}
