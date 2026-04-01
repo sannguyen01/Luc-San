@@ -8,7 +8,7 @@ export interface Biography {
   name: string;
   role: string;
   location: string;
-  born: string;
+  established: string;
   statement: string;
   audioSrc?: string;
   portrait: string;

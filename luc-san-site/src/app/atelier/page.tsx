@@ -344,10 +344,10 @@ export default function AtelierPage() {
               marginBottom: "var(--space-1000)",
             }}
           >
-            Trần Lục San — Imaginator
+            Lục San
           </p>
           <Link
-            href="/biography/tran-luc-san"
+            href="/biography/luc-san"
             className="link-pathway"
           >
             Biography of the imaginator

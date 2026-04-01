@@ -114,7 +114,7 @@ export default async function BiographyPage({ params }: Props) {
             {bio.name}
           </h1>
           <p className="text-caption" style={{ color: "var(--ls-slate-haze)" }}>
-            {bio.location} · b. {bio.born}
+            {bio.location} · est. {bio.established}
           </p>
         </div>
       </section>

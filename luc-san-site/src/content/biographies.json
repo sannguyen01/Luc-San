@@ -1,46 +1,38 @@
 [
   {
-    "id": "tran-luc-san",
-    "name": "Trần Lục San",
-    "role": "Imaginator",
-    "location": "Hội An, Quảng Nam Province",
-    "born": "1978",
-    "statement": "I do not design. I read. The stone arrives with a direction already written into it. My task is to find that direction and not interrupt it.",
-    "audioSrc": "/audio/tran-luc-san-statement.mp3",
-    "portrait": "/images/biography/tran-luc-san.jpg",
-    "philosophy": "Every material carries a formation narrative — a record of the conditions that produced it. A piece of jade formed forty million years ago under tectonic pressure. Amber is a forest afternoon preserved in suspension. A baroque pearl is nineteen years of an animal's fluctuating experience, written in nacre. When I work with these materials, I am not imposing a form. I am reading the form that pressure and time have already determined, and removing whatever was in the way.",
+    "id": "luc-san",
+    "name": "Lục San",
+    "role": "A practice",
+    "location": "Hội An, Vietnam",
+    "established": "2012",
+    "statement": "The material arrives with a direction already written into it. The practice exists to find that direction, and not interrupt it.",
+    "audioSrc": "/audio/luc-san-statement.mp3",
+    "portrait": "/images/biography/luc-san-workshop.jpg",
+    "philosophy": "Every material carries a formation narrative — a record of the conditions that produced it. Jade formed forty million years ago under tectonic pressure. Amber is a forest afternoon preserved in suspension. A baroque pearl is nineteen years of a mussel's fluctuating experience, written in nacre. The practice of Lục San does not impose form onto these materials. It reads the form that pressure and time have already determined, and removes whatever stands between the material's origin and its final state.",
     "timeline": [
       {
-        "year": "1978",
-        "event": "Born in Hội An, Quảng Nam Province."
-      },
-      {
         "year": "1996",
-        "event": "Began study of traditional Vietnamese metalwork under goldsmith Nguyễn Văn Hào. Learned forging before casting — hammer before mold."
+        "event": "Study of traditional Vietnamese metalwork began under goldsmith Nguyễn Văn Hào in Hội An. Forging before casting — hammer before mold."
       },
       {
         "year": "2001",
-        "event": "First encounter with nephrite jade from British Columbia. Spent four months learning to read the stone's internal fibre orientation before making a single mark."
+        "event": "First encounter with nephrite jade sourced from British Columbia. Four months spent reading the stone's internal fibre orientation before a single mark was made."
       },
       {
         "year": "2004",
-        "event": "Completed the first commissioned object: a jade disc pendant for a collector in Hà Nội. The piece took fourteen months from first material contact to delivery."
+        "event": "First commissioned object: a jade disc pendant for a collector in Hà Nội. Fourteen months from first material contact to delivery."
       },
       {
         "year": "2009",
-        "event": "Completed GIA gemological certification. The course confirmed what four years of material reading had already established: authentication is observation, not documentation."
+        "event": "GIA gemological certification completed. The course confirmed what years of material reading had already established: authentication is observation, not documentation."
       },
       {
         "year": "2012",
-        "event": "Established the workshop at 43 Trần Phú, Hội An. Named it nothing. Called it the atelier, lowercase."
+        "event": "The workshop established at 43 Trần Phú, Hội An. Named Lục San — green mountain — after the colour of aged nephrite held in strong afternoon light."
       },
       {
         "year": "2015",
         "event": "First baroque pearl acquisition from Guangdong Province, after three years of correspondence with the farm. Waited for a specific formation — asymmetric, nucleated without bead insertion, AAA luster."
-      },
-      {
-        "year": "2019",
-        "event": "Named the practice Lục San — green mountain — after the colour of aged nephrite held in strong afternoon light. The name had been waiting since 2001."
       },
       {
         "year": "2022",
