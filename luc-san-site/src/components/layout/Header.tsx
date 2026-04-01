@@ -44,8 +44,8 @@ const ITEM_VARIANTS = {
 };
 
 export function Header() {
-  const pathname  = usePathname();
-  const [open,    setOpen]    = useState(false);
+  const pathname   = usePathname();
+  const [open,     setOpen]     = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   /* Close overlay on route change */
@@ -73,14 +73,14 @@ export function Header() {
     return () => window.removeEventListener("keydown", onKey);
   }, [onKey]);
 
-  const chromeColor   = open ? "var(--ls-void-white)" : "var(--ls-void-black)";
-  const headerBg      = open
+  const chromeColor  = open ? "var(--ls-void-white)" : "var(--ls-void-black)";
+  const headerBg     = open
     ? "var(--ls-void-black)"
     : scrolled
       ? "rgba(247,245,241,0.85)"
       : "transparent";
-  const headerBlur    = !open && scrolled ? "blur(12px)" : "none";
-  const headerBorder  = open
+  const headerBlur   = !open && scrolled ? "blur(12px)" : "none";
+  const headerBorder = open
     ? "1px solid transparent"
     : scrolled
       ? "1px solid var(--border-subtle)"
@@ -91,39 +91,24 @@ export function Header() {
       <header
         className="fixed top-0 left-0 right-0 z-[60]"
         style={{
-          height:       "72px",
-          background:   headerBg,
-          backdropFilter: headerBlur,
+          height:           "72px",
+          background:       headerBg,
+          backdropFilter:   headerBlur,
           WebkitBackdropFilter: headerBlur,
-          borderBottom: headerBorder,
-          transition:   "background 400ms cubic-bezier(0,0,0.30,1), border-color 400ms cubic-bezier(0,0,0.30,1)",
+          borderBottom:     headerBorder,
+          transition:       "background 400ms cubic-bezier(0,0,0.30,1), border-color 400ms cubic-bezier(0,0,0.30,1)",
         }}
       >
         <div
-          className="relative flex items-center justify-between h-full"
+          className="relative flex items-center h-full"
           style={{ padding: "0 clamp(24px, 4vw, 64px)" }}
         >
-          {/* ── Wordmark — left, always ── */}
-          <Link
-            href="/"
-            onClick={() => setOpen(false)}
-            className="font-serif uppercase z-[70]"
-            style={{
-              fontSize:      "1.1rem",
-              letterSpacing: "0.25em",
-              fontWeight:    300,
-              color:         chromeColor,
-              transition:    "color 400ms cubic-bezier(0,0,0.30,1)",
-            }}
-          >
-            Lục San
-          </Link>
 
-          {/* ── Desktop nav — three text links, right ── */}
+          {/* ── LEFT: desktop nav links ── */}
           <nav
             className="hidden md:flex items-center z-[70]"
             aria-label="Primary navigation"
-            style={{ gap: "clamp(24px, 3vw, 48px)" }}
+            style={{ gap: "clamp(20px, 2.5vw, 40px)" }}
           >
             {navigation.map((item) => {
               const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
@@ -134,8 +119,8 @@ export function Header() {
                   className="link-nav text-meta"
                   data-active={isActive ? "true" : undefined}
                   style={{
-                    color:         isActive ? "var(--ls-void-black)" : chromeColor,
-                    transition:    "color 400ms cubic-bezier(0,0,0.30,1)",
+                    color:      isActive ? "var(--ls-void-black)" : chromeColor,
+                    transition: "color 400ms cubic-bezier(0,0,0.30,1)",
                   }}
                 >
                   {item.label.toUpperCase()}
@@ -144,7 +129,7 @@ export function Header() {
             })}
           </nav>
 
-          {/* ── Mobile menu toggle — right, md:hidden ── */}
+          {/* ── LEFT: mobile menu toggle ── */}
           <button
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Close navigation" : "Open navigation"}
@@ -159,6 +144,27 @@ export function Header() {
           >
             {open ? "Close" : "Menu"}
           </button>
+
+          {/* ── CENTER: wordmark — absolutely positioned so it's always viewport-centered ── */}
+          <Link
+            href="/"
+            onClick={() => setOpen(false)}
+            className="font-serif uppercase z-[70]"
+            style={{
+              position:      "absolute",
+              left:          "50%",
+              transform:     "translateX(-50%)",
+              fontSize:      "1.1rem",
+              letterSpacing: "0.25em",
+              fontWeight:    300,
+              color:         chromeColor,
+              transition:    "color 400ms cubic-bezier(0,0,0.30,1)",
+              whiteSpace:    "nowrap",
+            }}
+          >
+            Lục San
+          </Link>
+
         </div>
       </header>
 
