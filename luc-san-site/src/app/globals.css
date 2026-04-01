@@ -605,6 +605,12 @@ a:hover { color: var(--ls-ink-deep); }
 }
 
 
+/* FABRICATION TIMELINE ──────────────────────────────────────────────────── */
+
+.timeline-scroll::-webkit-scrollbar { display: none; }
+.timeline-scroll { scrollbar-width: none; -ms-overflow-style: none; }
+
+
 /* RESPONSIVE BREAKPOINTS
    Mobile: < 768px | Tablet: 768–1023 | Desktop: 1024+ | Wide: 1440+
    ─────────────────────────────────────────────────────────────────────────── */

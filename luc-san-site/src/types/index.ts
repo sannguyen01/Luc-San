@@ -18,3 +18,28 @@ export interface Material {
   temporal: string;
   image: string;
 }
+
+export type TalismanTier = "Elemental" | "Composed" | "Complex" | "Commissioned";
+
+export interface Talisman {
+  id: string;
+  tier: TalismanTier;
+  title: string;
+  materials: string[];
+  hours: number;
+  copy: string;
+  longCopy: string;
+  image: string;
+  // Geological genesis
+  formation: string;
+  era: string;
+  provenance: string;
+  authentication: string;
+  // Fabrication
+  processImages: string[];
+  // Cultural fragment
+  culturalQuote: string;
+  culturalAttribution: string;
+  // Lifecycle
+  patina: string;
+}
