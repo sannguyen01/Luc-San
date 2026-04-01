@@ -611,6 +611,18 @@ a:hover { color: var(--ls-ink-deep); }
 .timeline-scroll { scrollbar-width: none; -ms-overflow-style: none; }
 
 
+/* Toteme-pattern: strict 3-column grid */
+.layout-grid-3 {
+  display:               grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:                   var(--layout-gutter);
+}
+
+@media (max-width: 768px) {
+  .layout-grid-3 { grid-template-columns: 1fr; }
+}
+
+
 /* RESPONSIVE BREAKPOINTS
    Mobile: < 768px | Tablet: 768–1023 | Desktop: 1024+ | Wide: 1440+
    ─────────────────────────────────────────────────────────────────────────── */

@@ -1,3 +1,22 @@
+export interface BiographyTimelineEntry {
+  year: string;
+  event: string;
+}
+
+export interface Biography {
+  id: string;
+  name: string;
+  role: string;
+  location: string;
+  born: string;
+  statement: string;
+  audioSrc?: string;
+  portrait: string;
+  philosophy: string;
+  timeline: BiographyTimelineEntry[];
+  works: string[]; // talisman IDs
+}
+
 export interface LucSanObject {
   id: string;
   tier: "Elemental" | "Composed" | "Complex" | "Commissioned";

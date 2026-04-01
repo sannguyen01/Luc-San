@@ -1,0 +1,58 @@
+[
+  {
+    "id": "tran-luc-san",
+    "name": "Trần Lục San",
+    "role": "Imaginator",
+    "location": "Hội An, Quảng Nam Province",
+    "born": "1978",
+    "statement": "I do not design. I read. The stone arrives with a direction already written into it. My task is to find that direction and not interrupt it.",
+    "audioSrc": "/audio/tran-luc-san-statement.mp3",
+    "portrait": "/images/biography/tran-luc-san.jpg",
+    "philosophy": "Every material carries a formation narrative — a record of the conditions that produced it. A piece of jade formed forty million years ago under tectonic pressure. Amber is a forest afternoon preserved in suspension. A baroque pearl is nineteen years of an animal's fluctuating experience, written in nacre. When I work with these materials, I am not imposing a form. I am reading the form that pressure and time have already determined, and removing whatever was in the way.",
+    "timeline": [
+      {
+        "year": "1978",
+        "event": "Born in Hội An, Quảng Nam Province."
+      },
+      {
+        "year": "1996",
+        "event": "Began study of traditional Vietnamese metalwork under goldsmith Nguyễn Văn Hào. Learned forging before casting — hammer before mold."
+      },
+      {
+        "year": "2001",
+        "event": "First encounter with nephrite jade from British Columbia. Spent four months learning to read the stone's internal fibre orientation before making a single mark."
+      },
+      {
+        "year": "2004",
+        "event": "Completed the first commissioned object: a jade disc pendant for a collector in Hà Nội. The piece took fourteen months from first material contact to delivery."
+      },
+      {
+        "year": "2009",
+        "event": "Completed GIA gemological certification. The course confirmed what four years of material reading had already established: authentication is observation, not documentation."
+      },
+      {
+        "year": "2012",
+        "event": "Established the workshop at 43 Trần Phú, Hội An. Named it nothing. Called it the atelier, lowercase."
+      },
+      {
+        "year": "2015",
+        "event": "First baroque pearl acquisition from Guangdong Province, after three years of correspondence with the farm. Waited for a specific formation — asymmetric, nucleated without bead insertion, AAA luster."
+      },
+      {
+        "year": "2019",
+        "event": "Named the practice Lục San — green mountain — after the colour of aged nephrite held in strong afternoon light. The name had been waiting since 2001."
+      },
+      {
+        "year": "2022",
+        "event": "First public collection: five objects shown without prices at a private viewing in Hội An. Every piece found a keeper within two days of opening."
+      }
+    ],
+    "works": [
+      "jade-disc-pendant",
+      "baroque-pearl-suspension-i",
+      "amber-drop-earrings",
+      "pearl-constellation-collar",
+      "jade-cuff-open"
+    ]
+  }
+]
