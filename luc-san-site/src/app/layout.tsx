@@ -43,11 +43,26 @@ export default function RootLayout({
     <html lang="en" className={`${cormorant.variable} ${jost.variable}`}>
       <body className="antialiased">
         <CustomCursor />
-        <Header />
-        <main>
-          <PageTransition>{children}</PageTransition>
-        </main>
-        <Footer />
+        {/*
+          Shell: Header (fixed left rail on desktop, fixed top bar on mobile)
+          + a spacer div that reserves 200px in normal flow for the rail on desktop
+          + the offset content column (main + footer)
+        */}
+        <div style={{ display: "flex" }}>
+          <Header />
+          {/* Spacer mirrors the 200px fixed rail — invisible, layout-only */}
+          <div
+            className="hidden md:block"
+            style={{ width: "200px", flexShrink: 0 }}
+            aria-hidden="true"
+          />
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <main>
+              <PageTransition>{children}</PageTransition>
+            </main>
+            <Footer />
+          </div>
+        </div>
       </body>
     </html>
   );
