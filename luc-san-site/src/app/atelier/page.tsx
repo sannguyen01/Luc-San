@@ -115,7 +115,7 @@ export default function AtelierPage() {
               maxWidth: "34rem",
             }}
           >
-            Hội An, Vietnam. The school of Lục San produces objects from
+            The school of Lục San produces objects from
             geological materials — jade, pearl, amber, bronze — according to a
             single method: read first, intervene last.
           </p>

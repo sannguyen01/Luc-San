@@ -54,7 +54,7 @@ export default function ActIV() {
           className="text-label"
           style={{ color: "var(--ls-slate-haze)" }}
         >
-          Trần Lục San — on temporal disproportion
+          on temporal disproportion
         </p>
       </div>
     </section>

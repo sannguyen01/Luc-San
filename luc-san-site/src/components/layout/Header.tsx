@@ -206,7 +206,6 @@ export function Header() {
             >
               <p className="text-meta" style={{ color: "var(--ls-graphite-skin)" }}>Pearl · Jade</p>
               <p className="text-meta" style={{ color: "var(--ls-graphite-skin)" }}>Amber · Wood</p>
-              <p className="text-meta" style={{ color: "var(--ls-graphite-skin)", marginTop: "4px" }}>Hà Nội</p>
             </motion.div>
           )}
         </AnimatePresence>
@@ -369,9 +368,6 @@ export function Header() {
             >
               <p className="text-meta" style={{ color: "var(--ls-graphite-skin)" }}>
                 Pearl · Jade · Amber · Wood
-              </p>
-              <p className="text-meta" style={{ color: "var(--ls-graphite-skin)" }}>
-                Hà Nội
               </p>
             </motion.div>
           </motion.div>

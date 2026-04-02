@@ -67,7 +67,7 @@ export function Footer() {
             className="text-label"
             style={{ color: "var(--text-tertiary)", fontStyle: "italic", textTransform: "none", letterSpacing: "0.04em" }}
           >
-            Hà Nội, Việt Nam
+            Pearl · Jade · Amber · Wood
           </p>
         </div>
 
