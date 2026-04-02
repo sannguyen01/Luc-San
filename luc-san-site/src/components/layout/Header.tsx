@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { navigation } from "@/config/navigation";
 
@@ -56,6 +57,10 @@ export function Header() {
   const pathname   = usePathname();
   const [open,     setOpen]     = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted,  setMounted]  = useState(false);
+
+  /* SSR safety — portal needs document.body */
+  useEffect(() => { setMounted(true); }, []);
 
   /* Route change → close overlay */
   useEffect(() => { setOpen(false); }, [pathname]);
@@ -93,10 +98,105 @@ export function Header() {
   const chromeText   = open ? "var(--ls-void-white)" : "var(--ls-void-black)";
   const activeText   = open ? "var(--ls-nacre-glow)" : "var(--ls-void-black)";
 
+  /* ── Portal overlay — rendered to document.body to escape PageTransition's
+     will-change: transform containing block. z-[100] < chrome z-[110].     */
+  const overlay = (
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          id="nav-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Site navigation"
+          key="nav-overlay"
+          variants={OVERLAY_VARIANTS}
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          className="ls-nav-overlay"
+        >
+          <div className="ls-nav-overlay__inner">
+            {/* Left — staggered nav links */}
+            <nav className="ls-nav-overlay__nav" aria-label="Site navigation">
+              <ul className="flex flex-col" style={{ gap: "clamp(8px, 2vh, 18px)" }}>
+                {navigation.map((item, i) => {
+                  const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
+                  return (
+                    <li key={item.href} className="overflow-hidden">
+                      <motion.div
+                        custom={i}
+                        variants={ITEM_VARIANTS}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                      >
+                        <Link
+                          href={item.href}
+                          className="font-serif block"
+                          style={{
+                            fontSize:      "clamp(1.8rem, 4vw, 3.8rem)",
+                            fontWeight:    300,
+                            letterSpacing: "0.04em",
+                            lineHeight:    1.15,
+                            color:         isActive ? "var(--ls-nacre-glow)" : "var(--ls-void-white)",
+                            transition:    "color 250ms ease",
+                          }}
+                          onMouseEnter={(e) => (e.currentTarget.style.color = "var(--ls-ash-drift)")}
+                          onMouseLeave={(e) => (e.currentTarget.style.color = isActive ? "var(--ls-nacre-glow)" : "var(--ls-void-white)")}
+                        >
+                          {item.label}
+                        </Link>
+                      </motion.div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+
+            {/* Right — NAVIGATION vertical structural label (Kalyss convention) */}
+            <motion.div
+              className="flex items-center"
+              style={{ paddingLeft: "clamp(16px, 3vw, 48px)" }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { delay: 0.55, duration: 0.7 } }}
+              exit={{ opacity: 0 }}
+            >
+              <span
+                className="text-meta"
+                style={{
+                  color:         "var(--ls-graphite-skin)",
+                  writingMode:   "vertical-rl",
+                  transform:     "rotate(180deg)",
+                  letterSpacing: "0.22em",
+                  userSelect:    "none",
+                }}
+              >
+                NAVIGATION
+              </span>
+            </motion.div>
+          </div>
+
+          {/* Overlay footer — provenance */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { delay: 0.75, duration: 0.6 } }}
+            exit={{ opacity: 0 }}
+            className="absolute bottom-0 left-0 right-0 flex items-center justify-between"
+            style={{ padding: "0 clamp(24px, 4vw, 64px) clamp(28px, 4vh, 44px)" }}
+          >
+            <p className="text-meta" style={{ color: "var(--ls-graphite-skin)" }}>
+              Pearl · Jade · Amber · Wood
+            </p>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+
   return (
     <>
       {/* ════════════════════════════════════════════════════════════════
-          DESKTOP CHROME — fixed left rail (md+)           z-[60]
+          DESKTOP CHROME — fixed left rail (md+)           z-[110]
           Resting: wordmark top · nav middle · provenance bottom
           Open:    collapses to thin strip — toggle + wordmark only
           ════════════════════════════════════════════════════════════════ */}
@@ -108,7 +208,7 @@ export function Header() {
           top: 0, left: 0,
           width:                "200px",
           height:               "100dvh",
-          zIndex:               60,
+          zIndex:               110,
           flexDirection:        "column",
           justifyContent:       "space-between",
           background:           chromeBg,
@@ -212,7 +312,7 @@ export function Header() {
       </header>
 
       {/* ════════════════════════════════════════════════════════════════
-          MOBILE CHROME — fixed 64px top bar (below md)    z-[60]
+          MOBILE CHROME — fixed 64px top bar (below md)    z-[110]
           Identical chrome logic, horizontal orientation
           ════════════════════════════════════════════════════════════════ */}
       <header
@@ -220,7 +320,7 @@ export function Header() {
         aria-label="Site header mobile"
         style={{
           height:               "64px",
-          zIndex:               60,
+          zIndex:               110,
           background:           chromeBg,
           backdropFilter:       chromeBlur,
           WebkitBackdropFilter: chromeBlur,
@@ -262,7 +362,7 @@ export function Header() {
             color:         chromeText,
             transition:    "color 400ms cubic-bezier(0,0,0.30,1)",
             whiteSpace:    "nowrap",
-            zIndex:        70,
+            zIndex:        120,
           }}
         >
           Lục San
@@ -270,109 +370,11 @@ export function Header() {
       </header>
 
       {/* ════════════════════════════════════════════════════════════════
-          UNIVERSAL OVERLAY — no md:hidden — renders on ALL viewports
-          Desktop: descends over rail + content simultaneously
-          Mobile:  descends over full screen from top bar
-          z-[55]: above page content · below both chrome strips (z-60)
+          UNIVERSAL OVERLAY — portalled to document.body
+          Escapes PageTransition's will-change: transform containing block.
+          z-[100]: below both chrome strips (z-110)
           ════════════════════════════════════════════════════════════════ */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            id="nav-overlay"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Site navigation"
-            key="nav-overlay"
-            variants={OVERLAY_VARIANTS}
-            initial="hidden"
-            animate="visible"
-            exit="hidden"
-            className="fixed inset-0 z-[55]"
-            style={{ backgroundColor: "var(--ls-void-black)" }}
-          >
-            {/* Two-column layout — nav left, structural label right */}
-            <div
-              className="flex h-full"
-              style={{ padding: "clamp(80px,12vh,120px) clamp(24px,4vw,64px) 64px" }}
-            >
-              {/* Left — staggered nav links */}
-              <nav
-                className="flex-1 flex flex-col justify-center"
-                aria-label="Site navigation"
-              >
-                <ul className="flex flex-col" style={{ gap: "clamp(8px, 2vh, 18px)" }}>
-                  {navigation.map((item, i) => {
-                    const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
-                    return (
-                      <li key={item.href} className="overflow-hidden">
-                        <motion.div
-                          custom={i}
-                          variants={ITEM_VARIANTS}
-                          initial="hidden"
-                          animate="visible"
-                          exit="exit"
-                        >
-                          <Link
-                            href={item.href}
-                            className="font-serif block"
-                            style={{
-                              fontSize:      "clamp(1.8rem, 4vw, 3.8rem)",
-                              fontWeight:    300,
-                              letterSpacing: "0.04em",
-                              lineHeight:    1.15,
-                              color:         isActive ? "var(--ls-nacre-glow)" : "var(--ls-void-white)",
-                              transition:    "color 250ms ease",
-                            }}
-                            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--ls-ash-drift)")}
-                            onMouseLeave={(e) => (e.currentTarget.style.color = isActive ? "var(--ls-nacre-glow)" : "var(--ls-void-white)")}
-                          >
-                            {item.label}
-                          </Link>
-                        </motion.div>
-                      </li>
-                    );
-                  })}
-                </ul>
-              </nav>
-
-              {/* Right — NAVIGATION vertical structural label (Kalyss convention) */}
-              <motion.div
-                className="flex items-center"
-                style={{ paddingLeft: "clamp(16px, 3vw, 48px)" }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, transition: { delay: 0.55, duration: 0.7 } }}
-                exit={{ opacity: 0 }}
-              >
-                <span
-                  className="text-meta"
-                  style={{
-                    color:         "var(--ls-graphite-skin)",
-                    writingMode:   "vertical-rl",
-                    transform:     "rotate(180deg)",
-                    letterSpacing: "0.22em",
-                    userSelect:    "none",
-                  }}
-                >
-                  NAVIGATION
-                </span>
-              </motion.div>
-            </div>
-
-            {/* Overlay footer — provenance + location */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, transition: { delay: 0.75, duration: 0.6 } }}
-              exit={{ opacity: 0 }}
-              className="absolute bottom-0 left-0 right-0 flex items-center justify-between"
-              style={{ padding: "0 clamp(24px, 4vw, 64px) clamp(28px, 4vh, 44px)" }}
-            >
-              <p className="text-meta" style={{ color: "var(--ls-graphite-skin)" }}>
-                Pearl · Jade · Amber · Wood
-              </p>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {mounted && createPortal(overlay, document.body)}
     </>
   );
 }

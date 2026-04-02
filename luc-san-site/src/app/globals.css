@@ -623,6 +623,42 @@ a:hover { color: var(--ls-ink-deep); }
 }
 
 
+/* NAV OVERLAY PORTAL ─────────────────────────────────────────────────────────
+   Rendered via createPortal to document.body — escapes all ancestor transform
+   contexts (PageTransition's will-change: transform). Always viewport-relative.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.ls-nav-overlay {
+  position:         fixed;
+  inset:            0;
+  width:            100vw;
+  height:           100dvh;
+  z-index:          100;
+  background-color: var(--ls-void-black);
+  overflow:         hidden;
+}
+
+.ls-nav-overlay__inner {
+  display:               grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  height:                100%;
+  padding:               clamp(80px, 12vh, 120px) clamp(24px, 4vw, 64px) 64px;
+}
+
+.ls-nav-overlay__nav {
+  display:         flex;
+  flex-direction:  column;
+  justify-content: center;
+  min-width:       0;
+  padding:         0;
+  margin:          0;
+}
+
+@media (max-width: 1023px) {
+  .ls-nav-overlay__inner { grid-template-columns: 1fr; }
+}
+
+
 /* RESPONSIVE BREAKPOINTS
    Mobile: < 768px | Tablet: 768–1023 | Desktop: 1024+ | Wide: 1440+
    ─────────────────────────────────────────────────────────────────────────── */
