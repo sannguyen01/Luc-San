@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   },
   description:
     "Geological patience made tangible. Objects from natural materials designed to last generations.",
-  metadataBase: new URL("https://lucsan.com"),
+  metadataBase: new URL("https://www.luc-san.com"),
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -43,25 +43,13 @@ export default function RootLayout({
     <html lang="en" className={`${cormorant.variable} ${jost.variable}`}>
       <body className="antialiased">
         <CustomCursor />
-        {/*
-          Shell: Header (fixed left rail on desktop, fixed top bar on mobile)
-          + a spacer div that reserves 200px in normal flow for the rail on desktop
-          + the offset content column (main + footer)
-        */}
-        <div style={{ display: "flex" }}>
-          <Header />
-          {/* Spacer mirrors the 200px fixed rail — invisible, layout-only */}
-          <div
-            className="hidden md:block"
-            style={{ width: "200px", flexShrink: 0 }}
-            aria-hidden="true"
-          />
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <main>
-              <PageTransition>{children}</PageTransition>
-            </main>
-            <Footer />
-          </div>
+        {/* Header is position:fixed — md:pl-[200px] offsets content column for desktop rail */}
+        <Header />
+        <div className="md:pl-[200px]">
+          <main>
+            <PageTransition>{children}</PageTransition>
+          </main>
+          <Footer />
         </div>
       </body>
     </html>

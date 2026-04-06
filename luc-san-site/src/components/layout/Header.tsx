@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { navigation } from "@/config/navigation";
 
@@ -25,8 +25,28 @@ export function Header() {
   const pathname            = usePathname();
   const [open,    setOpen]    = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => { setOpen(false); }, [pathname]);
+  // Delay close on route change — lets AnimatePresence register exit animation first
+  useEffect(() => {
+    const t = setTimeout(() => setOpen(false), 50);
+    return () => clearTimeout(t);
+  }, [pathname]);
+
+  // Body scroll lock — prevents iOS Safari two-finger scroll behind open panel
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow   = "hidden";
+      document.body.style.touchAction = "none";
+    } else {
+      document.body.style.overflow   = "";
+      document.body.style.touchAction = "";
+    }
+    return () => {
+      document.body.style.overflow   = "";
+      document.body.style.touchAction = "";
+    };
+  }, [open]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -39,6 +59,14 @@ export function Header() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
+  // Focus management — move focus into panel on open for keyboard/screen reader users
+  useEffect(() => {
+    if (open && panelRef.current) {
+      const firstLink = panelRef.current.querySelector<HTMLAnchorElement>("a");
+      firstLink?.focus();
+    }
+  }, [open]);
 
   /* Desktop rail — always light, no toggle state */
   const railBg     = scrolled ? "rgba(247,245,241,0.92)" : "transparent";
@@ -107,16 +135,16 @@ export function Header() {
                 data-active={isActive ? "true" : undefined}
                 style={{ color: "var(--ls-void-black)" }}
               >
-                {item.label.toUpperCase()}
+                {item.label}
               </Link>
             );
           })}
         </nav>
 
         {/* Provenance */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "6px", opacity: 0.45 }}>
-          <p className="text-meta" style={{ color: "var(--ls-graphite-skin)" }}>Pearl · Jade</p>
-          <p className="text-meta" style={{ color: "var(--ls-graphite-skin)" }}>Amber · Wood</p>
+        <div style={{ display: "flex", flexDirection: "column", gap: "6px", opacity: 0.65 }}>
+          <p className="text-meta" style={{ color: "var(--ls-graphite-skin)", fontSize: "0.75rem" }}>Pearl · Jade</p>
+          <p className="text-meta" style={{ color: "var(--ls-graphite-skin)", fontSize: "0.75rem" }}>Amber · Wood</p>
         </div>
       </header>
 
@@ -180,6 +208,7 @@ export function Header() {
       <AnimatePresence>
         {open && (
           <motion.div
+            ref={panelRef}
             id="mobile-nav-panel"
             role="dialog"
             aria-modal="true"

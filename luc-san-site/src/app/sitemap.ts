@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import talismansData from "@/content/talismans.json";
 import biographiesData from "@/content/biographies.json";
 
-const BASE_URL = "https://lucsan.com";
+const BASE_URL = "https://www.luc-san.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [

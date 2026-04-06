@@ -26,7 +26,6 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
         variants={VARIANTS}
         initial="hidden"
         animate="visible"
-        style={{ willChange: "opacity, transform" }}
       >
         {children}
       </motion.div>
