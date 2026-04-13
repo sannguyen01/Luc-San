@@ -59,6 +59,20 @@ export default function ActI() {
           This took nineteen<br />years to form.
         </motion.h1>
 
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.4, ease }}
+          className="text-caption"
+          style={{
+            color:         "var(--ls-graphite-skin)",
+            letterSpacing: "0.06em",
+            marginBottom:  "var(--space-800)",
+          }}
+        >
+          Necklaces made by the Nacre school of Lục San.
+        </motion.p>
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

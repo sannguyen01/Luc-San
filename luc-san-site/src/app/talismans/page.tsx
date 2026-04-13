@@ -5,9 +5,9 @@ import talismanData from "@/content/talismans.json";
 import type { Talisman } from "@/types";
 
 export const metadata: Metadata = {
-  title: "The Collection",
+  title: "Talisman — Necklaces by Lục San",
   description:
-    "Objects formed from geological time. Pearl, jade, amber, wood — each piece a material biography made wearable.",
+    "Necklaces made from baroque pearl, nephrite jade, and Baltic amber. Each Talisman is a geological formation worn at the throat — formed across millennia, finished across weeks.",
 };
 
 const talismans = talismanData as Talisman[];
@@ -16,9 +16,7 @@ const talismans = talismanData as Talisman[];
 const ASPECT_RATIOS: Record<string, string> = {
   "jade-disc-pendant":          "3/4",
   "baroque-pearl-suspension-i": "2/3",
-  "amber-drop-earrings":        "1/1",
   "pearl-constellation-collar": "3/4",
-  "jade-cuff-open":             "2/3",
 };
 
 const TIER_INDEX: Record<string, string> = {
@@ -135,7 +133,7 @@ function IndexPanel({ talismans }: { talismans: Talisman[] }) {
           className="text-caption"
           style={{ color: "var(--text-tertiary)", fontStyle: "italic" }}
         >
-          {talismans.length} objects. Each a geological event made wearable.
+          {talismans.length} necklaces. Each a geological event worn at the throat.
         </p>
       </div>
     </div>
@@ -146,16 +144,24 @@ export default function TalismansPage() {
   return (
     <PageContainer>
 
-      <PageHero label="Lục San — The Collection">
-        <h1 className="page-title mb-4">The Collection</h1>
+      <PageHero label="Lục San — Talisman">
+        <h1 className="page-title mb-4">Talisman</h1>
         <p
           className="text-body"
           style={{ maxWidth: "38rem", color: "var(--text-secondary)" }}
         >
-          Each object began as a material with its own biography —
-          pearl deposited over decades, jade compressed over epochs,
-          amber preserving an afternoon that was forty-four million years ago.
-          The human intervention is measured in hours, not production runs.
+          A necklace is the object that rests closest to the voice.
+          Lục San makes them from materials that took longer to form
+          than any language has existed.
+        </p>
+        <p
+          className="text-body"
+          style={{ maxWidth: "38rem", color: "var(--text-secondary)", marginTop: "var(--space-400)" }}
+        >
+          Pearl deposited over nineteen years. Jade compressed over
+          forty million. The human interval is measured in hours.
+          The geological interval is what gives the object its weight.
+          Each necklace made in the Nacre tradition.
         </p>
       </PageHero>
 

@@ -2,12 +2,12 @@
   {
     "id": "luc-san",
     "name": "Lục San",
-    "role": "A practice",
+    "role": "Founder, Nacre Aesthetic Movement. Imaginator, Lục San Atelier.",
     "established": "2012",
     "statement": "The material arrives with a direction already written into it. The practice exists to find that direction, and not interrupt it.",
     "audioSrc": "/audio/luc-san-statement.mp3",
     "portrait": "/images/biography/luc-san-workshop.jpg",
-    "philosophy": "Every material carries a formation narrative — a record of the conditions that produced it. Jade formed forty million years ago under tectonic pressure. Amber is a forest afternoon preserved in suspension. A baroque pearl is nineteen years of a mussel's fluctuating experience, written in nacre. The practice of Lục San does not impose form onto these materials. It reads the form that pressure and time have already determined, and removes whatever stands between the material's origin and its final state.",
+    "philosophy": "Every material carries a formation narrative — a record of the conditions that produced it. Jade formed forty million years ago under tectonic pressure. Amber is a forest afternoon preserved in suspension. A baroque pearl is nineteen years of a mussel's fluctuating experience, written in nacre. The practice of Lục San does not impose form onto these materials. It reads the form that pressure and time have already determined, and removes whatever stands between the material's origin and its final state.\n\nThe Nacre aesthetic movement — named after the biological process by which a pearl forms, layer by patient layer — is the formal doctrine that emerged from this practice. It was not designed. It was discovered through refusal: the refusal to work with a treated stone, and the need to explain that refusal in material terms rather than moral ones. The doctrine formalised three prohibitions: no treated matter, no prestige hierarchy, no seasonal temporality. Every object made in the Nacre tradition is designed for what it will become in fifty years, not for what it is today.",
     "timeline": [
       {
         "year": "1996",
@@ -27,7 +27,7 @@
       },
       {
         "year": "2012",
-        "event": "The workshop established at 43 Trần Phú, Hội An. Named Lục San — green mountain — after the colour of aged nephrite held in strong afternoon light."
+        "event": "The workshop established at 43 Trần Phú, Hội An. Named Lục San — green mountain — after the colour of aged nephrite held in strong afternoon light. The Nacre doctrine formally articulated: three refusals written down for the first time."
       },
       {
         "year": "2015",
@@ -35,15 +35,13 @@
       },
       {
         "year": "2022",
-        "event": "First public collection: five objects shown without prices at a private viewing in Hội An. Every piece found a keeper within two days of opening."
+        "event": "First public collection: five necklaces shown without prices at a private viewing in Hội An. Every piece found a keeper within two days of opening."
       }
     ],
     "works": [
       "jade-disc-pendant",
       "baroque-pearl-suspension-i",
-      "amber-drop-earrings",
-      "pearl-constellation-collar",
-      "jade-cuff-open"
+      "pearl-constellation-collar"
     ]
   }
 ]

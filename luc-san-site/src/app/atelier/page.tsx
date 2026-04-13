@@ -5,9 +5,9 @@ import talismansData from "@/content/talismans.json";
 import type { Talisman } from "@/types";
 
 export const metadata: Metadata = {
-  title: "Atelier",
+  title: "The Atelier — Nacre Aesthetic Movement by Lục San",
   description:
-    "The school of Lục San. How materials are read, what intervention means, and what the object becomes with time.",
+    "The Nacre method: a doctrine of layered revelation. The design school of Lục San works geological materials — jade, pearl, amber, bronze — according to a single principle: read first, intervene last.",
 };
 
 const DISCIPLINES = [
@@ -115,9 +115,7 @@ export default function AtelierPage() {
               maxWidth: "34rem",
             }}
           >
-            The school of Lục San produces objects from
-            geological materials — jade, pearl, amber, bronze — according to a
-            single method: read first, intervene last.
+            The school of Lục San. The Nacre method.
           </p>
         </div>
       </section>
@@ -133,23 +131,83 @@ export default function AtelierPage() {
           className="layout-editorial"
           style={{ maxWidth: "var(--layout-max)", margin: "0 auto" }}
         >
-          {/* Left: manifesto prose */}
+          {/* Left: Nacre Method doctrine */}
           <div>
+            <p
+              style={{
+                fontFamily:    "var(--font-sans)",
+                fontSize:      "0.65rem",
+                fontWeight:    400,
+                letterSpacing: "0.14em",
+                textTransform: "uppercase",
+                color:         "var(--ls-void-black)",
+                marginBottom:  "var(--space-300)",
+              }}
+            >
+              The Nacre Method
+            </p>
+            <p
+              className="text-editorial"
+              style={{ fontStyle: "italic", marginBottom: "var(--space-600)" }}
+            >
+              A doctrine of layered revelation.
+            </p>
             <p
               className="text-editorial"
               style={{ marginBottom: "var(--space-600)" }}
             >
-              The school of Lục San begins with a single precept: the material
-              has already made its decision. Our role is not to impose — it is
-              to locate what the material has always been moving toward, and
-              remove whatever stands between its origin and its form.
+              Nacre is the aesthetic movement and design school of Lục San.
+              It takes its name from the biological process by which a pearl forms —
+              not through a single decision, but through the patient deposition
+              of successive layers, each one responding to the conditions of the
+              previous one, each one invisible until the whole is complete.
             </p>
-            <p className="text-editorial">
-              Forty million years of tectonic pressure. Nineteen years of nacre
-              deposition. Forty-four million years of fossilised resin. These
-              are not raw materials. They are finished arguments. The atelier
-              is the place where we learn to hear them.
+            <p
+              className="text-editorial"
+              style={{ marginBottom: "var(--space-800)" }}
+            >
+              The Nacre method operates by the same logic.
+              An object is not designed. It is read.
+              The material speaks first. The maker listens last.
+              The form is the material&rsquo;s original argument,
+              made visible through the minimum necessary intervention.
             </p>
+
+            {/* Three refusals */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-600)" }}>
+              {[
+                {
+                  title: "Nacre refuses treated matter.",
+                  body:  "Any material altered from its geological or biological origin — dyed jade, irradiated stone, artificially nucleated pearl — cannot enter the Nacre vocabulary. Purity is not a moral claim. It is a material fact, verifiable by specific gravity, refraction, and spectroscopic analysis.",
+                },
+                {
+                  title: "Nacre refuses prestige hierarchy.",
+                  body:  "A copper element worth twelve dollars and a gold element worth three hundred are governed by the same criterion: appropriateness to the material conversation they are asked to enter.",
+                },
+                {
+                  title: "Nacre refuses seasonal temporality.",
+                  body:  "Objects are not made for a season. They are designed for what they will become in fifty years. The patina schedule is written before fabrication begins.",
+                },
+              ].map(({ title, body }) => (
+                <div key={title}>
+                  <p
+                    style={{
+                      fontFamily:    "var(--font-sans)",
+                      fontSize:      "0.72rem",
+                      fontWeight:    400,
+                      letterSpacing: "0.04em",
+                      color:         "var(--ls-void-black)",
+                      marginBottom:  "var(--space-100)",
+                    }}
+                  >
+                    {title}
+                  </p>
+                  <p className="text-caption" style={{ lineHeight: 1.8 }}>
+                    {body}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Right: 3 brief principles */}
@@ -212,7 +270,7 @@ export default function AtelierPage() {
             className="text-label"
             style={{ marginBottom: "var(--space-1000)" }}
           >
-            The three disciplines
+            The three disciplines of the Nacre school
           </p>
 
           <div className="layout-grid-3">
@@ -266,9 +324,23 @@ export default function AtelierPage() {
         <div style={{ maxWidth: "var(--layout-max)", margin: "0 auto" }}>
           <p
             className="text-label"
-            style={{ marginBottom: "var(--space-1000)" }}
+            style={{ marginBottom: "var(--space-600)" }}
           >
             Material lexicon
+          </p>
+
+          <p
+            className="text-caption"
+            style={{
+              maxWidth:      "44ch",
+              lineHeight:    1.85,
+              marginBottom:  "var(--space-1000)",
+              color:         "var(--ls-graphite-skin)",
+            }}
+          >
+            The Nacre vocabulary admits four primary materials. Each was chosen
+            not for market status but for the quality of its formation narrative
+            and the depth of its patina potential.
           </p>
 
           <div className="layout-grid-4">
@@ -317,7 +389,82 @@ export default function AtelierPage() {
         </div>
       </section>
 
-      {/* ── 05 Voice — imaginator quote ─────────────────────────────────── */}
+      {/* ── 05 Nacre Lifecycle ──────────────────────────────────────────── */}
+      <section
+        style={{
+          background: "var(--ls-void-white)",
+          padding: "var(--space-2000) var(--layout-margin)",
+        }}
+      >
+        <div style={{ maxWidth: "var(--layout-max)", margin: "0 auto" }}>
+          <p
+            className="text-label"
+            style={{ marginBottom: "var(--space-1000)" }}
+          >
+            The Nacre lifecycle
+          </p>
+
+          <div className="layout-grid-4">
+            {[
+              {
+                state: "01",
+                name: "Formation",
+                body: "The material's geological or biological origin. We did not make this. We found it.",
+              },
+              {
+                state: "02",
+                name: "Resolution",
+                body: "The minimum intervention that locates the form the material was moving toward.",
+              },
+              {
+                state: "03",
+                name: "Relationship",
+                body: "The fifty years during which the object and its keeper age in the same direction.",
+              },
+              {
+                state: "04",
+                name: "Dissolution",
+                body: "The object's return to material. Bronze to verdigris. Pearl to powder. Wood to ground.",
+              },
+            ].map(({ state, name, body }) => (
+              <div
+                key={state}
+                style={{
+                  borderTop: "1px solid var(--border-medium)",
+                  paddingTop: "var(--space-400)",
+                }}
+              >
+                <p
+                  className="text-label"
+                  style={{
+                    color: "var(--ls-graphite-skin)",
+                    marginBottom: "var(--space-300)",
+                  }}
+                >
+                  {state}
+                </p>
+                <p
+                  style={{
+                    fontFamily: "var(--font-serif)",
+                    fontWeight: 300,
+                    fontSize: "clamp(1rem, 1.3vw, 1.2rem)",
+                    letterSpacing: "0.04em",
+                    color: "var(--ls-void-black)",
+                    marginBottom: "var(--space-300)",
+                  }}
+                >
+                  {name}
+                </p>
+                <p className="text-caption" style={{ lineHeight: 1.8 }}>
+                  {body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── 06 Voice — imaginator quote ─────────────────────────────────── */}
       <section
         className="dark-band"
         style={{ padding: "var(--space-2000) var(--layout-margin)" }}
@@ -344,7 +491,7 @@ export default function AtelierPage() {
               marginBottom: "var(--space-1000)",
             }}
           >
-            Lục San
+            Founder, Nacre School · Lục San Atelier
           </p>
           <Link
             href="/biography/luc-san"
@@ -355,7 +502,7 @@ export default function AtelierPage() {
         </div>
       </section>
 
-      {/* ── 06 School Archive ────────────────────────────────────────────── */}
+      {/* ── 07 School Archive ────────────────────────────────────────────── */}
       <section
         className="dark-band"
         style={{
@@ -372,7 +519,7 @@ export default function AtelierPage() {
               marginBottom: "var(--space-1000)",
             }}
           >
-            <p className="text-label">School archive</p>
+            <p className="text-label">Nacre school — necklaces</p>
             <Link href="/talismans" className="link-pathway" style={{ fontSize: "0.65rem" }}>
               View all
             </Link>
@@ -435,7 +582,7 @@ export default function AtelierPage() {
         </div>
       </section>
 
-      {/* ── 07 Study — commission CTA ────────────────────────────────────── */}
+      {/* ── 08 Study — commission CTA ────────────────────────────────────── */}
       <section
         style={{
           background: "var(--ls-void-white)",

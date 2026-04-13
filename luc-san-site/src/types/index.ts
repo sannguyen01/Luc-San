@@ -56,6 +56,8 @@ export interface Talisman {
   authentication: string;
   // Fabrication
   processImages: string[];
+  // Nacre discipline that governs this piece's making
+  discipline?: string;
   // Cultural fragment
   culturalQuote: string;
   culturalAttribution: string;

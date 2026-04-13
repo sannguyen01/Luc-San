@@ -42,6 +42,53 @@ export default async function TalismanDetailPage({
   return (
     <PageContainer>
 
+      {/* ── 01 Material Signal — dark threshold band ─────────────────────── */}
+      <section
+        className="dark-band"
+        style={{
+          minHeight: "40svh",
+          display:   "flex",
+          flexDirection: "column",
+          justifyContent: "flex-end",
+          padding: "calc(var(--space-2000) + 88px) var(--layout-margin) var(--space-1200)",
+        }}
+      >
+        <div style={{ maxWidth: "var(--layout-max)", margin: "0 auto", width: "100%" }}>
+          <p
+            className="text-label"
+            style={{ color: "var(--ls-slate-haze)", marginBottom: "var(--space-400)" }}
+          >
+            Nacre discipline · {talisman.discipline ?? "Geological Reading"}
+          </p>
+          <p
+            style={{
+              fontFamily:    "var(--font-serif)",
+              fontWeight:    300,
+              fontStyle:     "italic",
+              fontSize:      "clamp(2rem, 4.5vw, 4.5rem)",
+              lineHeight:    1.08,
+              letterSpacing: "0.02em",
+              color:         "var(--ls-void-white)",
+              maxWidth:      "16ch",
+              marginBottom:  "var(--space-400)",
+            }}
+          >
+            {talisman.era}.
+          </p>
+          <h1
+            style={{
+              fontFamily:    "var(--font-serif)",
+              fontWeight:    300,
+              fontSize:      "clamp(1rem, 1.6vw, 1.4rem)",
+              letterSpacing: "0.06em",
+              color:         "var(--ls-slate-haze)",
+            }}
+          >
+            {talisman.title}
+          </h1>
+        </div>
+      </section>
+
       {/* ── Layer 1: Geological Genesis ───────────────────────────────────── */}
       <div
         style={{
@@ -61,7 +108,7 @@ export default async function TalismanDetailPage({
             className="text-meta"
             style={{ color: "var(--text-tertiary)", letterSpacing: "0.18em", padding: "8px 0" }}
           >
-            ← The Collection
+            ← Talisman
           </Link>
         </div>
 
@@ -158,6 +205,41 @@ export default async function TalismanDetailPage({
 
       {/* ── Layer 5: Lifecycle Theology ───────────────────────────────────── */}
       <LifecycleTheology talisman={talisman} />
+
+      {/* ── Commission CTA ───────────────────────────────────────────────── */}
+      <section
+        className="dark-band"
+        style={{
+          padding:   "var(--space-2000) var(--layout-margin)",
+          textAlign: "center",
+        }}
+      >
+        <p
+          className="text-label"
+          style={{ color: "var(--ls-slate-haze)", marginBottom: "var(--space-600)" }}
+        >
+          Commission
+        </p>
+        <p
+          style={{
+            fontFamily:    "var(--font-serif)",
+            fontWeight:    300,
+            fontStyle:     "italic",
+            fontSize:      "clamp(1.4rem, 2.5vw, 2.5rem)",
+            lineHeight:    1.15,
+            letterSpacing: "0.02em",
+            color:         "var(--ls-void-white)",
+            marginBottom:  "var(--space-800)",
+            maxWidth:      "28ch",
+            margin:        "0 auto var(--space-800)",
+          }}
+        >
+          This piece has been made. Your version has not.
+        </p>
+        <Link href="/commission" className="link-pathway">
+          Begin the conversation
+        </Link>
+      </section>
 
     </PageContainer>
   );

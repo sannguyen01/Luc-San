@@ -65,7 +65,7 @@ export default function ActIII() {
           transition={{ duration: 0.9, ease }}
           style={{ marginBottom: "var(--space-1200)" }}
         >
-          The Collection
+          Talisman
         </motion.p>
 
         {/*
@@ -151,7 +151,7 @@ export default function ActIII() {
           ))}
         </div>
 
-        {/* Collection link */}
+        {/* Nacre doctrine bridge + collection link */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -160,11 +160,30 @@ export default function ActIII() {
           style={{
             marginTop:      "var(--space-1600)",
             display:        "flex",
-            justifyContent: "center",
+            flexDirection:  "column",
+            alignItems:     "center",
+            gap:            "var(--space-600)",
           }}
         >
-          <Link href="/talismans" className="link-pathway">
-            The full collection
+          <p
+            className="text-body"
+            style={{
+              textAlign:  "center",
+              maxWidth:   "32ch",
+              lineHeight: 1.75,
+            }}
+          >
+            The objects here are made according to a doctrine.
+          </p>
+          <Link href="/atelier" className="link-pathway">
+            The Nacre School →
+          </Link>
+          <Link
+            href="/talismans"
+            className="text-label"
+            style={{ color: "var(--ls-graphite-skin)", marginTop: "var(--space-200)" }}
+          >
+            View all necklaces
           </Link>
         </motion.div>
       </div>

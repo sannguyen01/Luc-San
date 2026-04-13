@@ -253,7 +253,7 @@ export default async function BiographyPage({ params }: Props) {
                 marginBottom: "var(--space-1000)",
               }}
             >
-              <p className="text-label">Objects from this atelier</p>
+              <p className="text-label">Necklaces from this atelier</p>
               <Link
                 href="/talismans"
                 className="link-pathway"
@@ -382,7 +382,7 @@ export default async function BiographyPage({ params }: Props) {
             The Atelier
           </Link>
           <Link href="/talismans" className="link-pathway">
-            The Collection
+            Talisman
           </Link>
           <Link href="/commission" className="link-pathway">
             Commission

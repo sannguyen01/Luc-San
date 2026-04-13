@@ -5,6 +5,7 @@
     "title": "Jade Disc Pendant",
     "materials": ["Nephrite jade", "Sterling silver"],
     "hours": 12,
+    "discipline": "Geological Reading",
     "copy": "Forty million years of tectonic pressure. Twelve hours of hand-carving and polishing to reveal what was already there.",
     "longCopy": "Forty million years of tectonic pressure, deep beneath what is now British Columbia, produced this nephrite. The stone arrived already complete — the carver's task was simply to locate the disc that had always existed inside it. Twelve hours of hand-carving with diamond tools, followed by four stages of polishing, each grit finer than the last. The sterling silver mount was forged — not cast — to a gauge that moves fractionally with the stone. They will age together.",
     "image": "/images/talismans/jade-disc-pendant.jpg",
@@ -27,6 +28,7 @@
     "title": "Baroque Pearl Suspension I",
     "materials": ["Baroque pearl", "Sterling silver"],
     "hours": 46,
+    "discipline": "Material Intervention",
     "copy": "Nineteen years of nacre deposition. Forty-six hours of hand setting. No adhesive. The tension holds.",
     "longCopy": "This baroque pearl took nineteen years to form in a freshwater mussel off the Guangdong coast. Its asymmetry is not a defect — it is a record of every fluctuation the mussel experienced across nearly two decades. Forty-six hours of work went into the sterling silver suspension: fabricating the cradle, texturing the wire, calibrating the tension that holds the pearl without compression. There is no adhesive anywhere in this piece. The pearl sits in tension, as it does in nature inside the shell. The silver will patinate toward grey over years of wear. The pearl will not.",
     "image": "/images/talismans/baroque-pearl-suspension-i.jpg",
@@ -45,33 +47,12 @@
     "patina": "Sterling silver patinates toward warm grey over years of skin contact. The pearl does not change — nacre is chemically stable across human timescales. In fifty years the piece will look as though it was made yesterday around an ancient stone. The contrast between the aged silver and the unchanged pearl is not deterioration. It is the piece becoming more truthful about what it is."
   },
   {
-    "id": "amber-drop-earrings",
-    "tier": "Elemental",
-    "title": "Amber Drop Earrings",
-    "materials": ["Baltic amber", "14K gold"],
-    "hours": 18,
-    "copy": "Forty-four million years of fossilised resin. Eighteen hours of shaping, each cut decided by the inclusion patterns within.",
-    "longCopy": "Forty-four million years ago, a Baltic forest dominated by Pinus succinifera — a tree now extinct — released a resin that would harden into these two pieces. Each contains inclusions: Eocene air bubbles, pollen fragments, and in the right piece, the wing of a preserved insect. The carver read these inclusions before making a single cut, allowing the internal structure to determine the external form. Eighteen hours of shaping on a flex shaft, then polishing by hand with leather and tin oxide. The 14K gold findings were fabricated to complement, not compete: thin, matte-finished, deliberately low.",
-    "image": "/images/talismans/amber-drop-earrings.jpg",
-    "formation": "Succinite — Baltic amber — formed during the Eocene epoch, approximately 44 million years ago, when a vast coniferous forest covered what is now northern Europe. The tree resin polymerised over geological time under specific conditions of pressure and anoxic burial. These two pieces were recovered from a Baltic seabed deposit, lifted by centuries of wave action onto the Samland coast. Each inclusion is a forensic document: Eocene air, Eocene pollen, a moment of a specific afternoon preserved at a resolution no archive ever achieved.",
-    "era": "44 million years",
-    "provenance": "Samland coast, Baltic Sea",
-    "authentication": "Baltic succinite. FTIR-tested. Succinic acid content confirms natural origin. No copal, no pressed amber.",
-    "processImages": [
-      "/images/process/amber-earrings-01.jpg",
-      "/images/process/amber-earrings-02.jpg",
-      "/images/process/amber-earrings-03.jpg"
-    ],
-    "culturalQuote": "Inside amber, a Eocene afternoon is preserved at a resolution that no archive ever achieved. Every inclusion is a sentence. The amber is the language.",
-    "culturalAttribution": "Lục San, on amber as record",
-    "patina": "Amber is photosensitive — prolonged UV exposure deepens the surface over decades, moving honey tones toward a deeper amber-brown. Kept away from direct sunlight, these pieces will stay bright. Worn daily in indirect light, they will deepen. The gold findings will not change. The amber will become richer. This is not ageing. This is the material completing itself."
-  },
-  {
     "id": "pearl-constellation-collar",
     "tier": "Composed",
     "title": "Pearl Constellation Collar",
     "materials": ["Freshwater pearls", "Sterling silver", "Silk cord"],
     "hours": 58,
+    "discipline": "Material Intervention",
     "copy": "Thirty-one pearls, each selected for its specific asymmetry. Fifty-eight hours of wire work. No two wearings will ever look identical.",
     "longCopy": "Thirty-one freshwater pearls, selected over three months from a single harvest lot. The criterion was not roundness — it was idiosyncrasy. Each pearl was chosen for a specific asymmetry that would affect how it catches light at a particular angle of the collar. Fifty-eight hours of sterling silver wire work: each pearl individually wrapped, each loop work-hardened to prevent loosening. The silk cord is hand-dyed and hand-knotted — the knots between each station serve both as spacers and as the piece's internal rhythm. Because the pearls are asymmetric, no two arrangements of the collar will ever produce the same silhouette.",
     "image": "/images/talismans/pearl-constellation-collar.jpg",
@@ -89,28 +70,5 @@
     "culturalQuote": "Thirty-one asymmetries, none identical. To wear them is to accept that the piece will never repeat itself. Each arrangement is a once-only event.",
     "culturalAttribution": "Lục San, on non-repeatability",
     "patina": "The silk cord will need replacing every three to five years — a designed maintenance interval, not a flaw. The silver wire will patinate toward grey. The pearls will not change. The knotting pattern is documented: any jeweller can reproduce the original configuration from the accompanying specification sheet. The collar is designed to outlast its cord many times over."
-  },
-  {
-    "id": "jade-cuff-open",
-    "tier": "Composed",
-    "title": "Jade Cuff — Open Form",
-    "materials": ["Nephrite jade", "Bronze"],
-    "hours": 55,
-    "copy": "Two materials separated by geological epochs, joined through fifty-five hours of carving and forging. The bronze will darken. The jade will brighten.",
-    "longCopy": "The nephrite in this cuff formed approximately forty million years ago. The bronze was cast from a mold made this decade. Between them: forty million years of geological separation brought into contact through fifty-five hours of carving, forging, and fitting. The jade band was carved and drilled to tolerance — any tighter and thermal expansion would crack it in winter. The bronze elements were forged, not cast: hammer-worked to match the jade's specific resistance. The bronze will develop a patina over years of skin contact. The jade will brighten. In twenty years, they will have aged in opposite directions.",
-    "image": "/images/talismans/jade-cuff-open.jpg",
-    "formation": "The nephrite in this cuff underwent its primary geological transformation approximately 40 million years ago, in what is now British Columbia. Jade tolerates thermal expansion: it must be carved to a tolerance that allows for seasonal movement, otherwise winter cold will crack the band. Every measurement in this piece accounts for the stone's thermal behaviour across a temperature range of minus 20 to 40 degrees Celsius. The bronze comes from a copper-tin alloy cast and fabricated this year. Between them: forty million years.",
-    "era": "40 million years",
-    "provenance": "British Columbia, Canada",
-    "authentication": "GIA-certified nephrite. No dye, polymer, or wax treatment. Bronze: 90% copper, 10% tin, hand-forged.",
-    "processImages": [
-      "/images/process/jade-cuff-01.jpg",
-      "/images/process/jade-cuff-02.jpg",
-      "/images/process/jade-cuff-03.jpg",
-      "/images/process/jade-cuff-04.jpg"
-    ],
-    "culturalQuote": "The bronze will go dark. The jade will go bright. In twenty years, no one who looks at them together will believe they were made at the same time.",
-    "culturalAttribution": "Lục San, on opposing patinas",
-    "patina": "The bronze will develop a patina within two to three years of regular wear — first gold, then brown, then a deep chestnut that is the colour of oxidised copper near old wood. The jade brightens with skin contact: lanolin from the wrist gradually enriches its translucency. To separate them after twenty years would be geological violence. They are being made, slowly, into something that neither material was before."
   }
 ]

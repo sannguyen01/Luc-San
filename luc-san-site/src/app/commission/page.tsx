@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { CommissionForm } from "./CommissionForm";
 
 export const metadata: Metadata = {
-  title: "Commission",
+  title: "Commission a Necklace — Lục San",
   description:
-    "Begin a conversation about material, time, and form. Every commission starts here.",
+    "Begin a commission. Every necklace by Lục San starts with a conversation about material and time — not catalogue and timeline. Jade, pearl, amber, bronze.",
 };
 
 const TIERS = [
@@ -91,13 +91,26 @@ export default async function CommissionPage({ searchParams }: Props) {
             className="text-body"
             style={{
               maxWidth: "28rem",
-              margin: "0 auto var(--space-1200)",
+              margin: "0 auto var(--space-600)",
               lineHeight: 1.9,
             }}
           >
             Every commission begins with a single conversation. Not about
             budget, not about timeline — about what you carry, and what the
             material might do with it. The object emerges from that.
+          </p>
+
+          <p
+            className="text-body"
+            style={{
+              maxWidth: "28rem",
+              margin: "0 auto var(--space-1200)",
+              lineHeight: 1.9,
+              color: "var(--ls-graphite-skin)",
+            }}
+          >
+            Most conversations begin with a necklace. Some begin with
+            something you carry that has already been waiting.
           </p>
 
           <CommissionForm initialName={name} />
@@ -185,12 +198,26 @@ export default async function CommissionPage({ searchParams }: Props) {
               marginTop: "var(--space-1000)",
               color: "var(--ls-slate-haze)",
               maxWidth: "32rem",
-              margin: "var(--space-1000) auto 0",
+              margin: "var(--space-1000) auto var(--space-400)",
             }}
           >
             Pricing is indicative. Final pricing is confirmed in the first
             conversation, after the material is identified and the patina
             schedule is agreed.
+          </p>
+
+          <p
+            className="text-caption"
+            style={{
+              textAlign: "center",
+              color: "var(--ls-graphite-skin)",
+              maxWidth: "32rem",
+              margin: "0 auto",
+              fontStyle: "italic",
+            }}
+          >
+            All tiers are available as Nacre-school necklaces. The tier refers
+            to the complexity of the material conversation, not the object category.
           </p>
         </div>
       </section>

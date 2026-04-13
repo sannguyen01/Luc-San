@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Lục San",
-  tagline: "Geological patience made tangible.",
+  tagline: "Geological objects. Nacre aesthetic movement.",
   description:
-    "Objects from natural materials — pearl, jade, amber, wood — designed to last generations rather than seasons.",
+    "Necklaces and objects made from jade, baroque pearl, and amber. Each piece a material biography formed across geological time, finished by hand in the Nacre tradition.",
   url: "https://lucsan.com",
   locale: "en_US",
   creator: "Lục San",
