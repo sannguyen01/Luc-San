@@ -31,7 +31,7 @@ export function CulturalFragment({ quote, attribution }: Props) {
             fontStyle:     "italic",
           }}
         >
-          "{quote}"
+          &ldquo;{quote}&rdquo;
         </blockquote>
 
         <p

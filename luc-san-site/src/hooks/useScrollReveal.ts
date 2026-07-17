@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useRef, RefObject } from "react";
+import { useEffect, useLayoutEffect, RefObject } from "react";
 
 interface UseScrollRevealOptions {
   threshold?: number;
