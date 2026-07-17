@@ -2,8 +2,9 @@
 
 import { useActionState } from "react";
 import { submitCommission } from "./actions";
+import type { FormState } from "@/types";
 
-const initialState = { success: false, error: null };
+const initialState: FormState = { status: "idle" };
 
 interface Props {
   initialName: string;
@@ -12,7 +13,7 @@ interface Props {
 export function CommissionForm({ initialName }: Props) {
   const [state, action, pending] = useActionState(submitCommission, initialState);
 
-  if (state.success) {
+  if (state.status === "success") {
     return (
       <div style={{ textAlign: "center", padding: "var(--space-800) 0" }}>
         <p className="text-label" style={{ marginBottom: "var(--space-300)" }}>
@@ -40,6 +41,16 @@ export function CommissionForm({ initialName }: Props) {
         width: "100%",
       }}
     >
+      {/* Honeypot — hidden from humans, catches bots */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="absolute -left-[9999px] w-px h-px overflow-hidden"
+      />
+
       {/* Name */}
       <input
         type="text"
@@ -87,12 +98,12 @@ export function CommissionForm({ initialName }: Props) {
         }}
       />
 
-      {state.error && (
+      {state.status === "error" && (
         <p
           className="text-caption"
           style={{ color: "var(--ls-graphite-skin)" }}
         >
-          {state.error}
+          {state.message}
         </p>
       )}
 

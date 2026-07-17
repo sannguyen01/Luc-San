@@ -1,24 +1,30 @@
 "use server";
 
-type CommissionState = { success: boolean; error: string | null };
+import { sendInquiry } from "@/lib/forms/sendInquiry";
+import type { FormState } from "@/types";
 
 export async function submitCommission(
-  _prev: CommissionState,
+  _prev: FormState,
   formData: FormData
-): Promise<CommissionState> {
+): Promise<FormState> {
   const name    = formData.get("name")?.toString().trim() ?? "";
   const message = formData.get("message")?.toString().trim() ?? "";
+  const honeypot = formData.get("website")?.toString();
 
   if (!name) {
-    return { success: false, error: "Please provide your name." };
+    return { status: "error", message: "Please provide your name." };
   }
   if (!message) {
     return {
-      success: false,
-      error: "Please tell us something about what you carry.",
+      status: "error",
+      message: "Please tell us something about what you carry.",
     };
   }
 
-  // TODO: wire to Resend — send enquiry to studio@lucsan.com
-  return { success: true, error: null };
+  return sendInquiry({
+    subjectLabel: "Commission",
+    name,
+    message,
+    honeypot,
+  });
 }

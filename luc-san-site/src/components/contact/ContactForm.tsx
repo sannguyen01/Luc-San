@@ -52,6 +52,15 @@ export function ContactForm() {
       </div>
 
       <form action={action} className="space-y-8" style={{ maxWidth: "480px" }}>
+      {/* Honeypot — hidden from humans, catches bots */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="absolute -left-[9999px] w-px h-px overflow-hidden"
+      />
       {/* Name */}
       <div>
         <label htmlFor="name" className="text-label block mb-3" style={{ color: "var(--text-tertiary)" }}>

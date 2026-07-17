@@ -2,8 +2,9 @@
 
 import { useActionState } from "react";
 import { submitContribution } from "@/app/biography/[id]/actions";
+import type { FormState } from "@/types";
 
-const initialState = { success: false, error: null };
+const initialState: FormState = { status: "idle" };
 
 interface Props {
   biographyId: string;
@@ -15,7 +16,7 @@ export function ContributionForm({ biographyId }: Props) {
     initialState
   );
 
-  if (state.success) {
+  if (state.status === "success") {
     return (
       <div>
         <p className="text-label" style={{ marginBottom: "var(--space-300)" }}>
@@ -39,6 +40,16 @@ export function ContributionForm({ biographyId }: Props) {
       }}
     >
       <input type="hidden" name="biographyId" value={biographyId} />
+
+      {/* Honeypot — hidden from humans, catches bots */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="absolute -left-[9999px] w-px h-px overflow-hidden"
+      />
 
       {/* Author */}
       <div>
@@ -102,12 +113,12 @@ export function ContributionForm({ biographyId }: Props) {
         />
       </div>
 
-      {state.error && (
+      {state.status === "error" && (
         <p
           className="text-caption"
           style={{ color: "var(--ls-graphite-skin)" }}
         >
-          {state.error}
+          {state.message}
         </p>
       )}
 

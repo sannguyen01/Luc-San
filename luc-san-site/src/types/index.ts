@@ -1,3 +1,8 @@
+export type FormState<T = undefined> =
+  | { status: "idle" }
+  | { status: "success"; data?: T }
+  | { status: "error"; message: string };
+
 export interface BiographyTimelineEntry {
   year: string;
   event: string;

@@ -2,18 +2,19 @@
 
 import { useActionState } from "react";
 import { submitAcquisitionForm } from "@/app/talismans/actions";
+import type { FormState } from "@/types";
 
 interface Props {
   talismanId:    string;
   talismanTitle: string;
 }
 
-const INITIAL: { success: boolean; error: string | null } = { success: false, error: null };
+const INITIAL: FormState = { status: "idle" };
 
 export function AcquisitionForm({ talismanId, talismanTitle }: Props) {
   const [state, formAction, isPending] = useActionState(submitAcquisitionForm, INITIAL);
 
-  if (state.success) {
+  if (state.status === "success") {
     return (
       <div style={{ paddingTop: "var(--space-800)", paddingBottom: "var(--space-800)" }}>
         <p className="text-label mb-5" style={{ color: "var(--text-tertiary)" }}>
@@ -52,6 +53,16 @@ export function AcquisitionForm({ talismanId, talismanTitle }: Props) {
       <form action={formAction} style={{ display: "flex", flexDirection: "column", gap: "var(--space-500)" }}>
         <input type="hidden" name="talismanId"    value={talismanId} />
         <input type="hidden" name="talismanTitle" value={talismanTitle} />
+
+        {/* Honeypot — hidden from humans, catches bots */}
+        <input
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="absolute -left-[9999px] w-px h-px overflow-hidden"
+        />
 
         {/* Name */}
         <div>
@@ -140,9 +151,9 @@ export function AcquisitionForm({ talismanId, talismanTitle }: Props) {
         </div>
 
         {/* Error */}
-        {state.error && (
+        {state.status === "error" && (
           <p className="text-caption" style={{ color: "var(--ls-graphite-skin)" }}>
-            {state.error}
+            {state.message}
           </p>
         )}
 

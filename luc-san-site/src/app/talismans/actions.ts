@@ -1,6 +1,7 @@
 "use server";
 
-type FormState = { success: boolean; error: string | null };
+import { sendInquiry } from "@/lib/forms/sendInquiry";
+import type { FormState } from "@/types";
 
 export async function submitAcquisitionForm(
   _prev: FormState,
@@ -8,11 +9,21 @@ export async function submitAcquisitionForm(
 ): Promise<FormState> {
   const name    = formData.get("name")?.toString().trim() ?? "";
   const contact = formData.get("contact")?.toString().trim() ?? "";
+  const note    = formData.get("note")?.toString().trim() ?? "";
+  const talismanId    = formData.get("talismanId")?.toString() ?? "";
+  const talismanTitle = formData.get("talismanTitle")?.toString() ?? "";
+  const honeypot = formData.get("website")?.toString();
 
   if (!name || !contact) {
-    return { success: false, error: "Please provide your name and a way to reach you." };
+    return { status: "error", message: "Please provide your name and a way to reach you." };
   }
 
-  // TODO: wire to Resend — send to studio@lucsan.com with talisman + enquirer details
-  return { success: true, error: null };
+  return sendInquiry({
+    subjectLabel: `Acquisition — ${talismanTitle || "Talisman"}`,
+    name,
+    contact,
+    message: note,
+    fields: { Talisman: talismanTitle, "Talisman ID": talismanId },
+    honeypot,
+  });
 }
