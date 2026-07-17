@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import { SafeImage } from "@/components/ui/SafeImage";
 import talismansData from "@/content/talismans.json";
 import type { Talisman } from "@/types";
 
@@ -52,7 +52,7 @@ export default function SchoolArchive() {
                   overflow: "hidden",
                 }}
               >
-                <Image
+                <SafeImage
                   src={t.image}
                   alt={t.title}
                   fill

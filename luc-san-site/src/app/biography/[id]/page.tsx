@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+import { SafeImage } from "@/components/ui/SafeImage";
 import { notFound } from "next/navigation";
 import biographiesData from "@/content/biographies.json";
 import talismansData from "@/content/talismans.json";
@@ -66,7 +66,7 @@ export default async function BiographyPage({ params }: Props) {
           }}
           aria-hidden="true"
         >
-          <Image
+          <SafeImage
             src={bio.portrait}
             alt=""
             fill
@@ -168,7 +168,7 @@ export default async function BiographyPage({ params }: Props) {
               overflow: "hidden",
             }}
           >
-            <Image
+            <SafeImage
               src={bio.portrait}
               alt={`${bio.name} at work`}
               fill
@@ -285,7 +285,7 @@ export default async function BiographyPage({ params }: Props) {
                       marginBottom: "var(--space-300)",
                     }}
                   >
-                    <Image
+                    <SafeImage
                       src={t.image}
                       alt={t.title}
                       fill
